@@ -11,7 +11,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0 mb-3">
-    <li class="nav-item ">
+    <li class="nav-item">
 
         <div class="text-white text-center"> ยินดีต้อนรับ <Br></Br> <?php  echo $this->session->userdata('fullname');?>
 
