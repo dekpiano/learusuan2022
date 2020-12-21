@@ -21,7 +21,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?=base_url();?>asset/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?=base_url();?>asset/img/favicon.ico">
+    <link rel="shortcut icon" href="<?=base_url();?>asset/img/Logo.ico">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -52,7 +52,8 @@
                         <div class="form d-flex align-items-center">
                             <div class="content">
                                 <h2 class="mb-3">เข้าสู่ระบบ</h2>
-                                <form method="post" class="form-validate needs-validation" novalidate="" action="<?=base_url('StudentCheckLogin')?>">
+                                <form method="post" class="form-validate needs-validation" novalidate=""
+                                    action="<?=base_url('StudentCheckLogin')?>">
                                     <div class="form-group">
                                         <input id="login-username" type="text" required
                                             data-msg="ระบุเลขประจำตัวประชาชน 13 หลัก" class="input-material"
@@ -60,17 +61,27 @@
                                             id="recruit_idCard">
                                         <label for="login-username"
                                             class="label-material">เลขบัตรประจำตัวประชาชน</label>
-                                          
+
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password" type="text" name="recruit_birthday" id="recruit_birthday" required
-                                            data-msg=" ระบุวันเดือนปีเกิด" class="input-material" data-inputmask="'mask': '99-99-9999'">
+                                        <input id="login-password" type="text" name="recruit_birthday"
+                                            id="recruit_birthday" required data-msg=" ระบุวันเดือนปีเกิด"
+                                            class="input-material" data-inputmask="'mask': '99-99-9999'">
                                         <label for="login-password" class="label-material">วันเดือนปี เกิด</label>
-                                        <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้  09-07-2534</small>
+                                        <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้
+                                            09-07-2534</small>
                                     </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+                                    <hr>
+                                    <div class=" text-center">
+                                        <a href="<?=base_url('welcome');?>" class="btn btn-outline-primary">
+                                            <span class="">หน้าแรก</span>
+                                        </a>
+                                    </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -95,15 +106,15 @@
     $(":input").inputmask();
     </script>
 
-<?php  if($this->session->flashdata('msg') == 'NO' ):?>
-         <script>
-swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
-         </script>
-         <?php elseif($this->session->flashdata('msg') == 'Yes'):?>
-         <script>
-swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
-         </script>
-         <?php endif; $this->session->mark_as_temp('msg',20); ?>
+    <?php  if($this->session->flashdata('msg') == 'NO' ):?>
+    <script>
+    swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
+    </script>
+    <?php elseif($this->session->flashdata('msg') == 'Yes'):?>
+    <script>
+    swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
+    </script>
+    <?php endif; $this->session->mark_as_temp('msg',20); ?>
 </body>
 
 </html>

@@ -44,19 +44,13 @@ var onloadCallback = function() {
         'sitekey': '6LdZePgUAAAAAA5sewT1jFoUrRv7E7TGBg6fN6Zs'
     });
 };
+
+function StatusWait(){
+    swal("แจ้งเตือน", "รอการตรวจสอบเอกสาร", "warning")
+}
 // รูปแบบการกรอก
 $(":input").inputmask();
 
-// $('body').AutoProvince({
-//     PROVINCE: '#province', // select div สำหรับรายชื่อจังหวัด
-//     AMPHUR: '#amphur', // select div สำหรับรายชื่ออำเภอ
-//     DISTRICT: '#district', // select div สำหรับรายชื่อตำบล
-//     POSTCODE: '#postcode', // input field สำหรับรายชื่อรหัสไปรษณีย์
-//     CURRENT_PROVINCE: 1, //  แสดงค่าเริ่มต้น ใส่ไอดีจังหวัดที่เคยเลือกไว้
-//     CURRENT_AMPHUR: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีอำเภอที่เคยเลือกไว้
-//     CURRENT_DISTRICT: 1, // แสดงค่าเริ่มต้น  ใส่ไอดีตำบลที่เคยเลือกไว้
-//     arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
-// });
 
 function readURL(input) {
     if (input.files && input.files[0]) {

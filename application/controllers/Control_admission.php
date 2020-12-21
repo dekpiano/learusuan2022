@@ -68,6 +68,8 @@ class Control_admission extends CI_Controller {
 		$data['title'] = 'สมัครเรียนใหม่';
 		$data['description'] = 'สมัครเรียนใหม่';
 
+		
+		//
 		if ($id > 0) {
 			$this->load->view('layout/header.php',$data);
 			$this->load->view('AdminssionRegister.php');
@@ -113,8 +115,21 @@ setTimeout(function() {
 				}
 	}
 
+	function NumberID(){
+		$openyear = $this->db->select('openyear_year')->get('tb_openyear')->row();
+		$chk_id = $this->db->select('recruit_id')->order_by('recruit_id','DESC')->get('tb_recruitstudent')->row();
+		
+		if($chk_id == ""){
+			$year =  $openyear->openyear_year;
+			return $year."0001"; 
+		}else{
+			$year =  explode($chk_id->recruit_id,$openyear->openyear_year);
+			$number =  explode($openyear->openyear_year,$chk_id->recruit_id);
+			$s = sprintf("%04d",$number[1]+1);
+			return $year[0].$s;
+		}
+	}
 
-	
 
 	public function reg_insert()
 	{	
@@ -127,11 +142,14 @@ setTimeout(function() {
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร','status'=>'error'));
-			redirect('RegStudent/welcome/Error');
+			redirect('welcome');
 		}else{
 		$data_insert = array();
+		
+
 		$recruit_birthday = ($this->input->post('recruit_birthdayY')-543).'-'.$this->input->post('recruit_birthdayM').'-'.$this->input->post('recruit_birthdayD');
 		$data_insert += array(
+			'recruit_id'  => $this->NumberID(),
 			'recruit_regLevel' => $this->input->post('recruit_regLevel'),
 			'recruit_prefix' => $this->input->post('recruit_prefix'),
 			'recruit_firstName' => $this->input->post('recruit_firstName'),
@@ -154,7 +172,8 @@ setTimeout(function() {
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
 			'recruit_date'	=> date('Y-m-d'), 						
-			'recruit_year' => $data['checkYear'][0]->openyear_year
+			'recruit_year' => $data['checkYear'][0]->openyear_year,
+			'recruit_status' => "รอการตรวจสอบ"
 			);
 
 

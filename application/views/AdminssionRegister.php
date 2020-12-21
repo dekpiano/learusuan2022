@@ -11,7 +11,7 @@ label {
         <h2 class="no-margin-bottom">
             <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid"
                 style="width: 64px;">
-            ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์
+            ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์  
         </h2>
     </div>
 </header>
@@ -42,6 +42,7 @@ label {
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">ข้อมูลนักเรียน</h6>
                             </div>
+                            
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="row ">

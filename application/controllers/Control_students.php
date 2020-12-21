@@ -39,6 +39,7 @@ class Control_students extends CI_Controller {
 	public function StudentsHome(){
 		$data['title'] = 'หน้าแรก';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsHome.php');
@@ -48,7 +49,7 @@ class Control_students extends CI_Controller {
 	public function StudentsStatus(){
 		$data['title'] = 'ตรวจสอบสถานะการสมัคร';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
-		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_lastName,recruit_lastName,recruit_status,recruit_tpyeRoom')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsStatus.php');
@@ -84,14 +85,14 @@ class Control_students extends CI_Controller {
 	public function StudentsEdit(){
 		$data['title'] = 'แก้ไขข้อมูลการสมัคร';
 		$data['description'] = 'ตรวจสอบและแก้ไขการสมัคร';
-
+		$data['stu'] = $this->db->select('recruit_id,recruit_prefix,recruit_firstName,recruit_lastName,recruit_status,recruit_tpyeRoom,recruit_status')->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->row();
 		$data['chk_stu'] = $this->db->where('recruit_id',$this->session->userdata('loginStudentID'))->get('tb_recruitstudent')->result();
 
 		$th = $this->load->database('thailandpa', TRUE);
 		$data['province'] = $th->get('province')->result();
-		$sel_amphur = $th->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
-		$data['district'] = $th->where('AMPHUR_ID',$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
+		$sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
+		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
+		$data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
 
 		//echo '<pre>'; print_r($sel_district); exit();
 		
@@ -128,7 +129,6 @@ class Control_students extends CI_Controller {
 			'recruit_race' => $this->input->post('recruit_race'),
 			'recruit_nationality' => $this->input->post('recruit_nationality'), 
 			'recruit_religion' => $this->input->post('recruit_religion'),
-			'recruit_idCard' => $this->input->post('recruit_idCard'),
 			'recruit_phone' => $this->input->post('recruit_phone'),
 			'recruit_homeNumber' => $this->input->post('recruit_homeNumber'),
 			'recruit_homeGroup' => $this->input->post('recruit_homeGroup'),
@@ -138,8 +138,7 @@ class Control_students extends CI_Controller {
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),	
-			'recruit_dateUpdate' => date('Y-m-d H:i:s'),						
-			'recruit_year' => (date('Y')+543)
+			'recruit_dateUpdate' => date('Y-m-d H:i:s')
 		);
 	
 			if(in_array($_FILES['recruit_img']['error'],$file)){
@@ -286,16 +285,22 @@ class Control_students extends CI_Controller {
 
 	public function pdf()
     {
+
+		$thai = $this->load->database('thailandpa', TRUE);
+		$thpa = $thai->database;
+		
 		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
-										skjacth_thailandpa.province.PROVINCE_NAME,
-										skjacth_thailandpa.district.DISTRICT_NAME,
-										skjacth_thailandpa.amphur.AMPHUR_NAME')
+										'.$thpa.'.province.PROVINCE_NAME,
+										'.$thpa.'.district.DISTRICT_NAME,
+										'.$thpa.'.amphur.AMPHUR_NAME')
 										->from('skjacth_admission.tb_recruitstudent')
-										->join('skjacth_thailandpa.province','skjacth_thailandpa.province.PROVINCE_ID = skjacth_admission.tb_recruitstudent.recruit_homeProvince')
-										->join('skjacth_thailandpa.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = skjacth_thailandpa.district.DISTRICT_ID')
-										->join('skjacth_thailandpa.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = skjacth_thailandpa.amphur.AMPHUR_ID')						
-		->where('recruit_id',$this->session->userdata('loginStudentID'))
+										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
+										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
+										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+		->where('skjacth_admission.tb_recruitstudent.recruit_id',$this->session->userdata('loginStudentID'))
 		->get()->result();
+		//echo '<pre>'; print_r($datapdf); exit();
+		
 
     	$date_Y = date('Y',strtotime($datapdf[0]->recruit_birthday))+543;
     	$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
@@ -315,7 +320,7 @@ class Control_students extends CI_Controller {
 				]);
         $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
         $html = '<div style="position:absolute;top:60px;left:630px; width:100%"><img style="width: 120px;hight:auto;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-        $html .= '<div style="position:absolute;top:15px;left:700px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
+        $html .= '<div style="position:absolute;top:18px;left:690px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
 		$html .= '<div style="position:absolute;top:257px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:257px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:287px;left:320px; width:100%">'.($sch[0] == '' ? $sch[1] : $sch[0]).'</div>'; //โรงเรียนเดิม
@@ -339,7 +344,7 @@ class Control_students extends CI_Controller {
 		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-		$html .= '<div style="position:absolute;top:870px;left:160px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
+		$html .= '<div style="position:absolute;top:870px;left:150px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
 		$html .= '<div style="position:absolute;top:910px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:910px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:940;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
@@ -372,7 +377,7 @@ class Control_students extends CI_Controller {
     	if($datapdf[0]->recruit_copyAddress != ''){
     		$html .= '<div style="position:absolute;top:720px;left:435px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
-		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent.pdf',true);
+		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent'.$datapdf[0]->recruit_regLevel.'.pdf',true);
 
         $mpdf->WriteHTML($html);
         $mpdf->Output('Reg_'.$datapdf[0]->recruit_idCard.'.pdf','I'); // opens in browser

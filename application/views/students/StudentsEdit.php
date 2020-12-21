@@ -41,18 +41,11 @@ label {
                                     <div class="row mb-3">
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>
-                                            <input <?=@$readonly;?> type="text" class="form-control" id="recruit_idCard"
-                                                name="recruit_idCard" required value="<?=$stu->recruit_idCard?>"
-                                                data-inputmask="'mask': '9-9999-99999-99-9'" readonly>
-                                            <div class="invalid-feedback">
-                                                ระบุเลขประจำตัวประชาชน 13 หลัก
-                                            </div>
+                                           <div><?=$stu->recruit_idCard?></div>
                                         </div>
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">ประจำปีการศึกษา</label>
-                                            <input  type="text" class="form-control" id="recruit_idCard"
-                                                name="recruit_idCard" required value="<?=$stu->recruit_year?>"   readonly>
-                                           
+                                            <div><?=$stu->recruit_year?></div>
                                         </div>
                                     </div>
                                     <hr>
@@ -320,7 +313,7 @@ label {
                                         <h4>หลักสูตรที่ต้องการศึกษาต่อ </h4>
 
                                         <div class="d-block my-3">
-                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)' ); 
+                                            <?php $AtpyeRoom = array('ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)','ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)','ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)','ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)','ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)' ); 
                                             foreach ($AtpyeRoom as $key => $v_AtpyeRoom) : ?>
                                             <div class="custom-control custom-radio">
                                                 <input <?=$v_AtpyeRoom == $stu->recruit_tpyeRoom ? 'checked' : ''?>

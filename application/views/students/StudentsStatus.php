@@ -37,7 +37,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">ชื่อ-นามสกุล</label>
                           <div class="col-sm-9">
-                          <div class=" text-primary"><?=$stu->recruit_prefix.$stu->recruit_lastName.' '.$stu->recruit_lastName?></div>
+                          <div class=" text-primary"><?=$stu->recruit_prefix.$stu->recruit_firstName.' '.$stu->recruit_lastName?></div>
                           </div>
                         </div>
                         
