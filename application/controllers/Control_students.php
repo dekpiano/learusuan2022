@@ -94,10 +94,6 @@ class Control_students extends CI_Controller {
 		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
 		$data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
 
-		//echo '<pre>'; print_r($sel_district); exit();
-		
-
-		
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
 		$this->load->view('students/StudentsEdit.php');
@@ -366,7 +362,6 @@ class Control_students extends CI_Controller {
 		}elseif($datapdf[0]->recruit_tpyeRoom == $AtpyeRoom[4]){
     		$html .= '<div style="position:absolute;top:545px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
 		}
-
 
     	if($datapdf[0]->recruit_certificateEdu != ''){
     		$html .= '<div style="position:absolute;top:720px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
