@@ -63,7 +63,7 @@
                             <div class="title"><span>ด้านการงาน อาชีพ</span>
                                 <div class="progress">
                                     <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
                                 </div>
                             </div>
 
@@ -76,7 +76,7 @@
                             <div class="title"><span>ด้านกีฬา</span>
                                 <div class="progress">
                                     <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
                                 </div>
                             </div>
 

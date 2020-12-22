@@ -32,7 +32,7 @@ class Control_admission extends CI_Controller {
 	}
 
 	public function dataAll()
-	{
+	{		
 		$data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
@@ -75,20 +75,6 @@ class Control_admission extends CI_Controller {
 			$this->load->view('AdminssionRegister.php');
 			$this->load->view('layout/footer.php');
 		}		
-	}
-	
-
-	public function select_level()
-	{
-		//redirect('CloseStudent'); 
-		$data = $this->dataAll();
-		//echo '<pre>'; print_r( ); exit();
-		$data['title'] = 'สมัครเรียน ม.1 และ ม.4 รอบ 2 ';
-		$data['description'] = 'สมัครเรียน ม.1 และ ม.4 รอบ 2';
-		//$this->session->sess_destroy();
-		$this->load->view('layout/header.php',$data);
-		$this->load->view('AdminssionSelectLevel.php');
-		$this->load->view('layout/footer.php');
 	}
 
 

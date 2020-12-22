@@ -27,7 +27,7 @@ class Control_login extends CI_Controller {
 				}
 		}else{		
 
-		$this->load->view('login/login_main.php');
+			redirect('welcome');
 		
 		}
 		
@@ -38,32 +38,12 @@ class Control_login extends CI_Controller {
 	public function validlogin()
 	{
 		
-		if ($this->input->post('username') == 'admin') {
+	
 
 			$username = $this->input->post('username');
 			$password = md5(md5($this->input->post('password')));
-			
-			if($this->input->server('REQUEST_METHOD') == TRUE){
-				if($this->Model_login->record_count_admin($username, $password) == 1)
-				{
-					$result = $this->Model_login->fetch_user_login_admin($username, $password);
 
-					$this->session->set_userdata(array('login_id' => $result->admin_id,'fullname'=> $result->admin_fullname,'status'=> 'admin'));
-					 redirect('admin');
-				}
-				else
-				{
-					$this->session->set_flashdata(array('msgerr'=> '<p class="login-box-msg text-center mt-3" style="color:red;" >ชื่อผู้ใช้ หรือ รหัส ไม่ถูกต้อง!</p>'));
-					$data = $this->dataAll();
-					$this->load->view('user/layout/header.php',$data);
-					$this->load->view('login/login_main.php');
-					$this->load->view('user/layout/footer.php');
-				}
-			}
-
-		}else{
-			$username = $this->input->post('username');
-			$password = md5(md5($this->input->post('password')));
+			//echo $password; exit();
 
 			if($this->Model_login->record_count($username, $password) == 1)
 				{
@@ -84,7 +64,7 @@ class Control_login extends CI_Controller {
 					
 				}
 			
-		}
+		
 		
 	}
 

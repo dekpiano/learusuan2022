@@ -88,3 +88,7 @@ $route['StudentsStatus'] = 'Control_students/StudentsStatus';
 
 $route['Students/Logout'] = 'Control_students/logoutStudent';
 $route['Students/Print'] = 'Control_students/pdf';
+
+
+//admin
+$route['AdminHome'] = 'admin/Control_admin_admission';

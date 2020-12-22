@@ -1,6 +1,6 @@
 <!-- Main Navbar-->
-<header class="header">
-    <nav class="navbar">
+<header class="header " >
+    <nav class="navbar bg-primary">
         <!-- Search Box-->
         <div class="search-box">
             <button class="dismiss"><i class="icon-close"></i></button>
@@ -19,6 +19,8 @@
                         <div class="brand-text d-none d-lg-inline-block"><span> ระบบรับสมัครนักเรียน </span><strong>
                                 SKJ</strong></div>
                         <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>Ad SKJ</strong></div>
+                        <?=$checkYear[0]->openyear_year;?>
+                        
                     </a>
                     <!-- Toggle Button--><a id="toggle-btn" href="#"
                         class="menu-btn active d-none d-lg-inline-block"><span></span><span></span><span></span></a>

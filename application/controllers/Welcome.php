@@ -18,18 +18,16 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
-		$data['title'] = "รับสมัครนักเรียนปีการศึกษา 2563";
+		
+
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+
+		$db2 = $this->load->database('skjmain', TRUE);	
+		$data['title'] = "รับสมัครนักเรียนปีการศึกษา".$data['checkYear'][0]->openyear_year;
 		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 25 พฤษภาคม 2563";
-
-		// $data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
-		// $data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-
-		//$data['title'] = $this->title;
-		// $data['switch'] = $this->db->get("tb_onoffsys")->result();
-
-		// $db2 = $this->load->database('skjmain', TRUE);	
-		// $data['person'] = $db2->get("tb_personnel")->result();
-		//print_r($db2->result());
 		
 		
 

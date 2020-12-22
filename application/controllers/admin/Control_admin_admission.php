@@ -70,11 +70,10 @@ class Control_admin_admission extends CI_Controller {
 		$data['chart_4'];
 		$data['chart_All'];
 			
-
-			$this->load->view('layout/header.php',$data);
-			$this->load->view('layout/navber.php');
+			$this->load->view('admin/layout/navber_admin.php',$data);
+			$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_main.php');
-			$this->load->view('layout/footer.php');
+			$this->load->view('admin/layout/footer_admin.php');
 	}
 
 	public function switch_regis()
@@ -115,10 +114,10 @@ class Control_admin_admission extends CI_Controller {
 	public function edit_recruitstudent($id)
 	{
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
-		$data = $this->report_student(); 
-		$data['chart_1'];
-		$data['chart_4'];
-		$data['chart_All'];
+		//$data = $this->report_student(); 
+		// $data['chart_1'];
+		// $data['chart_4'];
+		// $data['chart_All'];
 		/* Bread crum */
 		$data['title'] = $this->title;
 		$data['icon'] = '<i class="fas fa-edit"></i>';
@@ -131,10 +130,10 @@ class Control_admin_admission extends CI_Controller {
 		$data['recruit'] =	$this->db->get()->result();
 		$data['action'] = 'update_recruitstudent';
 
-		$this->load->view('layout/header.php',$data);
-			$this->load->view('layout/navber.php');
+		$this->load->view('admin/layout/navber_admin.php',$data);
+		$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_form.php');
-			$this->load->view('layout/footer.php');	
+			$this->load->view('admin/layout/footer_admin.php');
 	}
 
 
@@ -269,20 +268,20 @@ class Control_admin_admission extends CI_Controller {
 				@unlink("./uploads/recruitstudent/m".$this->input->post('recruit_regLevel').'/'.$foder.'/'.$img);
 				
 				if($this->admin_model_admission->recruitstudent_update($data_update,$id) == 1){
-				 		$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'แก้ไขข้อมูลสำเร็จ'));				 	
+				 		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));				 	
 				 }
 			}
 			else
 			{
 				$error = array('error' => $this->upload->display_errors());
-				print_r($error['error']);
-				
+				//print_r($error['error']);
+				$this->session->set_flashdata(array('status'=>'error','msg'=> 'NO','messge' => $error['error']));
 			}
 		}
 		else{
 
 			if($this->admin_model_admission->recruitstudent_update($data_update,$id) == 1){
-					$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'แก้ไขข้อมูลสำเร็จ'));
+					$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));
 					//redirect('RegStudent/checkRegister?search_stu='.$this->input->post('recruit_idCard'), 'refresh');
 			
 			}
@@ -381,6 +380,7 @@ class Control_admin_admission extends CI_Controller {
 		//echo $this->input->post('recruit_status'); exit();
 		$data = array('recruit_status' => $this->input->post('recruit_status'));
 		$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
+		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
 		 redirect('admin/Control_admin_admission/edit_recruitstudent/'.$id);
 	}	
 

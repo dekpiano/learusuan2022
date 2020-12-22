@@ -1,10 +1,52 @@
          <!-- Page Footer-->
-
+         <footer class="main-footer" style="position: static;">
+             <div class="container-fluid">
+                 <div class="row">
+                     <div class="col-sm-6">
+                         <p>โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ © 2020</p>
+                     </div>
+                     <div class="col-sm-6 text-right">
+                         <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin" >Dekpiano</a></p>
+                         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                     </div>
+                 </div>
+             </div>
+         </footer>
          </div>
-         <?php  echo $this->session->flashdata('msg');?>
+
          </div>
 
          </body>
+
+         <!-- Modal-->
+         <div id="LoginAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+             class="modal fade text-left">
+             <div role="document" class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h4 id="exampleModalLabel" class="modal-title">Login Admin</h4>
+                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                 aria-hidden="true">×</span></button>
+                     </div>
+                     <div class="modal-body">
+                          <form method="post" action="<?=base_url('Control_login/validlogin');?>">
+                          <input type="text" class="d-none" name="openyear_year" value="<?=$checkYear[0]->openyear_year;?>">
+                             <div class="form-group">
+                                 <label>Username</label>
+                                 <input type="email" name="username" id="username" placeholder="Email Address" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label>Password</label>
+                                 <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <input type="submit" value="Signin" class="btn btn-primary">
+                             </div>
+                         </form>
+                     </div>                 
+                 </div>
+             </div>
+         </div>
 
          </html>
 
