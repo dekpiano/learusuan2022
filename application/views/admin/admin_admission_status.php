@@ -19,7 +19,7 @@
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
-                                <h3 class="h4">ปีการศึกษาที่รับสมัคร</h3><small>Lorem Ipsum Dolor</small>
+                                <h3 class="h4">ปีการศึกษาที่รับสมัคร</h3><small>สามารถเปิดรับสมัครล่วงหน้าได้ 1 ปีการศึกษา</small>
                             </div>
                         </div>
                         <div class="project-date">
@@ -43,7 +43,7 @@
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
-                                <h3 class="h4">รับสมัครนักเรียน</h3><small>Lorem Ipsum Dolor</small>
+                                <h3 class="h4">รับสมัครนักเรียน</h3><small>ระบบจะปิดเปิดเฉพาะส่วนหน้าการรับสมัคร</small>
                             </div>
                         </div>
                         <div class="project-date">
@@ -60,7 +60,7 @@
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
-                                <h3 class="h4">สถานะระบบ</h3><small>Lorem Ipsum Dolor</small>
+                                <h3 class="h4">สถานะระบบ</h3><small>ระบบจะปิดทั้งหมด</small>
                             </div>
                         </div>
                         <div class="project-date">

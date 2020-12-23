@@ -54,6 +54,7 @@ class Control_admin_admission extends CI_Controller {
 
 	public function index($year)
 	{	
+	
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data = $this->report_student($year);
 		$data['title'] = $this->title;		
@@ -64,6 +65,7 @@ class Control_admin_admission extends CI_Controller {
 		$data['recruit'] =	$this->db->get()->result();
 
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		//print_r($data['year']); exit();
 		$data['chart_1'];
 		$data['chart_4'];
@@ -102,10 +104,9 @@ class Control_admin_admission extends CI_Controller {
 	}
 
 	public function switch_year()
-	{
-	
-			$data = array('openyear_year' => $this->input->post('mode'),'openyear_userid' => $this->session->userdata('login_id'));
-			$this->db->update('tb_openyear',$data,"openyear_id='1'");
+	{	
+		$data = array('openyear_year' => $this->input->post('mode'),'openyear_userid' => $this->session->userdata('login_id'));
+		$this->db->update('tb_openyear',$data,"openyear_id='1'");
 		
 	}
 	
@@ -473,10 +474,8 @@ class Control_admin_admission extends CI_Controller {
 		$data['title'] = "ตั้งค่าระบบ";		
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 
-		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		//print_r($data['year']); exit();
-		
-			
 			$this->load->view('admin/layout/navber_admin.php',$data);
 			$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_status.php');

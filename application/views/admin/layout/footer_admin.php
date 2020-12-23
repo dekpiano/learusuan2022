@@ -1,7 +1,6 @@
          <!-- Page Footer-->
 
          </div>
-<?=$this->session->flashdata('msg');?>
          </div>
 
          </body>
@@ -9,7 +8,7 @@
          </html>
 
          <!-- JavaScript files-->
-         <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
+         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
          <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -28,6 +27,7 @@
          <!-- <script src="<?=base_url()?>asset/js/AutoProvince-students.js"></script> -->
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url();?>asset/js/sweetalert.min.js"></script>
+         <script src="<?=base_url()?>asset/js/skj.js?v=1000"></script>
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>

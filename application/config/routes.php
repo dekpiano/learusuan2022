@@ -92,4 +92,4 @@ $route['Students/Print'] = 'Control_students/pdf';
 
 //admin
 $route['AdminHome'] = 'admin/Control_admin_admission';
-$route['admin/system'] = 'admin/Control_admin_admission/AdminSystem';
+$route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';

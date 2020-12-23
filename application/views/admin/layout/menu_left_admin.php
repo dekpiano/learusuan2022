@@ -10,8 +10,9 @@
     <!-- Sidebar Navidation Menus--><span class="heading">ข้อมูลระบบ</span>
 
     <ul class="list-unstyled">
-        <li> <a href="<?=base_url('admin/admission/'.$checkYear[0]->openyear_year);?>"> <i class="far fa-edit"></i> หน้าแรก </a></li>
-        <li> <a href="<?=base_url('admin/system');?>"> <i class="fas fa-stream"></i> สถานะระบบ </a></li>
+
+        <li> <a href="<?=base_url('admin/admission/'.$this->uri->segment('3'));?>"> <i class="far fa-edit"></i> หน้าแรก </a></li>
+        <li> <a href="<?=base_url('admin/system/'.$this->uri->segment('3'));?>"> <i class="fas fa-stream"></i> สถานะระบบ </a></li>
        
     </ul>
 </nav>

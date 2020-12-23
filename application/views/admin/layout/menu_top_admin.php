@@ -4,7 +4,7 @@
           <div class="search-box">
             <button class="dismiss"><i class="icon-close"></i></button>
             <form id="searchForm" action="#" role="search">
-              <input type="search" placeholder="What are you looking for..." class="form-control">
+              <input type="search" value="<?=$checkYear[0]->openyear_year?>" id="switch_year" placeholder="What are you looking for..." class="form-control">
             </form>
           </div>
           <div class="container-fluid">
@@ -12,7 +12,7 @@
               <!-- Navbar Header-->
               <div class="navbar-header">
                 <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
-                  <div class="brand-text d-none d-lg-inline-block"><span>ระบบ </span><strong>รับสมัครนักเรียน (สำหรับ Admin) </strong></div>
+                  <div class="brand-text d-none d-lg-inline-block"><span>ระบบ </span><strong>รับสมัครนักเรียน <?=$checkYear[0]->openyear_year?> (สำหรับ Admin) </strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>RS SKJ</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
               </div>
