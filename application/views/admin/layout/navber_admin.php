@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="<?=base_url();?>asset/css/custom.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?=base_url();?>asset/img/Logo.ico">
     <!-- Tweaks for older IEs-->

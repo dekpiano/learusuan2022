@@ -63,7 +63,6 @@ class Control_admin_admission extends CI_Controller {
 		$this->db->order_by('recruit_id','DESC');
 		$data['recruit'] =	$this->db->get()->result();
 
-		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		//print_r($data['year']); exit();
 		$data['chart_1'];
@@ -309,9 +308,9 @@ class Control_admin_admission extends CI_Controller {
 				]);
         $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
         $html = '<div style="position:absolute;top:60px;left:635px; width:100%"><img style="width: 120px;hight:auto;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-        $html .= '<div style="position:absolute;top:15px;left:700px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
-		$html .= '<div style="position:absolute;top:257px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
-		$html .= '<div style="position:absolute;top:257px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
+        $html .= '<div style="position:absolute;top:18px;left:690px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
+		$html .= '<div style="position:absolute;top:260px;left:180px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
+		$html .= '<div style="position:absolute;top:260px;left:470px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:287px;left:320px; width:100%">'.($sch[0] == '' ? $sch[1] : $sch[0]).'</div>'; //โรงเรียนเดิม
 		$html .= '<div style="position:absolute;top:315px;left:170px; width:100%">'.$datapdf[0]->recruit_district.'</div>'; //อำเภอโรงเรียน
 		$html .= '<div style="position:absolute;top:315px;left:510px; width:100%">'.$datapdf[0]->recruit_province.'</div>'; //จังหวัดโรงเรียน
@@ -334,7 +333,7 @@ class Control_admin_admission extends CI_Controller {
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:50px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
 		$html .= '<div style="position:absolute;top:870px;left:160px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
-		$html .= '<div style="position:absolute;top:910px;left:240px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
+		$html .= '<div style="position:absolute;top:910px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:910px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:940;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
 		$html .= '<div style="position:absolute;top:967;left:270px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
@@ -463,7 +462,28 @@ class Control_admin_admission extends CI_Controller {
 		$mpdf->Output('Reg_'.$datapdf->recruit_idCard.'.pdf','D'); // opens in browser
 	
         //$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
-    }
+	}
+	
+
+
+	// ระบบ
+	public function AdminSystem(){
+		
+		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['title'] = "ตั้งค่าระบบ";		
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->order_by('recruit_year','DESC')->get()->result();
+		//print_r($data['year']); exit();
+		
+			
+			$this->load->view('admin/layout/navber_admin.php',$data);
+			$this->load->view('admin/layout/menu_top_admin.php');
+			$this->load->view('admin/admin_admission_status.php');
+			$this->load->view('admin/layout/footer_admin.php');
+	}
+
+
 
 }
 

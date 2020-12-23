@@ -18,7 +18,7 @@
          <script src="<?=base_url();?>asset/js/charts-home.js"></script>
          <!-- Main File-->
          <script src="<?=base_url();?>asset/js/front.js"></script>
-       
+         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
