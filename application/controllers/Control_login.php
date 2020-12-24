@@ -11,7 +11,7 @@ class Control_login extends CI_Controller {
 		$this->load->model('Model_login');
 	}
 
-	public function Login_main()
+	public function login_main()
 	{
 		if(!empty(get_cookie('username')) && !empty(get_cookie('password')) ){
 			$username = get_cookie('username');
@@ -23,15 +23,13 @@ class Control_login extends CI_Controller {
 
 					set_cookie('username',$username,'3600'); 
 					set_cookie('password',$password,'3600');
-					 redirect('admin');
+					$this->load->view('login/login_main.php');
 				}
 		}else{		
 
 			redirect('welcome');
 		
 		}
-		
-
 		
 	}
 
@@ -68,17 +66,6 @@ class Control_login extends CI_Controller {
 		
 	}
 
-	public function close_system(){
-		$data['full_url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-		$data['title'] = 'ปิดรับสมัครเรียน';
-		$data['description'] = 'ปิดรับสมัครเรียน';
-		$data['switch'] = $this->db->get("tb_onoffsys")->result();
-		$this->load->view('layout/header.php',$data);
-		$this->load->view('layout/navber.php');
-		$this->load->view('stu_close.php');
-		$this->load->view('layout/footer.php');
-		
-	}
 
 	public function logout()
 	{

@@ -80,11 +80,11 @@ class Control_admin_admission extends CI_Controller {
 	public function switch_regis()
 	{
 		if($this->input->post('mode') == 'true'){
-			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
+			$data = array('onoff_regis' => 'on', 'onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment'=> "");
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "เปิด";
 		}else{
-			$data = array('onoff_regis' => 'off','onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'));
+			$data = array('onoff_regis' => 'off','onoff_datetime_regis' => date('Y-m-d H:i:s'),'onoff_user_regis' => $this->session->userdata('login_id'),'onoff_comment' => $this->input->post('onoff_comment'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "ปิด";
 		}
@@ -473,7 +473,6 @@ class Control_admin_admission extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['title'] = "ตั้งค่าระบบ";		
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
-
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		//print_r($data['year']); exit();
 			$this->load->view('admin/layout/navber_admin.php',$data);
@@ -483,7 +482,13 @@ class Control_admin_admission extends CI_Controller {
 	}
 
 
-
+	public function logout()
+	{
+		delete_cookie('username'); 
+		delete_cookie('password'); 
+		$this->session->sess_destroy();
+		redirect(base_url());
+	}
 }
 
 ?>

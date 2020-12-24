@@ -16,11 +16,13 @@ $("#recruit_img").change(function() {
 
 $(document).on('change', '#switch', function() {
     var mode1 = $(this).is(":checked");
+    var comment = $("#onoff_comment").val();
     $.ajax({
         type: 'POST',
-        url: '../admin/control_admin_admission/switch_regis',
+        url: '../../admin/control_admin_admission/switch_regis',
         data: {
-            mode: mode1
+            mode: mode1,
+            onoff_comment: comment
         },
         success: function(data) {
             swal("แจ้งเตือน", "คุณได้ทำการ" + data + "การรับสมัครนักเรียนแล้ว!", "warning")
@@ -33,7 +35,7 @@ $(document).on('change', '#switch_sys', function() {
 
     $.ajax({
         type: 'POST',
-        url: '../admin/control_admin_admission/switch_system',
+        url: '../../admin/control_admin_admission/switch_system',
         data: {
             mode: mode1
         },
@@ -48,37 +50,37 @@ $(document).on('change', '#switch_year', function() {
     var dataYear = $(this).val();
     $.ajax({
         type: 'POST',
-        url: '../admin/control_admin_admission/switch_year',
+        url: '../../admin/control_admin_admission/switch_year',
         data: {
             mode: dataYear
         },
         success: function(data) {
             swal({
-                title: "แจ้งเตือน",
-                text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
-                icon: "warning"
-              })
-              .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "../admin/system";
-                }     
-            });
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "../admin/system";
+                    }
+                });
         }
     });
 });
 
 $(document).on('change', '#select_year', function() {
     var dataYear = $(this).val();
-   
+
     swal({
-        title: "แจ้งเตือน",
-        text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
-        icon: "warning"
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-            window.location = "../../admin/admission/"+dataYear;
-        }     
-    });
+            title: "แจ้งเตือน",
+            text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
+            icon: "warning"
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "../../admin/admission/" + dataYear;
+            }
+        });
 
 });

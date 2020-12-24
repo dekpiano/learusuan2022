@@ -43,7 +43,8 @@
                         <div class="project-title d-flex align-items-center">
 
                             <div class="text">
-                                <h3 class="h4">รับสมัครนักเรียน</h3><small>ระบบจะปิดเปิดเฉพาะส่วนหน้าการรับสมัคร</small>
+                                <h3 class="h4">รับสมัครนักเรียน</h3><small>ใช้แจ้งเตือนในการปิดระบบ</small>
+                                <input type="text" value="<?=$switch[0]->onoff_comment?>" id="onoff_comment" name="onoff_comment" class="form-control" placeholder="ใส่แจ้งเตือนเฉพาะปิดรับสมัคร">
                             </div>
                         </div>
                         <div class="project-date">

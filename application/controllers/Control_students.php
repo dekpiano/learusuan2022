@@ -17,6 +17,7 @@ class Control_students extends CI_Controller {
 		}
 		
 	}
+	
 
 	public function recaptcha_google($captcha)
 	{
@@ -276,7 +277,7 @@ class Control_students extends CI_Controller {
 		delete_cookie('username'); 
 		delete_cookie('password'); 
 		$this->session->sess_destroy();
-		redirect('login');
+		redirect('welcome');
 	}
 
 	public function pdf()

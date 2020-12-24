@@ -20,7 +20,7 @@
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         
                 <!-- Logout    -->
-                <li class="nav-item"><a href="<?=base_url('Students/Logout');?>" class="nav-link logout"> <span class="d-none d-sm-inline">ออกจากระบบ</span><i class="fas fa-sign-in-alt"></i></a></li>
+                <li class="nav-item"><a href="<?=base_url('admin/logout');?>" class="nav-link logout"> <span class="d-none d-sm-inline">ออกจากระบบ</span><i class="fas fa-sign-in-alt"></i></a></li>
               </ul>
             </div>
           </div>

@@ -158,7 +158,8 @@
                                 style="width: 150px;">
                             <h2>ขณะนี้ระบบรับสมัครนักเรียนเฉพาะชั้นมัธยมศึกษาปีที่ 3 จากโรงเรียนเดิม
                                 ที่จะศึกษาต่อชั้นมัธยมศึกษาปีที่ 4</h2>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">สมัครเรียนต่อ ม.4 </a>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">สมัครเรียนต่อ
+                                ม.4 </a>
                         </div>
                     </div>
                 </div>
@@ -167,21 +168,30 @@
             </div>
         </section>
 
-                      <!-- Modal-->
-                      <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                        <div role="document" class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 id="exampleModalLabel" class="modal-title">เลือกระดับชั้น</h4>
-                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                            </div>
-                            <div class="modal-body">
-                            <a href="<?=base_url('RegStudent/4');?>"
-                                    class="bb btn btn-lg btn-block btn-primary">
-                                     สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
-                                </a>
-                            </div>
-                        
-                          </div>
+        <!-- Modal-->
+        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="exampleModalLabel" class="modal-title">เลือกระดับชั้น</h4>
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <?php if($switch[0]->onoff_regis == "off") :?>
+                        <div class="text-success">
+                            <?php echo $switch[0]->onoff_comment; ?>
                         </div>
-                      </div>
+                        <?php else : ?>
+                        <a href="<?=base_url('RegStudent/4');?>" class="bb btn btn-lg btn-block btn-primary">
+                            สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
+                        </a>
+                        <?php endif; ?>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>

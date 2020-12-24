@@ -62,19 +62,6 @@ $route['admin/admission/add'] = 'admin/control_admin_admission/add';
 $route['admin/news'] = 'admin/control_admin_news';
 $route['admin/news/add'] = 'admin/control_admin_news/add';
 
-
-
-// [[รับสมัครนักเรียน]]
-$route['Register/Student'] = 'control_recruitstudent';
-$route['RegStudent/(:any)'] = 'control_admission/reg_student/$1';
-
-$route['SelectLevel'] = 'control_admission/select_level';
-$route['RegStudent/welcome/(:any)'] = 'control_admission/welcome_student/$1';
-$route['checkRegister'] = 'control_admission/checkdata_student';
-$route['checkRegister/dataStudent'] = 'control_admission/data_user';
-$route['CloseStudent'] = 'control_recruitstudent/close_student';
-$route['Announce'] = 'control_admission/print_student';
-
 // ติดต่อ
 $route['CloseSystem'] = 'control_login/close_system';
 
@@ -93,3 +80,4 @@ $route['Students/Print'] = 'Control_students/pdf';
 //admin
 $route['AdminHome'] = 'admin/Control_admin_admission';
 $route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';
+$route['admin/logout'] = 'admin/Control_admin_admission/logout';

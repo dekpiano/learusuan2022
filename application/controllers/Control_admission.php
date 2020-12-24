@@ -61,6 +61,8 @@ class Control_admission extends CI_Controller {
 		$this->load->view('layout/footer.php');
 	}
 
+
+
 	public function reg_student($id)
 	{
 		//redirect('CloseStudent'); 
@@ -345,6 +347,9 @@ setTimeout(function() {
 		
 		
 	}
+
+
+
 
 
 }
