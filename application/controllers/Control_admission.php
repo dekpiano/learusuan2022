@@ -42,7 +42,6 @@ class Control_admission extends CI_Controller {
 
 	public function index()
 	{
-		
 		$data = $this->dataAll();
 		$data['title'] = "รับสมัครนักเรียนปีการศึกษา 2563";
 		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 25 พฤษภาคม 2563";
@@ -53,7 +52,6 @@ class Control_admission extends CI_Controller {
 		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
-
 		
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');
@@ -88,7 +86,7 @@ class Control_admission extends CI_Controller {
 		$data['description'] = 'ลงทะเบียนสำเร็จแล้ว';
 		//print_r($id);
 		if ($id == 'Succeed') {
-			$this->session->set_flashdata(array('msg'=> 'ํYES','messge' => 'ลงทะเบียนสำเร็จแล้ว'));
+			$this->session->set_flashdata(array('msg'=> 'ํYES','messge' => 'ลงทะเบียนสำเร็จแล้ว สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก เมนูด้านบน'));
 			redirect('welcome');
 		}elseif($id == 'Error'){
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'เลขประจำตัวประชาชน คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร'));
@@ -207,12 +205,12 @@ setTimeout(function() {
 
 				if($this->model_admission->student_insert($data_insert) == 1){
 				
-					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ','status'=>'success'));					
-						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
-						// $str = "มีนักเรียนสมัครเรียนใหม่\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');	
-						// $res = $this->notify_message($str,$token);
-						// $data = $this->dataAll();
+					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก เมนูด้านบน','status'=>'success'));					
+						define('LINE_API',"https://notify-api.line.me/api/notify"); 
+						$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
+						$str = "มีนักเรียนสมัครเรียนใหม่\n";	
+						$res = $this->notify_message($str,$token);
+						$data = $this->dataAll();
 
 						redirect('welcome');
 				}

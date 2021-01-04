@@ -65,6 +65,7 @@ $route['admin/news/add'] = 'admin/control_admin_news/add';
 // ติดต่อ
 $route['CloseSystem'] = 'control_login/close_system';
 
+$route['RegStudent/(:num)'] = 'control_admission/reg_student/$1';
 
 //นักเรียน
 $route['StudentLogin'] = 'Control_students/StudentLogin';

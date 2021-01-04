@@ -13,7 +13,7 @@
         <li> <a href="<?=base_url('StudentsEdit');?>"> <i class="far fa-edit"></i> แก้ใขใบสมัคร </a></li>
         <li> <a href="<?=base_url('StudentsStatus');?>"> <i class="fas fa-stream"></i> สถานะการสมัคร </a></li>
         <li>
-           <?php if($stu->recruit_status != 'ผ่านการอนุมัติ') :  ?>
+           <?php if($stu->recruit_status == 'ผ่านการอนุมัติ') :  ?>
             <a href="<?=base_url('Students/Print');?>" target="_blank"> <i class="fas fa-print"></i> พิมพ์ใบสมัคร </a>
             <?php else : ?>
               <a href="#" onClick="StatusWait()"> <i class="fas fa-print"></i> พิมพ์ใบสมัคร </a>

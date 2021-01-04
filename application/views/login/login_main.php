@@ -64,10 +64,10 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password" type="text" name="recruit_birthday"
+                                        <input id="login-password" type="password" name="recruit_birthday"
                                             id="recruit_birthday" required data-msg=" ระบุวันเดือนปีเกิด"
-                                            class="input-material" data-inputmask="'mask': '99-99-9999'">
-                                        <label for="login-password" class="label-material">วันเดือนปี เกิด</label>
+                                            class="input-material" >
+                                        <label for="login-password" class="label-material">วันเดือนปี เกิด (Ex. 09-07-2534)</label>
                                         <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้
                                             09-07-2534</small>
                                     </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>

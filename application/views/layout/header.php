@@ -4,10 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์</title>
-    <meta name="description" content="">
+    <title>ระบบรับสมัครนักเรียน 2564 สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์</title>
+    <meta name="description" content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 31 มกราคม 2564">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
+
+    <meta property="og:url"
+        content="http://admission.skj.ac.th/welcome" />
+    <meta property="og:type" content="Education" />
+    <meta property="og:title" content="ระบบรับสมัครนักเรียน 2564 สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์" />
+    <meta property="og:description" content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 31 มกราคม 2564" />
+    <meta property="og:image"
+        content="<?=base_url();?>asset/img/banner-admission.PNG" />
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?=base_url();?>asset/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -31,33 +39,25 @@
     <style>
     /* Extra small devices (portrait phones, less than 576px) */
     @media (max-width: 575.98px) {
-      .no-margin-bottom {
-    margin-bottom: 5px !important;
-    font-size: 1.3rem;
-    text-align: center;
-    line-height: 0px;
-}
+        .no-margin-bottom {
+            margin-bottom: 5px !important;
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 0px;
+        }
     }
 
     /* // Small devices (landscape phones, 576px and up) */
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      
-    }
+    @media (min-width: 576px) and (max-width: 767.98px) {}
 
     /* // Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      
-    }
+    @media (min-width: 768px) and (max-width: 991.98px) {}
 
     /* // Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-       
-    }
+    @media (min-width: 992px) and (max-width: 1199.98px) {}
 
     /* // Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-       
-    }
+    @media (min-width: 1200px) {}
     </style>
 </head>
 

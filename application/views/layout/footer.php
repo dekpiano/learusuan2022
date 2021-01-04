@@ -5,6 +5,7 @@
                      <div class="col-sm-6">
                          <p>โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ © 2020</p>
                      </div>
+                     
                      <div class="col-sm-6 text-right">
                          <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin" >Dekpiano</a></p>
                          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->

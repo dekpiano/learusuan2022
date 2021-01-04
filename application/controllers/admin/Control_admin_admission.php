@@ -114,6 +114,8 @@ class Control_admin_admission extends CI_Controller {
 	public function edit_recruitstudent($id)
 	{
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
+		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		//$data = $this->report_student(); 
 		// $data['chart_1'];
 		// $data['chart_4'];
