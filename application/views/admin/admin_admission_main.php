@@ -117,7 +117,7 @@
                                         <a target="_blank"
                                             href="<?=base_url('admin/Control_admin_admission/pdf/'.$v_recruit->recruit_id);?>"
                                             class="btn btn-primary btn-sm"><i class="fas fa-print"></i> พิมพ์ใบสมัคร</a>
-                                        <a href="<?=base_url('admin/Control_admin_admission/edit_recruitstudent/').$v_recruit->recruit_id;?>"
+                                        <a href="<?=base_url('admin/checkData/').$v_recruit->recruit_id;?>"
                                             class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> ตรวจสอบ</a>
                                         <a href="<?=base_url('admin/Control_admin_admission/delete_recruitstudent/').$v_recruit->recruit_id;?>"
                                             class="btn btn-danger btn-sm"

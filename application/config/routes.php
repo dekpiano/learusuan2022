@@ -56,12 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'control_login/login_main';
 
 
-$route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
-$route['admin/admission/add'] = 'admin/control_admin_admission/add';
-
-$route['admin/news'] = 'admin/control_admin_news';
-$route['admin/news/add'] = 'admin/control_admin_news/add';
-
 // ติดต่อ
 $route['CloseSystem'] = 'control_login/close_system';
 
@@ -81,4 +75,12 @@ $route['Students/Print'] = 'Control_students/pdf';
 //admin
 $route['AdminHome'] = 'admin/Control_admin_admission';
 $route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';
+$route['admin/checkData/(:any)'] = 'admin/Control_admin_admission/edit_recruitstudent/$1';
+
+$route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
+$route['admin/admission/add'] = 'admin/control_admin_admission/add';
+
+$route['admin/news'] = 'admin/control_admin_news';
+$route['admin/news/add'] = 'admin/control_admin_news/add';
+
 $route['admin/logout'] = 'admin/Control_admin_admission/logout';
