@@ -11,7 +11,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <!-- Navbar Brand --><a href="<?=base_url('StudentHome')?>" class="navbar-brand d-none d-sm-inline-block">
                   <div class="brand-text d-none d-lg-inline-block"><span>ระบบ </span><strong>รับสมัครนักเรียน (สำหรับนักเรียน) </strong></div>
                   <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>RS SKJ</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
