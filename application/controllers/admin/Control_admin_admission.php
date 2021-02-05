@@ -116,22 +116,25 @@ class Control_admin_admission extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
-		//$data = $this->report_student(); 
-		// $data['chart_1'];
-		// $data['chart_4'];
-		// $data['chart_All'];
-		/* Bread crum */
+		
 		$data['title'] = $this->title;
 		$data['icon'] = '<i class="fas fa-edit"></i>';
 		$data['color'] = 'warning';
 		$data['breadcrumbs'] = array(base_url('admin/recruitstudent') => 'จัดการ'.$this->title,'#' =>'แก้ไข'.$this->title );
-		
+
 		$this->db->select('*');
 		$this->db->from('tb_recruitstudent');
 		$this->db->where('recruit_id',$id);
 		$data['recruit'] =	$this->db->get()->result();
 		$data['action'] = 'update_recruitstudent';
 
+		$th = $this->load->database('thailandpa', TRUE);
+		$data['province'] = $th->get('province')->result();
+		$sel_amphur = $th->where('PROVINCE_ID',@$data['recruit'][0]->recruit_homeProvince)->get('province')->result();
+		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['recruit'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
+		$data['district'] = $th->where('AMPHUR_ID',$data['recruit'][0]->recruit_homedistrict)->get('district')->result();
+
+		//echo '<pre>'; print_r($data['district']); exit();
 		$this->load->view('admin/layout/navber_admin.php',$data);
 		$this->load->view('admin/layout/menu_top_admin.php');
 			$this->load->view('admin/admin_admission_form.php');
@@ -246,7 +249,7 @@ class Control_admin_admission extends CI_Controller {
 			}
 
 			
-		redirect('admin/Control_admin_admission/edit_recruitstudent/'.$id);
+		redirect('admin/checkData/'.$id);
 			
 		
 	}
@@ -292,7 +295,20 @@ class Control_admin_admission extends CI_Controller {
 
 	public function pdf($id)
     {
-    	$datapdf = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
+
+		$thai = $this->load->database('thailandpa', TRUE);
+		$thpa = $thai->database;
+		
+		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
+										'.$thpa.'.province.PROVINCE_NAME,
+										'.$thpa.'.district.DISTRICT_NAME,
+										'.$thpa.'.amphur.AMPHUR_NAME')
+										->from('skjacth_admission.tb_recruitstudent')
+										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
+										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
+										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+		->where('skjacth_admission.tb_recruitstudent.recruit_id',$id)
+		->get()->result();
 
     	$date_Y = date('Y',strtotime($datapdf[0]->recruit_birthday))+543;
     	$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
@@ -329,9 +345,9 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:428px;left:242px; width:100%">'.$datapdf[0]->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
 		$html .= '<div style="position:absolute;top:428px;left:340px; width:100%">'.$datapdf[0]->recruit_homeGroup.'</div>'; //หมู่
 		$html .= '<div style="position:absolute;top:428px;left:420px; width:100%">'.$datapdf[0]->recruit_homeRoad.'</div>'; //ถนน
-		$html .= '<div style="position:absolute;top:428px;left:600px; width:100%">'.$datapdf[0]->recruit_homeSubdistrict.'</div>'; //ตำบล
-		$html .= '<div style="position:absolute;top:455px;left:175px; width:100%">'.$datapdf[0]->recruit_homedistrict.'</div>'; //อำเภอ
-		$html .= '<div style="position:absolute;top:455px;left:390px; width:100%">'.$datapdf[0]->recruit_homeProvince.'</div>'; //จังหวัด
+		$html .= '<div style="position:absolute;top:428px;left:600px; width:100%">'.$datapdf[0]->DISTRICT_NAME.'</div>'; //ตำบล
+		$html .= '<div style="position:absolute;top:455px;left:175px; width:100%">'.$datapdf[0]->AMPHUR_NAME.'</div>'; //อำเภอ
+		$html .= '<div style="position:absolute;top:455px;left:390px; width:100%">'.$datapdf[0]->PROVINCE_NAME.'</div>'; //จังหวัด
 		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:80px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
@@ -383,12 +399,25 @@ class Control_admin_admission extends CI_Controller {
 		$data = array('recruit_status' => $this->input->post('recruit_status'));
 		$update_comfrim = $this->db->update('tb_recruitstudent',$data,"recruit_id='".$id."'");
 		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'ยืนยันข้อมูล สำเร็จ'));
-		 redirect('admin/Control_admin_admission/edit_recruitstudent/'.$id);
+		 redirect('admin/checkData/'.$id);
 	}	
 
 	public function pdf_all($year)
     {
-		$datapdf_all = $this->db->where('recruit_year',$year)->get('tb_recruitstudent')->result();
+		$thai = $this->load->database('thailandpa', TRUE);
+		$thpa = $thai->database;
+		
+		$datapdf_all = $this->db->select('skjacth_admission.tb_recruitstudent.*,
+										'.$thpa.'.province.PROVINCE_NAME,
+										'.$thpa.'.district.DISTRICT_NAME,
+										'.$thpa.'.amphur.AMPHUR_NAME')
+										->from('skjacth_admission.tb_recruitstudent')
+										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
+										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
+										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+		->where('recruit_year',$year)
+		->get()->result();
+	
 		
 		//$mpdf->SetTitle($datapdf->recruit_prefix.$datapdf->recruit_firstName.' '.$datapdf->recruit_lastName);
 		$mpdf = new \Mpdf\Mpdf([
@@ -428,9 +457,9 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:428px;left:242px; width:100%">'.$datapdf->recruit_homeNumber.'</div>'; //บ้านเลขที่ //แก้*****
 		$html .= '<div style="position:absolute;top:428px;left:340px; width:100%">'.$datapdf->recruit_homeGroup.'</div>'; //หมู่
 		$html .= '<div style="position:absolute;top:428px;left:420px; width:100%">'.$datapdf->recruit_homeRoad.'</div>'; //ถนน
-		$html .= '<div style="position:absolute;top:428px;left:600px; width:100%">'.$datapdf->recruit_homeSubdistrict.'</div>'; //ตำบล
-		$html .= '<div style="position:absolute;top:455px;left:175px; width:100%">'.$datapdf->recruit_homedistrict.'</div>'; //อำเภอ
-		$html .= '<div style="position:absolute;top:455px;left:390px; width:100%">'.$datapdf->recruit_homeProvince.'</div>'; //จังหวัด
+		$html .= '<div style="position:absolute;top:428px;left:600px; width:100%">'.$datapdf->DISTRICT_NAME.'</div>'; //ตำบล
+		$html .= '<div style="position:absolute;top:455px;left:175px; width:100%">'.$datapdf->AMPHUR_NAME.'</div>'; //อำเภอ
+		$html .= '<div style="position:absolute;top:455px;left:390px; width:100%">'.$datapdf->PROVINCE_NAME.'</div>'; //จังหวัด
 		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:80px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf->recruit_regLevel.'/img/'.$datapdf->recruit_img).'></div>'; 

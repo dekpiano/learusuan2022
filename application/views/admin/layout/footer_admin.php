@@ -99,7 +99,7 @@ $(document).on('change','#province', function() {
                 $('#amphur').html(response);
                 
                 $('#district').html('<option value="">กรุณาเลือกตำบล</option>');
-                //console.log(response);
+               // console.log(province);
             }
         });
 });

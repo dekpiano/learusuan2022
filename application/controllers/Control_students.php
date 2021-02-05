@@ -92,8 +92,14 @@ class Control_students extends CI_Controller {
 		$th = $this->load->database('thailandpa', TRUE);
 		$data['province'] = $th->get('province')->result();
 		$sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
-		$data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
+		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
+		$data['district'] = $th->where('AMPHUR_ID',$data['chk_stu'][0]->recruit_homedistrict)->get('district')->result();
+
+		// $th = $this->load->database('thailandpa', TRUE);
+		// $data['province'] = $th->get('province')->result();
+		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
+		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
+		// $data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
 
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
