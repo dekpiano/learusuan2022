@@ -15,7 +15,7 @@
     <meta property="og:title" content="ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์" />
     <meta property="og:description" content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564" />
     <meta property="og:image"
-        content="<?=base_url();?>asset/img/banner-admission1.PNG" />
+        content="<?=base_url();?>asset/img/banner-admission2.PNG" />
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?=base_url();?>asset/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->

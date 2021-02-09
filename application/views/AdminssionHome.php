@@ -87,7 +87,22 @@
         </section>
 
         <!-- Projects Section-->
-        <section class="projects ">
+        <div class="projects mt-3">
+            <div class="container-fluid">
+                <!-- Project-->
+                <div class="project">
+                    <div class="row bg-white has-shadow p-3">
+                   <p><i class="fa fa-bullhorn" aria-hidden="true"></i> ประกาศให้นักเรียนตรวจสอบสถานะใบสมัคร และแก้ไขก่อนวันที่ 12 กุมภาพันธ์ 2564 
+                   แก้ไข้ใบสมัครที่เมนูตรวจสอบสถานะด้านบน หรือ <a href="<?=base_url('login');?>">คลิกที่นี่</a> หากไม่สามารถอัพโหลดเอกสารได้แจ้ง ครูณัฏฐิกานต์ แสงอุทัย เบอร์โทรศัพท์ 092-1899145</p> 
+                   <img src="<?=base_url('uploads/recruitstudent/checkStatus.PNG');?>" alt="เช็คสถานะการสมัครเรียน" class="img-fluid">
+                    <p style="color:red;">หมายเหตุ : นักเรียนคนไหนที่ยังไม่ขึ้นสถานะ "ผ่านการตรวจสอบ" ในเวลาที่กำหนด นักเรียนจะถูกตัดสิทธิ์เนื่องจากไม่ทำตามกฎการสมัครเรียน</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section-->
+        <div class="projects ">
             <div class="container-fluid">
                 <!-- Project-->
                 <div class="project">
@@ -166,7 +181,7 @@
 
 
             </div>
-        </section>
+        </div>
 
         <!-- Modal-->
         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"

@@ -2,12 +2,18 @@
          <footer class="main-footer" style="position: static;">
              <div class="container-fluid">
                  <div class="row">
-                     <div class="col-sm-6">
+                     <div class="col-sm-5">
                          <p>โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ © 2020</p>
                      </div>
-                     
-                     <div class="col-sm-6 text-right">
-                         <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin" >Dekpiano</a></p>
+                     <div class="col-sm-4">
+                         <!-- Histats.com  (div with counter) -->
+                         <div id="histats_counter"></div>
+                         
+                     </div>
+
+                     <div class="col-sm-3 text-right">
+                         <p>Design by <a href="#" class="" data-toggle="modal" data-target="#LoginAdmin">Dekpiano</a>
+                         </p>
                          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                      </div>
                  </div>
@@ -30,21 +36,24 @@
                                  aria-hidden="true">×</span></button>
                      </div>
                      <div class="modal-body">
-                          <form method="post" action="<?=base_url('Control_login/validlogin');?>">
-                          <input type="text" class="d-none" name="openyear_year" value="<?=$checkYear[0]->openyear_year;?>">
+                         <form method="post" action="<?=base_url('Control_login/validlogin');?>">
+                             <input type="text" class="d-none" name="openyear_year"
+                                 value="<?=$checkYear[0]->openyear_year;?>">
                              <div class="form-group">
                                  <label>Username</label>
-                                 <input type="email" name="username" id="username" placeholder="Email Address" class="form-control">
+                                 <input type="email" name="username" id="username" placeholder="Email Address"
+                                     class="form-control">
                              </div>
                              <div class="form-group">
                                  <label>Password</label>
-                                 <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                                 <input type="password" id="password" name="password" placeholder="Password"
+                                     class="form-control">
                              </div>
                              <div class="form-group">
                                  <input type="submit" value="Signin" class="btn btn-primary">
                              </div>
                          </form>
-                     </div>                 
+                     </div>
                  </div>
              </div>
          </div>
@@ -67,6 +76,25 @@
          <script src="<?=base_url()?>asset/js/AutoProvince.js"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url();?>asset/js/sweetalert.min.js"></script>
+
+         <!-- Histats.com  START  (aync)-->
+         <script type="text/javascript">
+                         var _Hasync = _Hasync || [];
+                         _Hasync.push(['Histats.start', '1,4498483,4,205,255,27,00010001']);
+                         _Hasync.push(['Histats.fasi', '1']);
+                         _Hasync.push(['Histats.track_hits', '']);
+                         (function() {
+                             var hs = document.createElement('script');
+                             hs.type = 'text/javascript';
+                             hs.async = true;
+                             hs.src = ('//s10.histats.com/js15_as.js');
+                             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0])
+                             .appendChild(hs);
+                         })();
+                         </script>
+                         <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101"
+                                     alt="" border="0"></a></noscript>
+                         <!-- Histats.com  END  -->
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
