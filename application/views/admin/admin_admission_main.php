@@ -72,7 +72,7 @@
                         </div>
                        
                         <div class="dropdown no-arrow">
-                            <a target="_blank" href="<?=base_url('admin/control_admin_admission/pdf_all');?>"
+                            <a target="_blank" href="<?=base_url('admin/control_admin_admission/pdf_all/'.$this->uri->segment(3));?>"
                                 class="btn btn-primary btn-sm"><i class="fas fa-print"></i> พิมพ์ใบสมัครทั้งหมด</a>
                         </div>
                     </div>

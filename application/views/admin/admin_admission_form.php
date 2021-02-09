@@ -210,41 +210,63 @@ label {
                                <div class="invalid-feedback">
                                    ระบุถนน
                                </div>
-                           </div>
-                           <div class="col-md-4 mb-3">
-                               <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
-                               <input type="text" class="form-control" id="recruit_homeSubdistrict"
-                                   name="recruit_homeSubdistrict" value="<?=$recruit[0]->recruit_homeSubdistrict;?>"
-                                   required>
-                               <div class="invalid-feedback">
-                                   ระบุตำบล/แขวง
-                               </div>
-                           </div>
-                           <div class="col-md-4 mb-3">
-                               <label for="recruit_homedistrict">อำเภอ/เขต</label>
-                               <input type="text" class="form-control" id="recruit_homedistrict"
-                                   name="recruit_homedistrict" value="<?=$recruit[0]->recruit_homedistrict?>" required>
-                               <div class="invalid-feedback">
-                                   ระบุอำเภอ/เขต
-                               </div>
-                           </div>
-                           <div class="col-md-4 mb-3">
-                               <label for="recruit_homeProvince">จังหวัด</label>
-                               <input type="text" class="form-control" id="recruit_homeProvince"
-                                   name="recruit_homeProvince" value="<?=$recruit[0]->recruit_homeProvince?>" required>
-                               <div class="invalid-feedback">
-                                   ระบุจังหวัด
-                               </div>
-                           </div>
-                           <div class="col-md-3 mb-3">
-                               <label for="recruit_homePostcode">รหัสไปรษณีย์</label>
-                               <input type="text" class="form-control" id="recruit_homePostcode"
-                                   name="recruit_homePostcode" value="<?=$recruit[0]->recruit_homePostcode?>" required>
-                               <div class="invalid-feedback">
-                                   ระบุรหัสไปรษณีย์
-                               </div>
-                           </div>
+                           </div>                         
                        </div>
+                       <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_homeProvince">จังหวัด</label>
+                                            <select id="province" class="custom-select" name="recruit_homeProvince"
+                                                required>
+                                                <?php foreach ($province as $key => $value) : ?>
+                                                <option
+                                                    <?php echo $value->PROVINCE_ID == $recruit[0]->recruit_homeProvince ? 'selected' : ''  ?>
+                                                    value="<?=$value->PROVINCE_ID?>"><?=$value->PROVINCE_NAME?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                ระบุจังหวัด
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_homedistrict">อำเภอ/เขต</label>
+                                            <select id="amphur" class="custom-select" name="recruit_homedistrict"
+                                                required>
+                                                <?php foreach ($amphur as $key => $value) :?>
+                                                <option
+                                                    <?=$recruit[0]->recruit_homedistrict == $value->AMPHUR_ID ? 'selected' : '';?>
+                                                    value="<?=$value->AMPHUR_ID;?>"><?=$value->AMPHUR_NAME?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                ระบุอำเภอ/เขต
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_homeSubdistrict">ตำบล/แขวง</label>
+                                            <select id="district" class="custom-select" name="recruit_homeSubdistrict"
+                                                required>
+                                                <?php foreach ($district as $key => $value) :   ?>
+                                                <option 
+                                                    <?=$recruit[0]->recruit_homeSubdistrict == $value->DISTRICT_ID ? 'selected' : '';?>
+                                                    value="<?=$value->DISTRICT_ID;?>"><?=$value->DISTRICT_NAME?>
+                                                </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                ระบุตำบล/แขวง
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_homePostcode">รหัสไปรษณีย์</label>
+                                            <input type="text" class="form-control" id="postcode"
+                                                name="recruit_homePostcode" value="<?=$recruit[0]->recruit_homePostcode?>"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                ระบุรหัสไปรษณีย์
+                                            </div>
+                                        </div>
+                                    </div>
 
                        <div class="row">
                            <div class="col-md-5 mb-3">

@@ -42,6 +42,8 @@ label {
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>
                                            <div><?=$stu->recruit_idCard?></div>
+                                           <input hidden type="text" name="recruit_idCard" id="recruit_idCard"
+                                        value="<?=$stu->recruit_idCard;?>">
                                         </div>
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">ประจำปีการศึกษา</label>

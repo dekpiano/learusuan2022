@@ -45,10 +45,7 @@ class Control_login extends CI_Controller {
 					// $this->session->set_flashdata(array('msgerr'=> '<p class="login-box-msg text-center mt-3" style="color:red;" >ชื่อผู้ใช้ หรือ รหัส ไม่ถูกต้อง!</p>'));
 					
 				}
-			
-		
-		
-	}
+			}
 
 
 	public function logout()

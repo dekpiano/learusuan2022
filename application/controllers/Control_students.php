@@ -92,8 +92,14 @@ class Control_students extends CI_Controller {
 		$th = $this->load->database('thailandpa', TRUE);
 		$data['province'] = $th->get('province')->result();
 		$sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
-		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
-		$data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
+		$data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',$data['chk_stu'][0]->recruit_homeProvince)->get('amphur')->result(); //เลือกอำเภอ
+		$data['district'] = $th->where('AMPHUR_ID',$data['chk_stu'][0]->recruit_homedistrict)->get('district')->result();
+
+		// $th = $this->load->database('thailandpa', TRUE);
+		// $data['province'] = $th->get('province')->result();
+		// $sel_amphur = $th->where('PROVINCE_ID',@$data['chk_stu'][0]->recruit_homeProvince)->get('province')->result();
+		// $data['amphur'] = $th->select('AMPHUR_ID,AMPHUR_NAME,PROVINCE_ID')->where('PROVINCE_ID',@$sel_amphur[0]->PROVINCE_ID)->get('amphur')->result(); //เลือกอำเภอ
+		// $data['district'] = $th->where('AMPHUR_ID',@$data['amphur'][0]->AMPHUR_ID)->get('district')->result();
 
 		$this->load->view('students/layout/navber_students.php',$data);
 		$this->load->view('students/layout/menu_top_students.php');
@@ -106,7 +112,8 @@ class Control_students extends CI_Controller {
 	{	
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
         if ($status['success']) {
-		$data_R = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
+
+			$data_R = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
 		
 		$file = array($_FILES['recruit_img']['error'],
 							$_FILES['recruit_certificateEdu']['error'],
@@ -126,6 +133,7 @@ class Control_students extends CI_Controller {
 			'recruit_race' => $this->input->post('recruit_race'),
 			'recruit_nationality' => $this->input->post('recruit_nationality'), 
 			'recruit_religion' => $this->input->post('recruit_religion'),
+			'recruit_idCard' => $this->input->post('recruit_idCard'),
 			'recruit_phone' => $this->input->post('recruit_phone'),
 			'recruit_homeNumber' => $this->input->post('recruit_homeNumber'),
 			'recruit_homeGroup' => $this->input->post('recruit_homeGroup'),
@@ -134,8 +142,8 @@ class Control_students extends CI_Controller {
 			'recruit_homedistrict' => $this->input->post('recruit_homedistrict'),
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
-			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),	
-			'recruit_dateUpdate' => date('Y-m-d H:i:s')
+			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
+			'recruit_year' => (date('Y')+543)
 		);
 	
 			if(in_array($_FILES['recruit_img']['error'],$file)){
@@ -194,6 +202,10 @@ class Control_students extends CI_Controller {
 				}
 				
 			}
+
+				
+			redirect('StudentsEdit');			 	
+			
 				// define('LINE_API',"https://notify-api.line.me/api/notify"); 
 				// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
 				// $str = "มีนักเรียนแก้ไขข้อมูล\n".'ตรวจสอบ : '.base_url('admin/recruitstudent');		
@@ -218,39 +230,38 @@ class Control_students extends CI_Controller {
 	public function update_img($id,$img,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name)
 	{
 		if($file_check == 0 ){
-		 $config['upload_path']   = 'uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/'.$foder.'/'; //Folder สำหรับ เก็บ ไฟล์ที่  Upload
-         $config['allowed_types'] = '*'; //รูปแบบไฟล์ที่ อนุญาตให้ Upload ได้
-         $config['max_size']      = 0; //ขนาดไฟล์สูงสุดที่ Upload ได้ (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
-         $config['max_width']     = 0; //ขนาดความกว้างสูงสุด (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
-         $config['max_height']    = 0;  //ขนาดความสูงสูงสดุ (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
-         $config['file_name']  = $rand_name.'.'.$imageFileType; //กำหนดเป็น true ให้ระบบ เปลียนชื่อ ไฟล์  อัตโนมัติ  ป้องกันกรณีชื่อไฟล์ซ้ำกัน
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config);
-			if($this->upload->do_upload($do_upload))
-			{
-				$image_data = $this->upload->data();
-				
-				// print_r($data);
-				@unlink("./uploads/recruitstudent/m".$this->input->post('recruit_regLevel').'/'.$foder.'/'.$img);
-				if($this->model_admission->student_update($data_update,$id) == 1){
-						 $this->session->set_flashdata(array('status' => 'success','msg'=> 'NO','messge' => 'แก้ไขข้อมูลสำเร็จ รอตรวจสอบข้อมูล... 4 - 6 ชั่วโมง\n สามารถดูเช็คข้อมูลได้ที่ สถานะการสมัคร'));	
-						 redirect('StudentsEdit');				 	
-				 }
-			}
-			else
-			{
-				$error = array('error' => $this->upload->display_errors());
-				print_r($error['error']);
-				
-			}
-		}
-		else{
-
-			if($this->model_admission->student_update($data_update,$id) == 1){
-					$this->session->set_flashdata(array('status'=>'success' ,'msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ รอตรวจสอบข้อมูล... 4 - 6 ชั่วโมง\n สามารถดูเช็คข้อมูลได้ที่ สถานะการสมัคร'));
-					redirect('StudentsEdit');			
-			}
-		}
+			$config['upload_path']   = 'uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/'.$foder.'/'; //Folder สำหรับ เก็บ ไฟล์ที่  Upload
+			$config['allowed_types'] = 'gif|jpg|jpeg|png'; //รูปแบบไฟล์ที่ อนุญาตให้ Upload ได้
+			$config['max_size']      = 0; //ขนาดไฟล์สูงสุดที่ Upload ได้ (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
+			$config['max_width']     = 0; //ขนาดความกว้างสูงสุด (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
+			$config['max_height']    = 0;  //ขนาดความสูงสูงสดุ (กรณีไม่จำกัดขนาด กำหนดเป็น 0)
+			$config['file_name']  = $rand_name.'.'.$imageFileType; //กำหนดเป็น true ให้ระบบ เปลียนชื่อ ไฟล์  อัตโนมัติ  ป้องกันกรณีชื่อไฟล์ซ้ำกัน
+			   $this->load->library('upload', $config);
+			   $this->upload->initialize($config);
+			   if($this->upload->do_upload($do_upload))
+			   {
+				   $data = array('upload_data' => $this->upload->data());
+				   // print_r($data);
+				   @unlink("./uploads/recruitstudent/m".$this->input->post('recruit_regLevel').'/'.$foder.'/'.$img);
+				   
+				   if($this->model_admission->student_update($data_update,$id) == 1){
+							$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));
+					}
+			   }
+			   else
+			   {
+				   $error = array('error' => $this->upload->display_errors());
+				   //print_r($error['error']);
+				   $this->session->set_flashdata(array('status'=>'error','msg'=> 'NO','messge' => $error['error']));
+			   }
+		   }
+		   else{
+   
+			   if($this->model_admission->student_update($data_update,$id) == 1){
+					   $this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));
+			   
+			   }
+		   }
 	}
 
 	function notify_message($message,$token){
