@@ -27,7 +27,7 @@
          <!-- <script src="<?=base_url()?>asset/js/AutoProvince-students.js"></script> -->
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url();?>asset/js/sweetalert.min.js"></script>
-         <script src="<?=base_url()?>asset/js/skj.js?v=1000"></script>
+         <script src="<?=base_url()?>asset/js/skj.js?v=1001"></script>
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>

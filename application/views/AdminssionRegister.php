@@ -52,6 +52,12 @@ label {
                                             value="<?=$checkYear[0]->openyear_year;?>" readonly>
 
                                     </div>
+                                    <div class="col-md-4 mb-3 col-lg-2 ">
+                                        <label for="">ประเภทสมัครเรียน <span class="text-red">*</span> </label>
+                                        <input type="text" class="form-control" id=""
+                                            value="รอบ<?=$switch[0]->onoff_category;?>" readonly>
+
+                                    </div>
                                 </div>
                                 <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-4 ">

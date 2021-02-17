@@ -103,6 +103,21 @@ class Control_admin_admission extends CI_Controller {
 		}
 	}
 
+	public function category_system()
+	{
+		if($this->input->post('mode') == 'true'){
+			$data = array('onoff_category' => 'ปกติ','	onoff_user_category' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "ปกติ";
+		}else{
+			$data = array('onoff_category' => 'โควตา','	onoff_user_category' => $this->session->userdata('login_id'));
+			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
+			echo "โควตา";
+		}
+	}
+
+
+
 	public function switch_year()
 	{	
 		$data = array('openyear_year' => $this->input->post('mode'),'openyear_userid' => $this->session->userdata('login_id'));

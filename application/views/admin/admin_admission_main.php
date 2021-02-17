@@ -82,7 +82,7 @@
                             <table class="table table-bordered dt-responsive nowrap" id="TB_stu" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>อัพเดต</th>
+                                        <th>ประเภท</th>
                                         <th>ลำดับ</th>
                                         <th>รูปภาพ</th>
                                         <th>ชื่อผู้<?=$title;?></th>
@@ -98,7 +98,7 @@
                                 </thead>
                                 <?php foreach ($recruit as $key => $v_recruit) : ?>
                                 <tr>
-                                    <td><?=$v_recruit->recruit_dateUpdate;?></td>
+                                    <td><?=$v_recruit->recruit_category;?></td>
                                     <td><?=sprintf("%04d",$v_recruit->recruit_id);?></td>
                                     <td><img style="width: 100px"
                                             src="<?=base_url('uploads/recruitstudent/m'.$v_recruit->recruit_regLevel.'/img/'.$v_recruit->recruit_img)?>">

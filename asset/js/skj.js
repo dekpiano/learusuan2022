@@ -69,6 +69,30 @@ $(document).on('change', '#switch_year', function() {
     });
 });
 
+$(document).on('change', '#category', function() {
+    var category = $(this).is(":checked");
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/category_system',
+        data: {
+            mode: category
+        },
+        success: function(data) {
+            swal({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการเปลี่ยนประเภทการรับสมัครเป็นรอบ" + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+
 $(document).on('change', '#select_year', function() {
     var dataYear = $(this).val();
 

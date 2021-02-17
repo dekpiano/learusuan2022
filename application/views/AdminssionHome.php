@@ -91,98 +91,12 @@
             <div class="container-fluid">
                 <!-- Project-->
                 <div class="project">
-                    <div class="row bg-white has-shadow p-3">
-                   <p><i class="fa fa-bullhorn" aria-hidden="true"></i> ประกาศให้นักเรียนตรวจสอบสถานะใบสมัคร และแก้ไขก่อนวันที่ 12 กุมภาพันธ์ 2564 
-                   แก้ไข้ใบสมัครที่เมนูตรวจสอบสถานะด้านบน หรือ <a href="<?=base_url('login');?>">คลิกที่นี่</a> หากไม่สามารถอัพโหลดเอกสารได้แจ้ง ครูณัฏฐิกานต์ แสงอุทัย เบอร์โทรศัพท์ 092-1899145</p> 
-                   <img src="<?=base_url('uploads/recruitstudent/checkStatus.PNG');?>" alt="เช็คสถานะการสมัครเรียน" class="img-fluid">
-                    <p style="color:red;">หมายเหตุ : นักเรียนคนไหนที่ยังไม่ขึ้นสถานะ "ผ่านการตรวจสอบ" ในเวลาที่กำหนด นักเรียนจะถูกตัดสิทธิ์เนื่องจากไม่ทำตามกฎการสมัครเรียน</p>
-                    </div>
+                <?php $this->load->view('AdminssionAdvertise.php'); ?>
+                   
                 </div>
             </div>
         </div>
-
-        <!-- Projects Section-->
-        <div class="projects ">
-            <div class="container-fluid">
-                <!-- Project-->
-                <div class="project">
-                    <div class="row bg-white has-shadow">
-                        <div class="left-col col-lg-6  align-items-center justify-content-between">
-
-
-
-                            <p style="text-align: center;">
-                                <strong>เกณฑ์การพิจารณารับนักเรียนเข้าเรียนต่อชั้นมัธยมศึกษาปีที่&nbsp;</strong><strong>4</strong>
-                                <br><strong>โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</strong>
-                                <br><strong>(นักเรียนชั้น ม.3 จากโรงเรียนเดิม)</strong>
-                            </p>
-
-                            <p>การพิจารณาคัดเลือกนักเรียนชั้นมัธยมศึกษาปีที่ 3 ศึกษาต่อในระดับชั้นมัธยมศึกษาปีที่ 4
-                                ของโรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์ ดังนี้&nbsp;</p>
-
-                            <p>1) โรงเรียนคัดเลือกนักเรียนชั้น ม.3 ที่มีผลการเรียนเฉลี่ย&nbsp;5 ภาคเรียน
-                                ไม่ต่ำกว่า&nbsp;2.50 โดยเรียงลำดับคะแนนเฉลี่ย มีแผนการรับนักเรียน
-                                ชั้นมัธยมศึกษาปีที่&nbsp;4 ดังนี้</p>
-
-                            <ul>
-                                <li style="text-align: left;">หลักสูตรส่งเสริมความเป็นเลิศทางด้านกีฬา (Sport Program)
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li>
-                                <li style="text-align: left;">หลักสูตรส่งเสริมความเป็นเลิศทางด้านวิชาการ (Science Match
-                                    and Technology Program) &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li>
-                                <li style="text-align: left;">หลักสูตรส่งเสริมความเป็นเลิศทางด้านภาษา (Chine English
-                                    Program) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
-                                <li style="text-align: left;">หลักสูตรส่งเสริมความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง
-                                    (Performing Art Program) &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li>
-                                <li style="text-align: left;">หลักสูตรส่งเสริมความเป็นเลิศทางด้านอาชีพ (Career Program)
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
-                            </ul>
-
-                            <p>2) ต้องเป็นผู้ที่ไม่ถูกตัดคะแนนความประพฤติเกินกว่า 50 คะแนน
-                                ของโทษสถานหนักและร้ายแรงรวมกัน&nbsp;</p>
-
-                            <p>3) ยื่นใบสมัครออนไลน์หรือสมัครด้วยตนเองได้ที่งานแนะแนว ห้องแนะแนว อาคาร 1 ตั้งแต่วันที่ 1
-                                - 31 มกราคม 2564 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
-
-                            <p><strong>เอกสารประกอบการสมัคร</strong></p>
-
-                            <ol>
-                                <li>รูปถ่ายชุดนักเรียน&nbsp;1.5 นิ้ว จำนวน&nbsp;2 รูป</li>
-                                <li>เอกสารรับรองผลการเรียน&nbsp;5 ภาคเรียน จำนวน&nbsp;1 ฉบับ</li>
-                                <li>สำเนาทะเบียนบ้านผู้สมัคร จำนวน&nbsp;1 ฉบับ</li>
-                                <li>สำเนาบัตรประจำตัวประชาชนผู้สมัคร จำนวน 1 ฉบับ</li>
-                            </ol>
-                            <p style="text-align: justify;"><strong><u>สามารถติดต่อสอบถามเพิ่มเติมได้ที่</u></strong>
-                            </p>
-
-                            <ul>
-                                <li><strong>กลุ่มงานบริหารวิชาการ &nbsp;&nbsp;</strong>
-                                    <br><strong>โทร</strong><strong>. 056-009-667 ต่อ&nbsp;904</strong>
-                                </li>
-                                <li><strong>ฝ่ายงานรับเข้า โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</strong>
-                                    <br><strong>ครูณัฏฐิกานต์ แสงอุทัย
-                                        เบอร์โทรศัพท์&nbsp;</strong><strong>092-1899145</strong>
-                                </li>
-                            </ul>
-
-
-                        </div>
-                        <div class=" col-lg-6  align-self-center mb-3">
-                            <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid"
-                                style="width: 150px;">
-                            <h2>ขณะนี้ระบบรับสมัครนักเรียนเฉพาะชั้นมัธยมศึกษาปีที่ 3 จากโรงเรียนเดิม
-                                ที่จะศึกษาต่อชั้นมัธยมศึกษาปีที่ 4</h2>
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">สมัครเรียนต่อ
-                                ม.4 </a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
+        
         <!-- Modal-->
         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
             class="modal fade text-left">
@@ -200,8 +114,11 @@
                             <?php echo $switch[0]->onoff_comment; ?>
                         </div>
                         <?php else : ?>
+                            <a href="<?=base_url('RegStudent/1');?>" class="bb btn btn-lg btn-block btn-primary">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 1
+                        </a>
                         <a href="<?=base_url('RegStudent/4');?>" class="bb btn btn-lg btn-block btn-primary">
-                            สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
                         </a>
                         <?php endif; ?>
 

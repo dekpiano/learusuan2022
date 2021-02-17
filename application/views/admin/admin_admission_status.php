@@ -12,7 +12,22 @@
         </header>
         <!-- Dashboard Counts Section-->
         <section class="container-fluid mt-3">
-
+        <div class="project mb-2">
+                <div class=" bg-white has-shadow col-lg-6">
+                    <div class="left-col p-3 d-flex align-items-center justify-content-between">
+                        <div class="project-title d-flex align-items-center">
+                            <div class="text">
+                                <h3 class="h4">ประเภทการสมัครรอบ โควตา หรือ ปกติ</h3><small>สามารถเลือกเปิดได้แค่อย่างเดียว</small>                              
+                            </div>
+                        </div>
+                        <div class="project-date">
+                        <input type="checkbox" id="category" valun="<?=$switch[0]->onoff_category?>"
+                        <?=$switch[0]->onoff_category == "ปกติ" ? 'checked' : '' ?> data-toggle="toggle" data-on="ปกติ" data-off="โควตา">
+                    <label for="category"></label>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
             <div class="project mb-2">
                 <div class=" bg-white has-shadow col-lg-6">
                     <div class="left-col p-3 d-flex align-items-center justify-content-between">
