@@ -291,6 +291,61 @@ class Control_students extends CI_Controller {
 		redirect('welcome');
 	}
 
+	public function PDFForStudent()
+    {
+
+		$thai = $this->load->database('thailandpa', TRUE);
+		$thpa = $thai->database;
+		
+		$datapdf = $this->db->select('skjacth_admission.tb_recruitstudent.*,
+										'.$thpa.'.province.PROVINCE_NAME,
+										'.$thpa.'.district.DISTRICT_NAME,
+										'.$thpa.'.amphur.AMPHUR_NAME')
+										->from('skjacth_admission.tb_recruitstudent')
+										->join($thpa.'.province','skjacth_admission.tb_recruitstudent.recruit_homeProvince = '.$thpa.'.province.PROVINCE_ID', 'INNER')
+										->join($thpa.'.district','skjacth_admission.tb_recruitstudent.recruit_homeSubdistrict = '.$thpa.'.district.DISTRICT_ID', 'INNER')
+										->join($thpa.'.amphur','skjacth_admission.tb_recruitstudent.recruit_homedistrict = '.$thpa.'.amphur.AMPHUR_ID', 'INNER')
+		->where('skjacth_admission.tb_recruitstudent.recruit_id',$this->session->userdata('loginStudentID'))
+		->get()->result();
+		//echo '<pre>'; print_r($datapdf); exit();
+		
+
+    	$date_Y = date('Y',strtotime($datapdf[0]->recruit_birthday))+543;
+    	$TH_Month = array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+    	$date_D = date('d',strtotime($datapdf[0]->recruit_birthday));
+    	$date_M = date('n',strtotime($datapdf[0]->recruit_birthday));
+
+		$date_Y_regis = date('Y',strtotime($datapdf[0]->recruit_date))+543;
+    	$date_D_regis = date('d',strtotime($datapdf[0]->recruit_date));
+    	$date_M_regis = date('n',strtotime($datapdf[0]->recruit_date));
+
+		//print_r($date_M_regis); exit();
+    	$sch = explode("โรงเรียน", $datapdf[0]->recruit_oldSchool); //แยกคำว่าโรงเรียน
+    	
+        $mpdf = new \Mpdf\Mpdf([
+					'default_font_size' => 16,
+					'default_font' => 'sarabun',
+					'format' => [210, 90]
+				]);
+        $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
+       
+		// ส่วนที่ 2recruit_date
+		$html = '<div style="position:absolute;top:100px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
+		$html .= '<div style="position:absolute;top:57px;left:150px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
+		$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
+		$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
+		$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
+		$html .= '<div style="position:absolute;top:155;left:270px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
+		
+		$html .= '<div style="position:absolute;top:255x;left:360px; width:100%">'.$date_D_regis.' '.$TH_Month[$date_M_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
+
+		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudentForStudent'.'.pdf',true);
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Reg_'.$datapdf[0]->recruit_idCard.'.pdf','I'); // opens in browser
+        //$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
+    }
+
 	public function pdf()
     {
 

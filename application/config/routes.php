@@ -69,7 +69,7 @@ $route['StudentsEdit'] = 'Control_students/StudentsEdit';
 $route['StudentsStatus'] = 'Control_students/StudentsStatus';
 
 $route['Students/Logout'] = 'Control_students/logoutStudent';
-$route['Students/Print'] = 'Control_students/pdf';
+$route['Students/Print'] = 'Control_students/PDFForStudent';
 
 
 //admin

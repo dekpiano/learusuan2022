@@ -366,7 +366,7 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf[0]->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:80px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
-		$html .= '<div style="position:absolute;top:870px;left:160px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
+		$html .= '<div style="position:absolute;top:870px;left:150px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; 
 		$html .= '<div style="position:absolute;top:910px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:910px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:940;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
@@ -394,12 +394,12 @@ class Control_admin_admission extends CI_Controller {
     		$html .= '<div style="position:absolute;top:720px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf[0]->recruit_copyidCard != ''){
-    		$html .= '<div style="position:absolute;top:720px;left:245px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:387x; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf[0]->recruit_copyAddress != ''){
-    		$html .= '<div style="position:absolute;top:720px;left:435px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:580px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
-		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent4.pdf',true);
+		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent'.$datapdf[0]->recruit_regLevel.'.pdf',true);
 		$filename = sprintf("%04d",$datapdf[0]->recruit_id).'-'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName;
         $mpdf->WriteHTML($html);
         $mpdf->Output('Reg_'.$filename.'.pdf','I'); // opens in browser
@@ -478,7 +478,7 @@ class Control_admin_admission extends CI_Controller {
 		$html .= '<div style="position:absolute;top:455px;left:620px; width:100%">'.$datapdf->recruit_homePostcode.'</div>'; //รหัสไปรษณีย์
 		// ส่วนที่ 2recruit_date
 		$html .= '<div style="position:absolute;top:900px;left:80px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf->recruit_regLevel.'/img/'.$datapdf->recruit_img).'></div>'; 
-		$html .= '<div style="position:absolute;top:870px;left:160px; width:100%">'.sprintf("%04d",$datapdf->recruit_id).'</div>'; 
+		$html .= '<div style="position:absolute;top:870px;left:150px; width:100%">'.sprintf("%04d",$datapdf->recruit_id).'</div>'; 
 		$html .= '<div style="position:absolute;top:910px;left:250px; width:100%">'.$datapdf->recruit_prefix.$datapdf->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:910px;left:480px; width:100%">'.$datapdf->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:940;left:400px; width:100%">'.$datapdf->recruit_idCard.'</div>';	
@@ -506,14 +506,14 @@ class Control_admin_admission extends CI_Controller {
     		$html .= '<div style="position:absolute;top:720px;left:100px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf->recruit_copyidCard != ''){
-    		$html .= '<div style="position:absolute;top:720px;left:245px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:387xp; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
     	if($datapdf->recruit_copyAddress != ''){
-    		$html .= '<div style="position:absolute;top:720px;left:435px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
+    		$html .= '<div style="position:absolute;top:720px;left:580px; width:100%"><img src="https://img.icons8.com/metro/26/000000/checkmark.png"/></div>';
     	}
 		
 	
-		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent4.pdf',true);
+		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudent'.$datapdf->recruit_regLevel.'.pdf',true);
 		
 		$mpdf->WriteHTML($html);
 		$mpdf->AddPage();
