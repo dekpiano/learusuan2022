@@ -8,8 +8,8 @@ class Control_admission extends CI_Controller {
 		$this->load->library('timeago');
 		$this->load->model('model_admission');
 		$switch = $this->db->get("tb_onoffsys")->result();
-		if($switch[0]->onoff_system == 'off'){
-			redirect('CloseSystem');
+		if($switch[0]->onoff_system == 'off' || $switch[0]->onoff_regis == 'off'){
+			redirect('welcome');
 		}
 		
 	}
@@ -37,6 +37,7 @@ class Control_admission extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
+	
 		return $data;
 	}
 
@@ -52,6 +53,8 @@ class Control_admission extends CI_Controller {
 		$data['m4'] = $this->db->select('recruit_id,recruit_regLevel,recruit_status,recruit_tpyeRoom,recruit_prefix,recruit_firstName,recruit_lastName')
 		->where('recruit_regLevel','4')
 		->get('tb_recruitstudent')->num_rows();
+
+		
 		
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/navber.php');
@@ -128,7 +131,7 @@ setTimeout(function() {
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร','status'=>'error'));
-			redirect('welcome');
+			redirect('login');
 		}else{
 		$data_insert = array();
 		
@@ -206,11 +209,11 @@ setTimeout(function() {
 				if($this->model_admission->student_insert($data_insert) == 1){
 				
 					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก เมนูด้านบน','status'=>'success'));					
-						define('LINE_API',"https://notify-api.line.me/api/notify"); 
-						$token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
-						$str = "มีนักเรียนสมัครเรียนใหม่\n";	
-						$res = $this->notify_message($str,$token);
-						$data = $this->dataAll();
+						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
+						// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
+						// $str = "มีนักเรียนสมัครเรียนใหม่\n";	
+						// $res = $this->notify_message($str,$token);
+						// $data = $this->dataAll();
 
 						redirect('welcome');
 				}
@@ -235,9 +238,29 @@ setTimeout(function() {
 			$this->upload->initialize($config);
 			if($this->upload->do_upload($do_upload))
 			{
-				$data = array('upload_data' => $this->upload->data());				
-				$this->session->set_flashdata(array('alert1' => 'success','msg'=> 'NO','messge' => 'แก้ไขข้อมูลสำเร็จ รอตรวจสอบข้อมูล... 4 - 6 ชั่วโมง '));					 	
+				$uploadedImage = $this->upload->data();
+					
+				$source_path = './uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/'.$foder.'/'.$uploadedImage['file_name'];
+				$img_target = './uploads/recruitstudent1/'.$uploadedImage['file_name'];
+				$config1['image_library'] = 'GD2';
+				$config1['source_image'] = $uploadedImage['full_path'];
+				$config1['quality'] = '100%';
+				$config1['create'] = TRUE;
+				$config1['maintain_ratio'] = TRUE;
+				$config1['width']         = 600;
+				$config1['height']       = 800;
 				
+		 
+				$this->load->library('image_lib');
+				$this->image_lib->initialize($config1);
+				 if ( ! $this->image_lib->resize())
+				{
+						echo $this->image_lib->display_errors();
+				}	
+				$this->image_lib->clear();
+				
+				// print_r($uploadedImage);
+				// exit();
 			}
 			else
 			{
@@ -246,6 +269,7 @@ setTimeout(function() {
 				
 			}
 	}
+
 	
 	public function checkdata_student()
 	{	
@@ -345,6 +369,16 @@ setTimeout(function() {
 		
 		
 	}
+
+	public function SchoolList(){
+		// POST data
+		$postData = $this->input->post();
+	
+		// Get data
+		$data = $this->model_admission->getSchool($postData);
+	
+		echo json_encode($data);
+	  }
 
 
 

@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</title>
-    <meta name="description" content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564">
+    <meta name="description"
+        content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
 
-    <meta property="og:url"
-        content="http://admission.skj.ac.th/welcome" />
+    <meta property="og:url" content="http://admission.skj.ac.th/welcome" />
     <meta property="og:type" content="Education" />
     <meta property="og:title" content="ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์" />
-    <meta property="og:description" content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564" />
-    <meta property="og:image"
-        content="<?=base_url();?>asset/img/banner-admission2.PNG" />
+    <meta property="og:description"
+        content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564" />
+    <meta property="og:image" content="<?=base_url();?>asset/img/banner-admission2.PNG" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?=base_url();?>asset/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -34,7 +35,7 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-
+    
 
     <style>
     /* Extra small devices (portrait phones, less than 576px) */

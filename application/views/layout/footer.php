@@ -8,7 +8,7 @@
                      <div class="col-sm-4">
                          <!-- Histats.com  (div with counter) -->
                          <div id="histats_counter"></div>
-                         
+
                      </div>
 
                      <div class="col-sm-3 text-right">
@@ -62,6 +62,8 @@
 
          <!-- JavaScript files-->
          <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
+           <!-- jQuery UI -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
          <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -73,28 +75,31 @@
          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
          </script>
 
-         <script src="<?=base_url()?>asset/js/AutoProvince.js"></script>
+         <script src="<?=base_url()?>asset/js/AutoProvince.js?v=1"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="<?=base_url();?>asset/js/sweetalert.min.js"></script>
+         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=1"></script>
+         
+       
 
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
-                         var _Hasync = _Hasync || [];
-                         _Hasync.push(['Histats.start', '1,4498483,4,205,255,27,00010001']);
-                         _Hasync.push(['Histats.fasi', '1']);
-                         _Hasync.push(['Histats.track_hits', '']);
-                         (function() {
-                             var hs = document.createElement('script');
-                             hs.type = 'text/javascript';
-                             hs.async = true;
-                             hs.src = ('//s10.histats.com/js15_as.js');
-                             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0])
-                             .appendChild(hs);
-                         })();
-                         </script>
-                         <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101"
-                                     alt="" border="0"></a></noscript>
-                         <!-- Histats.com  END  -->
+var _Hasync = _Hasync || [];
+_Hasync.push(['Histats.start', '1,4498483,4,205,255,27,00010001']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+    var hs = document.createElement('script');
+    hs.type = 'text/javascript';
+    hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0])
+    .appendChild(hs);
+})();
+         </script>
+         <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4498483&101" alt=""
+                     border="0"></a></noscript>
+         <!-- Histats.com  END  -->
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
@@ -129,20 +134,7 @@ $('body').AutoProvince({
     arrangeByName: false // กำหนดให้เรียงตามตัวอักษร
 });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function(e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    }
-}
-$("#recruit_img").change(function() {
-    readURL(this);
-});
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -166,3 +158,4 @@ $("#recruit_img").change(function() {
     }, false);
 })();
          </script>
+

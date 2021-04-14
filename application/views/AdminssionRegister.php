@@ -11,7 +11,7 @@ label {
         <h2 class="no-margin-bottom">
             <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid"
                 style="width: 64px;">
-            ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์  
+            ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์
         </h2>
     </div>
 </header>
@@ -42,12 +42,13 @@ label {
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">ข้อมูลนักเรียน</h6>
                             </div>
-                            
+
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-2 ">
-                                        <label for="recruit_idCard">ประจำปีการศึกษา <span class="text-red">*</span> </label>
+                                        <label for="recruit_idCard">ประจำปีการศึกษา <span class="text-red">*</span>
+                                        </label>
                                         <input type="text" class="form-control" id="recruit_idCard"
                                             value="<?=$checkYear[0]->openyear_year;?>" readonly>
 
@@ -61,7 +62,8 @@ label {
                                 </div>
                                 <div class="row ">
                                     <div class="col-md-8 mb-3 col-lg-4 ">
-                                        <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก <span class="text-red">*</span> </label>
+                                        <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก <span
+                                                class="text-red">*</span> </label>
                                         <input type="text" class="form-control" id="recruit_idCard"
                                             name="recruit_idCard" required data-inputmask="'mask': '9-9999-99999-99-9'"
                                             data-toggle="tooltip" data-placement="top"
@@ -122,7 +124,8 @@ label {
                                     </div>
 
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_birthdayM">เดือนเกิด <span class="text-red">*</span> </label>
+                                        <label for="recruit_birthdayM">เดือนเกิด <span class="text-red">*</span>
+                                        </label>
                                         <select class="form-control" id="recruit_birthdayM" name="recruit_birthdayM"
                                             required>
                                             <option value="">เลือก</option>
@@ -136,7 +139,8 @@ label {
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_birthdayY">ปีเกิด พ.ศ. <span class="text-red">*</span> </label>
+                                        <label for="recruit_birthdayY">ปีเกิด พ.ศ. <span class="text-red">*</span>
+                                        </label>
                                         <select class="form-control" id="recruit_birthdayY" name="recruit_birthdayY"
                                             required>
                                             <option value="">เลือก</option>
@@ -158,7 +162,8 @@ label {
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_nationality">สัญชาติ <span class="text-red">*</span> </label>
+                                        <label for="recruit_nationality">สัญชาติ <span class="text-red">*</span>
+                                        </label>
                                         <input type="text" class="form-control" id="recruit_nationality"
                                             name="recruit_nationality" required>
                                         <div class="invalid-feedback">
@@ -177,8 +182,10 @@ label {
                                 <div class="mb-3 col-md-4">
                                     <label for="recruit_img">อัพโหลดรูปถ่าย (รูปถ่ายหน้าตรงชุดนักเรียน) <a href="#"
                                             data-toggle="tooltip" data-placement="top" data-html="true"
-                                            title="<img class='img-fluid' src=&quot;<?=base_url('uploads/recruitstudent/Eximg.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a> <span class="text-red">*</span> </label>
-                                    <input type="file" class="form-control" id="recruit_img" name="recruit_img" required>
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('uploads/recruitstudent/Eximg.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a>
+                                        <span class="text-red">*</span> </label>
+                                    <input type="file" class="form-control" id="recruit_img" name="recruit_img"
+                                        required>
                                     <img id="blah" class="img-fluid" src="# " alt="">
                                     <div class="invalid-feedback">
                                         อัพโหลดรูปภาพ
@@ -223,7 +230,8 @@ label {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_homeProvince">จังหวัด <span class="text-red">*</span> </label>
+                                        <label for="recruit_homeProvince">จังหวัด <span class="text-red">*</span>
+                                        </label>
                                         <select id="province" class="custom-select" name="recruit_homeProvince"
                                             required>
                                             <option value="">- กรุณาเลือกจังหวัด -</option>
@@ -233,7 +241,8 @@ label {
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_homedistrict">อำเภอ/เขต <span class="text-red">*</span> </label>
+                                        <label for="recruit_homedistrict">อำเภอ/เขต <span class="text-red">*</span>
+                                        </label>
                                         <select id="amphur" class="custom-select" name="recruit_homedistrict" required>
                                             <option value="">- กรุณาเลือกอำเภอ -</option>
                                         </select>
@@ -242,7 +251,8 @@ label {
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_homeSubdistrict">ตำบล/แขวง <span class="text-red">*</span> </label>
+                                        <label for="recruit_homeSubdistrict">ตำบล/แขวง <span class="text-red">*</span>
+                                        </label>
                                         <select id="district" class="custom-select " name="recruit_homeSubdistrict"
                                             required>
                                             <option value="">- กรุณาเลือกตำบล -</option>
@@ -254,7 +264,8 @@ label {
 
 
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_homePostcode">รหัสไปรษณีย์ <span class="text-red">*</span> </label>
+                                        <label for="recruit_homePostcode">รหัสไปรษณีย์ <span class="text-red">*</span>
+                                        </label>
                                         <input type="text" class="form-control" id="postcode"
                                             name="recruit_homePostcode" required>
                                         <div class="invalid-feedback">
@@ -265,7 +276,8 @@ label {
 
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_phone">หมายเลขโทรศัพท์ที่สามาติดต่อได้ <span class="text-red">*</span> </label>
+                                        <label for="recruit_phone">หมายเลขโทรศัพท์ที่สามาติดต่อได้ <span
+                                                class="text-red">*</span> </label>
                                         <input type="tel" class="form-control" id="recruit_phone" name="recruit_phone"
                                             placeholder required data-inputmask="'mask': '99-9999-9999'">
                                         <div class="invalid-feedback">
@@ -290,7 +302,8 @@ label {
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="recruit_oldSchool">จบการศึกษาจากโรงเรียน <span class="text-red">*</span> </label>
+                                        <label for="recruit_oldSchool">จบการศึกษาจากโรงเรียน <span
+                                                class="text-red">*</span> <small>ไม่ต้องพิมพ์คำว่า "โรงเรียน"</small> </label>
                                         <input type="text" class="form-control" id="recruit_oldSchool"
                                             name="recruit_oldSchool" placeholder required data-toggle="tooltip"
                                             data-placement="top" title="จบการศึกษาจากโรงเรียน">
@@ -323,7 +336,8 @@ label {
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">หลักสูตรที่ต้องการเรียน <span class="text-red">*</span></h6>
+                                <h6 class="m-0 font-weight-bold text-primary">หลักสูตรที่ต้องการเรียน <span
+                                        class="text-red">*</span></h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
@@ -389,33 +403,32 @@ label {
                                         <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1) </label>
                                         <input type="file" class="form-control" id="recruit_certificateEdu"
                                             name="recruit_certificateEdu" placeholder="">
+                                        <img id="show_certificateEdu" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
-                                            Name on card is required
+                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1)
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="recruit_copyidCard">สำเนาบัตรปะชาชน </label>
                                         <input type="file" class="form-control" id="recruit_copyidCard"
                                             name="recruit_copyidCard" placeholder="">
+                                            <img id="show_copyidCard" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
-                                            Credit card number is required
+                                            กรุณาเลือกไฟล์ สำเนาบัตรปะชาชน
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน</label>
                                         <input type="file" class="form-control" id="recruit_copyAddress"
                                             name="recruit_copyAddress" placeholder="">
+                                            <img id="show_copyAddress" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
-                                            Credit card number is required
+                                            กรุณาเลือกไฟล์ สำเนาทะเบียนบ้าน
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
 
                         <div class=" mb-4" style="">
                             <div class="card-body bg-danger text-white">
@@ -443,7 +456,7 @@ label {
                                 value="1" required>
                             <label class="form-check-label" for="check_proviso">
                                 ยอมรับเงื่อนไขในการสมัคร
-                            <span class="text-red">*</span> </label>
+                                <span class="text-red">*</span> </label>
                             <div class="invalid-feedback">
                                 ยอมรับในเงื่อนไข
                             </div>
@@ -459,7 +472,7 @@ label {
 
 
                         </center>
-                        <button class="btn btn-primary btn-lg btn-block mt-3 mb-5"  type="submit">สมัครเรียน</button>
+                        <button class="btn btn-primary btn-lg btn-block mt-3 mb-5" type="submit">สมัครเรียน</button>
                 </form>
 
             </div>
