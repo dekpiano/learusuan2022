@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion d-none d-md-block" id="accordionSidebar"
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion d-none d-md-block " id="accordionSidebar"
     style="font-weight: 800;">
 
     <!-- Sidebar - Brand -->

@@ -14,14 +14,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> สมัครเรียน</a>
+                        <a style="color: white;" class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> สมัครเรียน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบการสมัคร
+                        <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบการสมัคร
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('login');?>"> <i class="fas fa-bullhorn"></i> ประกาศรายชื่อ</a>
+                    <li  class="nav-item">
+                        <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"> <i class="fas fa-bullhorn"></i> ประกาศรายชื่อ</a>
                     </li>
                 </ul>
             </div>

@@ -1,18 +1,19 @@
 
 
-<div class="page-content d-flex align-items-stretch">
+<div class="page-content align-items-stretch">
     <!-- Side Navbar -->
 
+<img src="<?=base_url('uploads/banner64.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
 
     <div class="w-100">
         <!-- Page Header-->
-        <header class="page-header">
+        <!-- <header class="page-header">
             <div class="container-fluid">
                 <h2 class="no-margin-bottom">
                     ประชาสัมพันธ์
                 </h2>
             </div>
-        </header>
+        </header> -->
         <!-- Dashboard Counts Section-->
         <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">

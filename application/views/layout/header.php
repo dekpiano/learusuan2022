@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</title>
     <meta name="description"
-        content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564">
+        content="รับสมัครนักเรียนใหม่ ม.1 และ ม.4">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
 
@@ -14,8 +14,8 @@
     <meta property="og:type" content="Education" />
     <meta property="og:title" content="ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์" />
     <meta property="og:description"
-        content="รับสมัครนักเรียนเก่า ม.3 ที่จะเรียนต่อ ม.4 ตั้งแต่วันนี้ จนถึง วันที่ 7 กุมภาพันธ์ 2564" />
-    <meta property="og:image" content="<?=base_url();?>asset/img/banner-admission2.PNG" />
+        content="รับสมัครนักเรียนใหม่ ม.1 และ ม.4" />
+    <meta property="og:image" content="<?=base_url();?>asset/img/banner-admission64.png" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?=base_url();?>asset/vendor/bootstrap/css/bootstrap.min.css">
