@@ -106,7 +106,7 @@ class Control_admin_admission extends CI_Controller {
 	public function category_system()
 	{
 		if($this->input->post('mode') == 'true'){
-			$data = array('onoff_category' => 'ปกติ','	onoff_user_category' => $this->session->userdata('login_id'));
+			$data = array('onoff_category' => 'ทั่วไป','	onoff_user_category' => $this->session->userdata('login_id'));
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "ปกติ";
 		}else{
@@ -114,6 +114,32 @@ class Control_admin_admission extends CI_Controller {
 			$this->db->update('tb_onoffsys',$data,"onoff_id='1'");
 			echo "โควตา";
 		}
+	}
+
+	public function SelectThailand(){
+		$th = $this->load->database('thailandpa', TRUE);
+
+		if($this->input->post('id',TRUE) && $this->input->post('func') === 'province'){
+			$amphur = $th->where('PROVINCE_ID',$this->input->post('id'))->get('amphur')->result(); 
+			echo '<option value="">กรุณาเลือกอำเภอ</option>';
+			foreach ($amphur as $key => $value) {
+				echo '<option value="'.$value->AMPHUR_ID.'">'.$value->AMPHUR_NAME.'</option>';
+			}
+		}
+
+		if($this->input->post('id',TRUE) && $this->input->post('func') === 'amphur'){
+			$district = $th->where('AMPHUR_ID',$this->input->post('id'))->get('district')->result(); 
+			echo '<option value="">กรุณาเลือกตำบล</option>';
+			foreach ($district as $key => $value) {
+				echo '<option value="'.$value->DISTRICT_ID.'">'.$value->DISTRICT_NAME.'</option>';
+			}
+		}
+
+		if($this->input->post('id',TRUE) && $this->input->post('func') === 'postcode'){
+			$district = $th->where('AMPHUR_ID',$this->input->post('id'))->get('amphur')->result(); 		
+			echo $district[0]->POSTCODE;
+		}
+		
 	}
 
 
@@ -177,6 +203,7 @@ class Control_admin_admission extends CI_Controller {
 		
 		$file = array($_FILES['recruit_img']['error'],
 							$_FILES['recruit_certificateEdu']['error'],
+							$_FILES['recruit_certificateEduB']['error'],
 							$_FILES['recruit_copyidCard']['error'],
 							$_FILES['recruit_copyAddress']['error']);
 		//print_r($file);
@@ -234,6 +261,19 @@ class Control_admin_admission extends CI_Controller {
 					$imageFileType = 0;
 					$this->update_img($id,$data_R[0]->recruit_certificateEdu,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}
+			}if(in_array($_FILES['recruit_certificateEduB']['error'],$file)){
+				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEduB']['name'],PATHINFO_EXTENSION));						
+				$file_check = $_FILES['recruit_certificateEduB']['error'];
+				$foder = 'certificateB';
+				$do_upload = 'recruit_certificateEduB';
+				$rand_name = $this->input->post('recruit_idCard').rand();
+				if($file_check == 0 ){
+					$data_update = array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);	
+					$this->update_img($id,$data_R[0]->recruit_certificateEduB,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
+				}else{
+					$imageFileType = 0;
+					$this->update_img($id,$data_R[0]->recruit_certificateEduB,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
+				}
 			}if(in_array($_FILES['recruit_copyidCard']['error'],$file)){
 				$imageFileType = strtolower(pathinfo($_FILES['recruit_copyidCard']['name'],PATHINFO_EXTENSION));						
 				$file_check = $_FILES['recruit_copyidCard']['error'];
@@ -283,9 +323,51 @@ class Control_admin_admission extends CI_Controller {
 			$this->upload->initialize($config);
 			if($this->upload->do_upload($do_upload))
 			{
-				$data = array('upload_data' => $this->upload->data());
-				// print_r($data);
+				$uploadedImage = $this->upload->data();
+				$imgdata=exif_read_data($this->upload->upload_path.$this->upload->file_name, 'IFD0');
+				$source_path = './uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/'.$foder.'/'.$uploadedImage['file_name'];
+				$img_target = './uploads/recruitstudent1/'.$uploadedImage['file_name'];
+				$config1['image_library'] = 'GD2';
+				$config1['source_image'] = $uploadedImage['full_path'];
+				$config1['quality'] = '100%';
+				$config1['maintain_ratio'] = TRUE;
+				$config1['width']         = 600;
+				$config1['height']       = 800;				
+				
+
+				$this->load->library('image_lib');
+				$this->image_lib->initialize($config1);
+				 if ( ! $this->image_lib->resize())
+				{
+						echo $this->image_lib->display_errors();
+				}else{
+					$this->image_lib->clear();
+					$config=array();
+
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $uploadedImage['full_path'];
+
+
+                switch($imgdata['Orientation']) {
+                    case 3:
+                        $config['rotation_angle']='180';
+                        break;
+                    case 6:
+                        $config['rotation_angle']='270';
+                        break;
+                    case 8:
+                        $config['rotation_angle']='90';
+                        break;
+                }
+
+                $this->image_lib->initialize($config); 
+                $this->image_lib->rotate();
+				}
+				
+
 				@unlink("./uploads/recruitstudent/m".$this->input->post('recruit_regLevel').'/'.$foder.'/'.$img);
+
+				
 				
 				if($this->admin_model_admission->recruitstudent_update($data_update,$id) == 1){
 				 		$this->session->set_flashdata(array('status'=>'success','msg'=> 'Yes','messge' => 'แก้ไขข้อมูลสำเร็จ'));				 	

@@ -77,8 +77,8 @@
 
          <script src="<?=base_url()?>asset/js/AutoProvince.js?v=1"></script>
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
-         <script src="<?=base_url();?>asset/js/sweetalert.min.js"></script>
-         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=1"></script>
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
+         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
          
        
 
@@ -103,11 +103,11 @@ _Hasync.push(['Histats.track_hits', '']);
 
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
-swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
+Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
          </script>
          <?php elseif($this->session->flashdata('msg') == 'Yes'):?>
          <script>
-swal("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
+Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");
          </script>
          <?php endif; $this->session->mark_as_temp('msg',20); ?>
          <script>
@@ -150,7 +150,7 @@ $('body').AutoProvince({
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                    swal("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning")
+                    Swal.fire("แจ้งเตือน", "กรุณากรอกข้อมูลให้ครบ!", "warning")
                 }
                 form.classList.add('was-validated');
             }, false);

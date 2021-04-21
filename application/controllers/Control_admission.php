@@ -80,30 +80,6 @@ class Control_admission extends CI_Controller {
 		}		
 	}
 
-
-
-	public function welcome_student($id=''){
-
-		$data = $this->dataAll();
-		$data['title'] = 'ลงทะเบียนสำเร็จแล้ว';
-		$data['description'] = 'ลงทะเบียนสำเร็จแล้ว';
-		//print_r($id);
-		if ($id == 'Succeed') {
-			$this->session->set_flashdata(array('msg'=> 'ํYES','messge' => 'ลงทะเบียนสำเร็จแล้ว สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก เมนูด้านบน'));
-			redirect('welcome');
-		}elseif($id == 'Error'){
-			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'เลขประจำตัวประชาชน คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร'));
-	?>
-<script type="text/javascript">
-setTimeout(function() {
-    window.history.back();
-}, 1000);
-</script>
-<?php }else{
-					redirect('RegStudent');
-				}
-	}
-
 	function NumberID(){
 		$openyear = $this->db->select('openyear_year')->get('tb_openyear')->row();
 		$chk_id = $this->db->select('recruit_id')->order_by('recruit_id','DESC')->get('tb_recruitstudent')->row();
@@ -126,12 +102,11 @@ setTimeout(function() {
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
 		//print_r($status); exit();
         if ($status['success']) {
-
 		//print_r($this->input->post('recruit_idCard'));
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
 			$this->session->set_flashdata(array('msg'=> 'NO','messge' => 'คุณได้ลงทะเบียนแล้ว กรุณาตรวจสอบการสมัคร','status'=>'error'));
-			redirect('login');
+			redirect('welcome');
 		}else{
 		$data_insert = array();
 		
@@ -162,7 +137,8 @@ setTimeout(function() {
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
 			'recruit_date'	=> date('Y-m-d'), 						
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
-			'recruit_status' => "รอการตรวจสอบ"
+			'recruit_status' => "รอการตรวจสอบ",
+			'recruit_category' => $this->input->post('recruit_category')
 			);
 
 
@@ -183,6 +159,15 @@ setTimeout(function() {
 				$do_upload = 'recruit_certificateEdu';
 				$rand_name = $this->input->post('recruit_idCard').rand();				
 					$data_insert += array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);
+					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
+
+			}if($_FILES['recruit_certificateEduB']['error']==0){
+				$imageFileType = strtolower(pathinfo($_FILES['recruit_certificateEduB']['name'],PATHINFO_EXTENSION));						
+				$file_check = $_FILES['recruit_certificateEduB']['error'];
+				$foder = 'certificateB';
+				$do_upload = 'recruit_certificateEduB';
+				$rand_name = $this->input->post('recruit_idCard').rand();				
+					$data_insert += array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);
 					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 				
 			}if($_FILES['recruit_copyidCard']['error'] == 0){
@@ -208,7 +193,7 @@ setTimeout(function() {
 
 				if($this->model_admission->student_insert($data_insert) == 1){
 				
-					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก เมนูด้านบน','status'=>'success'));					
+					$this->session->set_flashdata(array('msg'=> 'Yes','messge' => 'สมัครเรียนสำเร็จ สามารถตรวจสอบสถานะการสมัครเพื่อพิมพ์ใบสมัครจาก <a href='.base_url('login').'> คลิกที่นี่</a>','status'=>'success'));					
 						// define('LINE_API',"https://notify-api.line.me/api/notify"); 
 						// $token = "E9GFruPeXW6Mogn156Pllr1D8wWiY69BHfpKzLHBxcj"; 
 						// $str = "มีนักเรียนสมัครเรียนใหม่\n";	
@@ -239,25 +224,45 @@ setTimeout(function() {
 			if($this->upload->do_upload($do_upload))
 			{
 				$uploadedImage = $this->upload->data();
-					
+				$imgdata=exif_read_data($this->upload->upload_path.$this->upload->file_name, 'IFD0');
 				$source_path = './uploads/recruitstudent/m'.$this->input->post('recruit_regLevel').'/'.$foder.'/'.$uploadedImage['file_name'];
 				$img_target = './uploads/recruitstudent1/'.$uploadedImage['file_name'];
 				$config1['image_library'] = 'GD2';
 				$config1['source_image'] = $uploadedImage['full_path'];
 				$config1['quality'] = '100%';
-				$config1['create'] = TRUE;
 				$config1['maintain_ratio'] = TRUE;
 				$config1['width']         = 600;
-				$config1['height']       = 800;
+				$config1['height']       = 800;				
 				
-		 
+
 				$this->load->library('image_lib');
 				$this->image_lib->initialize($config1);
 				 if ( ! $this->image_lib->resize())
 				{
 						echo $this->image_lib->display_errors();
-				}	
-				$this->image_lib->clear();
+				}else{
+					$this->image_lib->clear();
+					$config=array();
+
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $uploadedImage['full_path'];
+
+
+                switch($imgdata['Orientation']) {
+                    case 3:
+                        $config['rotation_angle']='180';
+                        break;
+                    case 6:
+                        $config['rotation_angle']='270';
+                        break;
+                    case 8:
+                        $config['rotation_angle']='90';
+                        break;
+                }
+
+                $this->image_lib->initialize($config); 
+                $this->image_lib->rotate();
+			}
 				
 				// print_r($uploadedImage);
 				// exit();

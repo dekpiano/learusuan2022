@@ -41,13 +41,17 @@ label {
                                     <div class="row mb-3">
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก</label>
-                                           <div><?=$stu->recruit_idCard?></div>
-                                           <input hidden type="text" name="recruit_idCard" id="recruit_idCard"
-                                        value="<?=$stu->recruit_idCard;?>">
+                                            <div><?=$stu->recruit_idCard?></div>
+                                            <input hidden type="text" name="recruit_idCard" id="recruit_idCard"
+                                                value="<?=$stu->recruit_idCard;?>">
                                         </div>
                                         <div class="col-md-4 ">
                                             <label for="recruit_idCard">ประจำปีการศึกษา</label>
                                             <div><?=$stu->recruit_year?></div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <label for="recruit_idCard">ประเภทการสมัคร</label>
+                                            <div><?=$stu->recruit_category?></div>
                                         </div>
                                     </div>
                                     <hr>
@@ -334,7 +338,8 @@ label {
                                                 สามารถใส่ในภายหลังในการตรวจสอบได้)</small></h4>
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
-                                                <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1)</label>
+                                                <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1)
+                                                    ด้านหน้า</label>
                                                 <input type="file" class="form-control" id="recruit_certificateEdu"
                                                     name="recruit_certificateEdu" placeholder="">
                                                 <div class="invalid-feedback">
@@ -344,6 +349,20 @@ label {
                                                     src="<?php echo  @$stu->recruit_certificateEdu == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificate/'.$stu->recruit_certificateEdu; ?>"
                                                     alt="" />
                                             </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="recruit_certificateEduB">ใบรับรองผลการเรียน (ปพ.1)
+                                                    ด้านหลัง</label>
+                                                <input type="file" class="form-control" id="recruit_certificateEduB"
+                                                    name="recruit_certificateEduB" placeholder="">
+                                                <div class="invalid-feedback">
+                                                    Name on card is required
+                                                </div>
+                                                <img id="blah" class="img-fluid"
+                                                    src="<?php echo  @$stu->recruit_certificateEduB == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificateB/'.$stu->recruit_certificateEduB; ?>"
+                                                    alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_copyidCard">สำเนาบัตรปะชาชน</label>
                                                 <input type="file" class="form-control" id="recruit_copyidCard"
@@ -381,8 +400,13 @@ label {
                                             ยืนยันฉันไม่ใช่โปรแกรมอัตโนมัติ
                                         </div>
                                     </center>
+                                    <?php if($stu->recruit_status == 'ผ่านการตรวจสอบ'): ?>
+                                    <a class="mt-3 btn btn-primary btn-lg btn-block disabled"  role="button" aria-disabled="true"
+                                        >คุณผ่านการตรวจสอบแล้ว ไม่สามารถแก้ไขได้ ถ้าจะแก้ไขติดต่อผู้ดูแลระบบได้ที่ เพจ Facebook โรงเรียน</a>
+                                    <?php else : ?>
                                     <button class="mt-3 btn btn-primary btn-lg btn-block"
                                         type="submit">ยืนยันการแก้ไขสมัครเรียน</button>
+                                    <?php endif; ?>
                                 </form>
                             </div>
                         </div>

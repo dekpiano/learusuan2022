@@ -28,6 +28,21 @@ $("#recruit_certificateEdu").change(function() {
     readURL_certificateEdu(this);
 });
 
+function readURL_certificateEduB(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#show_certificateEduB').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+}
+$("#recruit_certificateEduB").change(function() {
+    readURL_certificateEduB(this);
+});
+
 function readURL_copyidCard(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

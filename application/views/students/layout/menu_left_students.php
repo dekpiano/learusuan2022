@@ -1,7 +1,10 @@
 <nav class="side-navbar">
     <!-- Sidebar Header-->
     <div class="sidebar-header d-flex align-items-center">
-        <div class="avatar"><i class="fas fa-user fa-3x"></i></div>
+        <div class="avatar">
+        <!-- <i class="fas fa-user fa-3x"></i> -->
+        <img src="<?=base_url('uploads/recruitstudent/m'.$chk_stu[0]->recruit_regLevel.'/img/'.$chk_stu[0]->recruit_img)?>" alt="" class="img-fluid">
+        </div>
         <div class="title">
             <h1 class="h4"><?php echo $this->session->userdata('fullname');?></h1>
             <!-- <p>Web Designer</p> -->

@@ -11,7 +11,7 @@ label {
         <h2 class="no-margin-bottom">
             <img src="https://skj.ac.th/uploads/logo/LogoSKJ_4.png" alt="logoSKJ" class="img-fluid"
                 style="width: 64px;">
-            ระบบรับสมัครนักเรียน สวนกุหลาบ ฯ จิรประวัติ นครสวรรค์
+            ระบบรับสมัครนักเรียน เข้าเรียนโรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์
         </h2>
     </div>
 </header>
@@ -55,8 +55,8 @@ label {
                                     </div>
                                     <div class="col-md-4 mb-3 col-lg-2 ">
                                         <label for="">ประเภทสมัครเรียน <span class="text-red">*</span> </label>
-                                        <input type="text" class="form-control" id=""
-                                            value="รอบ<?=$switch[0]->onoff_category;?>" readonly>
+                                        <input type="text" class="form-control" id="recruit_category" name="recruit_category"
+                                            value="<?=$switch[0]->onoff_category;?>" readonly>
 
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ label {
                                         <label for="recruit_idCard">เลขประจำตัวประชาชน 13 หลัก <span
                                                 class="text-red">*</span> </label>
                                         <input type="text" class="form-control" id="recruit_idCard"
-                                            name="recruit_idCard" required data-inputmask="'mask': '9-9999-99999-99-9'"
+                                            name="recruit_idCard" required data-inputmask="'mask': '9-9999-99999-99-9'" 
                                             data-toggle="tooltip" data-placement="top"
                                             title="หมายเลขประชาชนของนักเรียน">
                                         <div class="invalid-feedback">
@@ -303,7 +303,8 @@ label {
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="recruit_oldSchool">จบการศึกษาจากโรงเรียน <span
-                                                class="text-red">*</span> <small>ไม่ต้องพิมพ์คำว่า "โรงเรียน"</small> </label>
+                                                class="text-red">*</span> <small>ไม่ต้องพิมพ์คำว่า "โรงเรียน"</small>
+                                        </label>
                                         <input type="text" class="form-control" id="recruit_oldSchool"
                                             name="recruit_oldSchool" placeholder required data-toggle="tooltip"
                                             data-placement="top" title="จบการศึกษาจากโรงเรียน">
@@ -400,28 +401,47 @@ label {
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1) </label>
+                                        <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1) <u>ด้านหน้า</u> <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p1.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a>  </label>
                                         <input type="file" class="form-control" id="recruit_certificateEdu"
                                             name="recruit_certificateEdu" placeholder="">
                                         <img id="show_certificateEdu" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
-                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1)
+                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1)  <u>ด้านหน้า</u>
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_copyidCard">สำเนาบัตรปะชาชน </label>
+                                        <label for="recruit_certificateEduB">ใบรับรองผลการเรียน (ปพ.1) <u>ด้านหลัง</u>  <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p2.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
+                                        <input type="file" class="form-control" id="recruit_certificateEduB"
+                                            name="recruit_certificateEduB" placeholder="">
+                                        <img id="show_certificateEduB" class="img-fluid" src="# " alt="">
+                                        <div class="invalid-feedback">
+                                            กรุณาเลือกไฟล์ ใบรับรองผลการเรียน (ปพ.1)  <u>ด้านหลัง</u>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="recruit_copyidCard">สำเนาบัตรปะชาชน <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/idcard.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                         <input type="file" class="form-control" id="recruit_copyidCard"
                                             name="recruit_copyidCard" placeholder="">
-                                            <img id="show_copyidCard" class="img-fluid" src="# " alt="">
+                                        <img id="show_copyidCard" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
                                             กรุณาเลือกไฟล์ สำเนาบัตรปะชาชน
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน</label>
+                                        <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/thome.png')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                         <input type="file" class="form-control" id="recruit_copyAddress"
                                             name="recruit_copyAddress" placeholder="">
-                                            <img id="show_copyAddress" class="img-fluid" src="# " alt="">
+                                        <img id="show_copyAddress" class="img-fluid" src="# " alt="">
                                         <div class="invalid-feedback">
                                             กรุณาเลือกไฟล์ สำเนาทะเบียนบ้าน
                                         </div>

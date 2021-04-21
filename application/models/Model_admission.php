@@ -24,7 +24,7 @@ class Model_admission extends CI_Model
 		return 	$this->db->delete('tb_recruitstudent');
 	}
 
-	function getSchool($postData){
+	public function getSchool($postData){
 		$db_schollall = $this->load->database('schoolall', TRUE);
 
 		$response = array();
