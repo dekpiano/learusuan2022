@@ -19,9 +19,6 @@ class Control_login extends CI_Controller {
 
 	public function validlogin()
 	{
-		
-	
-
 			$username = $this->input->post('username');
 			$password = md5(md5($this->input->post('password')));
 
@@ -31,11 +28,11 @@ class Control_login extends CI_Controller {
 				{
 					$result = $this->Model_login->fetch_user_login($username, $password);
 					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id ,'user_img' => $result->pers_img));
-
+					$year = $this->db->get('tb_openyear')->row();
 					set_cookie('username',$username,'3600'); 
 					set_cookie('password',$password,'3600');
 
-					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id,'user_img' => $result->pers_img));
+					$this->session->set_userdata(array('login_id' => $result->pers_id,'fullname'=> $result->pers_prefix.$result->pers_firstname.' '.$result->pers_lastname,'status'=> 'user','permission_menu' => $result->pers_workother_id,'user_img' => $result->pers_img,'year'=>$year->openyear_year));
 
 					redirect('admin/admission/'.$this->input->post('openyear_year')); 
 				}

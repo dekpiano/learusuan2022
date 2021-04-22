@@ -47,7 +47,7 @@
                              <div class="form-group">
                                  <label>Password</label>
                                  <input type="password" id="password" name="password" placeholder="Password"
-                                     class="form-control">
+                                  class="form-control">
                              </div>
                              <div class="form-group">
                                  <input type="submit" value="Signin" class="btn btn-primary">
@@ -57,8 +57,7 @@
                  </div>
              </div>
          </div>
-
-         </html>
+    </html>
 
          <!-- JavaScript files-->
          <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>

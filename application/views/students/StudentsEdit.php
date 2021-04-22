@@ -339,49 +339,57 @@ label {
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_certificateEdu">ใบรับรองผลการเรียน (ปพ.1)
-                                                    ด้านหน้า</label>
+                                                    ด้านหน้า <a href="#" 
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p1.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_certificateEdu"
                                                     name="recruit_certificateEdu" placeholder="">
                                                 <div class="invalid-feedback">
                                                     Name on card is required
                                                 </div>
-                                                <img id="blah" class="img-fluid"
+                                                <img id="show_certificateEdu" class="img-fluid"
                                                     src="<?php echo  @$stu->recruit_certificateEdu == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificate/'.$stu->recruit_certificateEdu; ?>"
                                                     alt="" />
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label for="recruit_certificateEduB">ใบรับรองผลการเรียน (ปพ.1)
-                                                    ด้านหลัง</label>
+                                                    ด้านหลัง <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/p2.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_certificateEduB"
                                                     name="recruit_certificateEduB" placeholder="">
                                                 <div class="invalid-feedback">
                                                     Name on card is required
                                                 </div>
-                                                <img id="blah" class="img-fluid"
+                                                <img id="show_certificateEduB" class="img-fluid"
                                                     src="<?php echo  @$stu->recruit_certificateEduB == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/certificateB/'.$stu->recruit_certificateEduB; ?>"
                                                     alt="" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
-                                                <label for="recruit_copyidCard">สำเนาบัตรปะชาชน</label>
+                                                <label for="recruit_copyidCard">สำเนาบัตรปะชาชน <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/idcard.jpg')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_copyidCard"
                                                     name="recruit_copyidCard" placeholder="">
                                                 <div class="invalid-feedback">
                                                     Credit card number is required
                                                 </div>
-                                                <img id="blah" class="img-fluid"
+                                                <img id="show_copyidCard" class="img-fluid"
                                                     src="<?php echo  @$stu->recruit_copyidCard == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/copyidCard/'.$stu->recruit_copyidCard; ?>"
                                                     alt="" />
                                             </div>
                                             <div class="col-md-4 mb-3">
-                                                <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน</label>
+                                                <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน <a href="#"
+                                            data-toggle="tooltip" data-placement="top" data-html="true"
+                                            title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/thome.png')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
                                                 <input type="file" class="form-control" id="recruit_copyAddress"
                                                     name="recruit_copyAddress" placeholder="">
                                                 <div class="invalid-feedback">
                                                     Credit card number is required
                                                 </div>
-                                                <img id="blah" class="img-fluid"
+                                                <img id="show_copyAddress" class="img-fluid"
                                                     src="<?php echo  @$stu->recruit_copyAddress == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/copyAddress/'.$stu->recruit_copyAddress; ?>"
                                                     alt="" />
                                             </div>

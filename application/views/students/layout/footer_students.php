@@ -26,7 +26,8 @@
          <!-- <script src="<?=base_url()?>asset/js/AutoProvince-students.js"></script> -->
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
-
+         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
+         
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
 Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");

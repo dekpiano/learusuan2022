@@ -27,11 +27,12 @@
         <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
-         <!-- <script src="<?=base_url()?>asset/js/AutoProvince-students.js"></script> -->
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
-         <script src="<?=base_url()?>asset/js/skj.js?v=1001"></script>
+         <script src="<?=base_url()?>asset/js/skj.js?v=1002"></script>
+         <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
 
+         <?php $this->load->view('admin/chart/report_bar.php'); ?>
          <?php  if($this->session->flashdata('msg') == 'NO' ):?>
          <script>
 Swal.fire("แจ้งเตือน", "<?=$this->session->flashdata('messge');?>", "<?=$this->session->flashdata('status');?>");

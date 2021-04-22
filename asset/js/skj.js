@@ -25,7 +25,7 @@ $(document).on('change', '#switch', function() {
             onoff_comment: comment
         },
         success: function(data) {
-            swal("แจ้งเตือน", "คุณได้ทำการ" + data + "การรับสมัครนักเรียนแล้ว!", "warning")
+            Swal.fire("แจ้งเตือน", "คุณได้ทำการ" + data + "การรับสมัครนักเรียนแล้ว!", "warning")
         }
     });
 });
@@ -41,7 +41,7 @@ $(document).on('change', '#switch_sys', function() {
         },
         success: function(data) {
             //alert(data);
-            swal("แจ้งเตือน", "คุณได้ทำการ" + data + "ระบบ!", "warning")
+            Swal.fire("แจ้งเตือน", "คุณได้ทำการ" + data + "ระบบ!", "warning")
         }
     });
 });
@@ -55,7 +55,7 @@ $(document).on('change', '#switch_year', function() {
             mode: dataYear
         },
         success: function(data) {
-            swal({
+            Swal.fire({
                     title: "แจ้งเตือน",
                     text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
                     icon: "warning"
@@ -78,7 +78,7 @@ $(document).on('change', '#category', function() {
             mode: category
         },
         success: function(data) {
-            swal({
+            Swal.fire({
                     title: "แจ้งเตือน",
                     text: "คุณได้ทำการเปลี่ยนประเภทการรับสมัครเป็นรอบ" + data,
                     icon: "warning"
@@ -96,7 +96,7 @@ $(document).on('change', '#category', function() {
 $(document).on('change', '#select_year', function() {
     var dataYear = $(this).val();
 
-    swal({
+    Swal.fire({
             title: "แจ้งเตือน",
             text: "คุณได้ทำการเปลี่ยนปีการศึกษาสำเร็จ",
             icon: "warning"

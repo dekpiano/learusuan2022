@@ -343,7 +343,7 @@ label {
                                             <div class="invalid-feedback">
                                                 Name on card is required
                                             </div>
-                                            <img id="blah" class="img-fluid"
+                                            <img id="show_certificateEdu" class="img-fluid"
                                                 src="<?php echo  @$recruit[0]->recruit_certificateEdu == '' ? '#' : base_url().'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/certificate/'.$recruit[0]->recruit_certificateEdu; ?>"
                                                 alt="" />
                                         </div>
@@ -354,7 +354,7 @@ label {
                                             <div class="invalid-feedback">
                                                 Name on card is required
                                             </div>
-                                            <img id="blah" class="img-fluid"
+                                            <img id="show_certificateEduB" class="img-fluid"
                                                 src="<?php echo  @$recruit[0]->recruit_certificateEduB == '' ? '#' : base_url().'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/certificateB/'.$recruit[0]->recruit_certificateEduB; ?>"
                                                 alt="" />
                                         </div>
@@ -367,7 +367,7 @@ label {
                                             <div class="invalid-feedback">
                                                 Credit card number is required
                                             </div>
-                                            <img id="blah" class="img-fluid"
+                                            <img id="show_copyidCard" class="img-fluid"
                                                 src="<?php echo  @$recruit[0]->recruit_copyidCard == '' ? '#' : base_url().'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/copyidCard/'.$recruit[0]->recruit_copyidCard; ?>"
                                                 alt="" />
                                         </div>
@@ -378,7 +378,7 @@ label {
                                             <div class="invalid-feedback">
                                                 Credit card number is required
                                             </div>
-                                            <img id="blah" class="img-fluid"
+                                            <img id="show_copyAddress" class="img-fluid"
                                                 src="<?php echo  @$recruit[0]->recruit_copyAddress == '' ? '#' : base_url().'uploads/recruitstudent/m'.$recruit[0]->recruit_regLevel.'/copyAddress/'.$recruit[0]->recruit_copyAddress; ?>"
                                                 alt="" />
                                         </div>
