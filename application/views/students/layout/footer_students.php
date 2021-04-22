@@ -54,7 +54,7 @@ $(document).ready(function() {
         source: function(request, response) {
             // Fetch data
             $.ajax({
-                url: "<?php echo base_url('control_admission/SchoolList'); ?>",
+                url: "<?php echo base_url('control_students/SchoolList'); ?>",
                 type: 'post',
                 dataType: "json",
                 data: {

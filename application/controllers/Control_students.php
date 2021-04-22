@@ -502,4 +502,14 @@ class Control_students extends CI_Controller {
         //$mpdf->Output('arjun.pdf','D'); // it downloads the file into the user system, with give name
     }
 
+	public function SchoolList(){
+		// POST data
+		$postData = $this->input->post();
+	
+		// Get data
+		$data = $this->model_admission->getSchool($postData);
+	
+		echo json_encode($data);
+	  }
+
 }

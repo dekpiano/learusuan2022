@@ -144,7 +144,7 @@ $("#recruit_oldSchool").autocomplete({
     source: function(request, response) {
         // Fetch data
         $.ajax({
-            url: "../../control_admission/SchoolList",
+            url: "<?php echo base_url('admin/control_admin_admission/SchoolList'); ?>",
             type: 'post',
             dataType: "json",
             data: {

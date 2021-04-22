@@ -7,7 +7,7 @@ class Control_admin_admission extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		
+		$this->load->model('model_admission');
 		$this->load->model('admin/admin_model_admission');
 		if ($this->session->userdata('fullname') == '') {
 			redirect('login','refresh');
@@ -629,6 +629,17 @@ class Control_admin_admission extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
+
+
+	public function SchoolList(){
+		// POST data
+		$postData = $this->input->post();
+	
+		// Get data
+		$data = $this->model_admission->getSchool($postData);
+	
+		echo json_encode($data);
+	  }
 }
 
 ?>
