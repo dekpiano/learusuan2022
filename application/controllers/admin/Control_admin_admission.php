@@ -188,10 +188,14 @@ class Control_admin_admission extends CI_Controller {
 		$data = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
 		//print_r($data[0]->recruit_id);
 		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/img/'.$data[0]->recruit_img);
+		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/certificate/'.$data[0]->recruit_certificateEdu);
+		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/certificateB/'.$data[0]->recruit_certificateEduB);
+		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/copyAddress/'.$data[0]->recruit_copyAddress);
+		@unlink("./uploads/recruitstudent/m".$data[0]->recruit_regLevel.'/copyidCard/'.$data[0]->recruit_copyidCard);
 
 		if($this->admin_model_admission->recruitstudent_delete($id) == 1){
 			$this->session->set_flashdata(array('msg'=> 'ok','messge' => 'ลบข้อมูลสำเร็จ'));
-			redirect('admin/admission', 'refresh');
+			redirect('admin/admission/'.$this->session->userdata('year'), 'refresh');
 		}
 	}
 
