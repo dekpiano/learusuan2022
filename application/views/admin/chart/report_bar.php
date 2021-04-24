@@ -3,7 +3,7 @@ var ctxB = document.getElementById("barChart1").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านดนตรี ศิลปะ การแสดง", "ด้านการงานอาชีพ"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา","กีฬา", "ด้านการงานอาชีพ", "ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_1;?>,
             barPercentage: 0.5,
@@ -34,7 +34,7 @@ var ctxB = document.getElementById("barChart4").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านดนตรี ศิลปะ การแสดง", "ด้านการงานอาชีพ"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา","กีฬา", "ด้านการงานอาชีพ", "ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_4;?>,
             backgroundColor: "rgba(0, 97, 242, 1)",
@@ -62,7 +62,7 @@ var ctxB = document.getElementById("barChartAll").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'doughnut',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านดนตรี ศิลปะ การแสดง", "ด้านการงานอาชีพ"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา","กีฬา", "ด้านการงานอาชีพ", "ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_All;?>,
             backgroundColor: [

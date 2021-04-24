@@ -56,8 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'control_login/login_main';
 
 
-// ติดต่อ
-$route['CloseSystem'] = 'control_login/close_system';
+// Main
+$route['Statistic'] = 'control_admission/AllStatistic';
 
 $route['RegStudent/(:num)'] = 'control_admission/reg_student/$1';
 
