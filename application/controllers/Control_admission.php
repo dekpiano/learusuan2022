@@ -68,8 +68,10 @@ class Control_admission extends CI_Controller {
 	{
 		//redirect('CloseStudent'); 
 		$data = $this->dataAll();
-		$data['title'] = 'สมัครเรียนใหม่';
-		$data['description'] = 'สมัครเรียนใหม่';
+		$data['title'] = "หน้าสมัครเรียนออนไลน์";
+		$data['description'] = "แบบฟอร์กรอกข้อมูลสำหรับนักเรียน";
+		$data['banner'] = base_url()."asset/img/banner-admission64.png";
+		$data['url'] = "welcome";
 
 		
 		//
@@ -395,9 +397,10 @@ class Control_admission extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
-		$data['title'] = "รับสมัครนักเรียนปีการศึกษา".$data['checkYear'][0]->openyear_year;
-		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 28 เมษายน 2564";
-
+		$data['title'] = "สถิติการรับสมัครนักเรียน".$data['checkYear'][0]->openyear_year;
+		$data['description'] = "ดูสถิติแบบเรียลไทม์";
+		$data['banner'] = base_url()."asset/img/Statistics.png";
+		$data['url'] = "Statistic";
 	
 		//echo '<pre>'; print_r($data); exit();
 		$this->load->view('layout/header.php',$data);

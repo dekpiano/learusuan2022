@@ -26,9 +26,10 @@ class Welcome extends CI_Controller {
 		$data['switch'] = $this->db->get("tb_onoffsys")->result();
 
 		$db2 = $this->load->database('skjmain', TRUE);	
-		$data['title'] = "รับสมัครนักเรียนปีการศึกษา".$data['checkYear'][0]->openyear_year;
-		$data['description'] = "รับสมัครนักเรียนวันนี้ จนถึง 25 พฤษภาคม 2563";
-		
+		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
+		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ตั้งวันนี้ จนถึง 28 เมษายน 2564";
+		$data['banner'] = base_url()."asset/img/banner-admission64.png";
+		$data['url'] = "welcome";
 		
 
 		$this->load->view('layout/header.php',$data);

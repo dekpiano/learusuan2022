@@ -4,18 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</title>
+    <title><?=$title;?> | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์</title>
     <meta name="description"
-        content="รับสมัครนักเรียนใหม่ ม.1 และ ม.4">
+        content="<?=$description;?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
 
-    <meta property="og:url" content="http://admission.skj.ac.th/welcome" />
+    <meta property="og:url" content="http://admission.skj.ac.th/<?=$url;?>" />
     <meta property="og:type" content="Education" />
-    <meta property="og:title" content="ระบบรับสมัครนักเรียน | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์" />
+    <meta property="og:title" content="<?=$title;?> | โรงเรียนสวนกุหลาบวิทยาลัย (จิรประวัติ) นครสวรรค์" />
     <meta property="og:description"
-        content="รับสมัครนักเรียนใหม่ ม.1 และ ม.4" />
-    <meta property="og:image" content="<?=base_url();?>asset/img/banner-admission64.png" />
+        content="<?=$description;?>" />
+    <meta property="og:image" content="<?=$banner;?>" />
+
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?=base_url();?>asset/vendor/bootstrap/css/bootstrap.min.css">
