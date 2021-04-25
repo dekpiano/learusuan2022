@@ -17,27 +17,209 @@
             <p class="lead">ประจำปีการศึกษา <?=$checkYear[0]->openyear_year;?></p>
             <p class="lead">Update Time <?php echo date('d-m-Y H:i:s'); ?></p>
         </div>
-        <section class="dashboard-counts ">
+        <section class="">
             <div class="container-fluid">
-                <h3>ประเภท ทั่วไป</h3>
+                <h3 class="text-center">ประเภท ทั่วไป</h3>
                 <div class="row ">
-                    <div class="col-md-4 ">
-                        <div class="card">
-                            <canvas id="barChart1"></canvas>
-                            <p class="text-center h5">รวม <?=array_sum($sum_1);?> คน</p>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="line-chart-example card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">สมัครเรียนชั้นมัธยมศึกษาปีที่ 1</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart1" style="display: block; width: 344px; height: 172px;" width="1032"
+                                    height="516" class="chartjs-render-monitor"></canvas>
+                                <p class="text-center h5">รวม <?=array_sum($sum_1);?> คน</p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="line-chart-example card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">สมัครเรียนชั้นมัธยมศึกษาปีที่ 4</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart4" style="display: block; width: 344px; height: 172px;" width="1032"
+                                    height="516" class="chartjs-render-monitor"></canvas>
+                                <p class="text-center h5">รวม <?=array_sum($sum_4);?> คน</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="line-chart-example card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">รวมทุกประเภททั้งหมด</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChartAll" style="display: block; width: 344px; height: 172px;"
+                                    width="1032" height="516" class="chartjs-render-monitor"></canvas>
+                                <p class="text-center h5">รวม <?=array_sum($sum_all);?> คน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    </div>
-                    <div class="col-md-4 ">
+
+                <div class="row ">
+                    <div class="col-lg-6 col-md-12">
                         <div class="card">
-                            <canvas id="barChart4"></canvas>
-                            <p class="text-center h5">รวม <?=array_sum($sum_4);?> คน</p>
+                            <div class="card-body">
+                                <h2>สถิติรายวัน ม.1</h2>
+                                <p>วันที่ 24 - 28 เมษยน 2564</p>
+                                <div class="table-responsive">
+                                    <table id="" class="table table-bordered T_m1">
+                                        <thead class="bg-primary text-white">
+                                            <tr>
+                                                <th>วันที่</th>
+                                                <th>ด้านวิชาการ</th>
+                                                <th>ด้านภาษา</th>
+                                                <th>ด้านการงานอาชีพ</th>
+                                                <th>ด้านกีฬา</th>
+                                                <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                $datat = array('2021-04-24','2021-04-25','2021-04-26','2021-04-27','2021-04-28'); 
+                                
+                                foreach($datat as $v_datat) :
+                                ?>
+                                            <tr>
+                                                <td style="width:150px">
+                                                    <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat))?>
+                                                </td>
+
+                                                <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
+                                       
+                                        foreach($sum_date as $m1) {
+                                            
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 1 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub11 = $sub11 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 1 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub12 = $sub12 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 1 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub13 = $sub13 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 1 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub14 = $sub14 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 1 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub15 = $sub15 + 1;
+                                                }
+                                        } 
+
+                                        ?>
+                                                <td><?=$sub11;?></td>
+                                                <td><?=$sub12;?></td>
+                                                <td><?=$sub13;?></td>
+                                                <td><?=$sub14;?></td>
+                                                <td><?=$sub15;?></td>
+
+                                            </tr>
+                                            <?php endforeach; ?>
+
+                                        </tbody>
+                                        <tfoot class="bg-light">
+                                            <tr>
+                                                <td>รวม</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4 ">
+
+                    <div class="col-lg-6 col-md-12">
                         <div class="card">
-                            <canvas id="barChartAll"></canvas>
-                            <p class="text-center h5">รวม <?=array_sum($sum_all);?> คน</p>
+                            <div class="card-body">
+                                <h2>สถิติรายวัน ม.4</h2>
+                                <p>วันที่ 24 - 28 เมษยน 2564</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered T_m4">
+                                        <thead class="bg-primary text-white">
+                                            <tr>
+                                                <th>วันที่</th>
+                                                <th>ด้านวิชาการ</th>
+                                                <th>ด้านภาษา</th>
+                                                <th>ด้านการงานอาชีพ</th>
+                                                <th>ด้านกีฬา</th>
+                                                <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                $datat = array('2021-04-24','2021-04-25','2021-04-26','2021-04-27','2021-04-28'); 
+
+                                foreach($datat as $v_datat) :
+                                ?>
+                                            <tr>
+                                                <td style="width:150px">
+                                                    <?=$this->datethai->thai_date_fullmonth(strtotime($v_datat))?>
+                                                </td>
+
+                                                <?php  $sub11 = 0; $sub12 = 0; $sub13 = 0; $sub14 = 0; $sub15 = 0;
+                                       
+                                        foreach($sum_date as $m1) {
+                                            
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 4 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านวิชาการ (Science Match and Technology Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub11 = $sub11 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 4 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านภาษา (Chinese English Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub12 = $sub12 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 4 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศทางด้านดนตรี ศิลปะ การแสดง (Preforming Art Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub13 = $sub13 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 4 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศด้านกีฬา (Sport Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub14 = $sub14 + 1;
+                                                }
+                                                if($m1->recruit_date == $v_datat && $m1->recruit_regLevel == 4 && $m1->recruit_tpyeRoom == "ห้องเรียนความเป็นเลิศด้านการงานอาชีพ (Career Program)"){
+                                                    //print_r($m1->recruit_date);
+                                                    $sub15 = $sub15 + 1;
+                                                }
+                                        } 
+
+                                        ?>
+                                                <td><?=$sub11;?></td>
+                                                <td><?=$sub12;?></td>
+                                                <td><?=$sub13;?></td>
+                                                <td><?=$sub14;?></td>
+                                                <td><?=$sub15;?></td>
+
+                                            </tr>
+                                            <?php endforeach; ?>
+
+                                        </tbody>
+                                        <tfoot class="bg-light">
+                                            <tr>
+                                                <td>รวม</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

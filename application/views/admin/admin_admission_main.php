@@ -83,6 +83,7 @@
                                 <thead>
                                     <tr>
                                         <th>ประเภท</th>
+                                        <th>วันที่สมัคร</th>
                                         <th>ลำดับ</th>
                                         <th>รูปภาพ</th>
                                         <th>ชื่อผู้<?=$title;?></th>
@@ -99,6 +100,7 @@
                                 <?php foreach ($recruit as $key => $v_recruit) : ?>
                                 <tr>
                                     <td><?=$v_recruit->recruit_category;?></td>
+                                    <td><?=date('d-m-Y',strtotime($v_recruit->recruit_date));?></td>
                                     <td><?=sprintf("%04d",$v_recruit->recruit_id);?></td>
                                     <td><img style="width: 100px"
                                             src="<?=base_url('uploads/recruitstudent/m'.$v_recruit->recruit_regLevel.'/img/'.$v_recruit->recruit_img)?>">

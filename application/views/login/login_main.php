@@ -65,11 +65,11 @@
                                     </div>
                                     <div class="form-group">
                                         <input id="login-password" type="password" name="recruit_birthday"
-                                            id="recruit_birthday" required data-msg=" ระบุวันเดือนปีเกิด"
+                                            id="recruit_birthday" required data-msg=" ระบุวัน-เดือน-ปีเกิด"
                                             class="input-material" >
                                         <label for="login-password" class="label-material">วันเดือนปี เกิด (Ex. 09-07-2534)</label>
                                         <small class="text-muted">ตัวอย่าง เกิดวันที่ 9 กรกฏาคม 2534 กรอกดังนี้
-                                            09-07-2534</small>
+                                            09-07-2534 <br> <b>(อย่าลืมใส่เครื่องหมายขีด (-) ระหว่างวันเกิด)</b></small>
                                     </div><button id="login" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
                                     <hr>
                                     <div class=" text-center">

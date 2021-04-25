@@ -3,7 +3,7 @@ var ctxB = document.getElementById("barChart1").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา","กีฬา", "ด้านการงานอาชีพ", "ด้านดนตรี ศิลปะ การแสดง"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา","ด้านการงานอาชีพ","ด้านกีฬา",  "ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_1;?>,
             barPercentage: 0.5,
@@ -24,10 +24,7 @@ var myBarChart = new Chart(ctxB, {
             }]
         },
         responsive: true,
-        title: {
-            display: true,
-            text: 'สมัครเรียนชั้นมัธยมศึกษาปีที่ 1'
-        }
+        
     }
 });
 
@@ -35,7 +32,7 @@ var ctxB = document.getElementById("barChart4").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านการงานอาชีพ","กีฬา", "ด้านดนตรี ศิลปะ การแสดง"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านการงานอาชีพ","ด้านกีฬา", "ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_4;?>,
             backgroundColor: "rgba(0, 97, 242, 1)",
@@ -52,11 +49,8 @@ var myBarChart = new Chart(ctxB, {
                     beginAtZero: true
                 }
             }]
-        },
-        title: {
-            display: true,
-            text: 'สมัครเรียนชั้นมัธยมศึกษาปีที่ 4'
         }
+       
     }
 });
 
@@ -89,11 +83,8 @@ var myBarChart = new Chart(ctxB, {
                     beginAtZero: true
                 }
             }]
-        },
-        title: {
-            display: true,
-            text: 'รวมรอบทั่วไปทั้งหมด'
         }
+       
     }
 });
 
@@ -204,7 +195,7 @@ var ctxB = document.getElementById("barChart1_all").getContext('2d');
 var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ["ด้านวิชาการ", "ด้านภาษา","กีฬา", "ด้านการงานอาชีพ", "ด้านดนตรี ศิลปะ การแสดง"],
+        labels: ["ด้านวิชาการ", "ด้านภาษา", "ด้านการงานอาชีพ", "กีฬา","ด้านดนตรี ศิลปะ การแสดง"],
         datasets: [{
             data: <?=$chart_1_all;?>,
             barPercentage: 0.5,

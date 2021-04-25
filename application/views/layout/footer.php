@@ -47,7 +47,7 @@
                              <div class="form-group">
                                  <label>Password</label>
                                  <input type="password" id="password" name="password" placeholder="Password"
-                                  class="form-control">
+                                     class="form-control">
                              </div>
                              <div class="form-group">
                                  <input type="submit" value="Signin" class="btn btn-primary">
@@ -57,12 +57,13 @@
                  </div>
              </div>
          </div>
-    </html>
+
+         </html>
 
          <!-- JavaScript files-->
          <script src="<?=base_url();?>asset/vendor/jquery/jquery.min.js"></script>
-           <!-- jQuery UI -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+         <!-- jQuery UI -->
+         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/popper.js/umd/popper.min.js"> </script>
          <script src="<?=base_url();?>asset/vendor/bootstrap/js/bootstrap.min.js"></script>
          <script src="<?=base_url();?>asset/vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -77,8 +78,8 @@
          <script src="<?=base_url()?>asset/js/jquery.inputmask.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.all.min.js"></script>
          <script src="<?=base_url()?>asset/js/ShowPerviewImg.js?v=2"></script>
-         
-       
+
+
 
          <!-- Histats.com  START  (aync)-->
          <script type="text/javascript">
@@ -155,5 +156,27 @@ $('body').AutoProvince({
         });
     }, false);
 })();
-         </script>
 
+
+$('.T_m1 thead th').each(function(i) {
+    var total = 0;
+            $('.T_m1 tr').each(function() {
+                var value = parseInt($('td', this).eq(i+1).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            $('.T_m1 tfoot td').eq(i+1).text(total);
+});
+
+$('.T_m4 thead th').each(function(i) {
+    var total = 0;
+            $('.T_m4 tr').each(function() {
+                var value = parseInt($('td', this).eq(i+1).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            $('.T_m4 tfoot td').eq(i+1).text(total);
+});
+         </script>

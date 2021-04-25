@@ -64,7 +64,7 @@ class Control_login extends CI_Controller {
 			$result = $this->Model_login->Student_Login($this->input->post('recruit_idCard'),$brith);
 	
 				if (count($result) <= 0 ) {
-					$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'ไม่มีข้อมูลในระบบ หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
+					$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'เลขบัตรประชาชนหรือวันเกิดไม่ถูกต้อง หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
 					redirect('login');
 					}else{	
 						$this->session->set_userdata(array('loginStudentID' => $result[0]->recruit_id,'fullname'=> $result[0]->recruit_prefix.$result[0]->recruit_firstName.' '.$result[0]->recruit_lastName));

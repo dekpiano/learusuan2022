@@ -449,7 +449,17 @@ class Control_admission extends CI_Controller {
 			$data['chart_1'] = json_encode(array_column($chart_re1,'C_count'));	
 			$data['chart_4'] = json_encode(array_column($chart_re4,'C_count'));
 			$data['chart_All'] = json_encode(array_column($chart_All,'C_count'));
-			//echo '<pre>';print_r($data['chart_All']); exit();
+
+
+			$data['sum_date'] = $this->db->select('
+									recruit_regLevel,recruit_year, 
+									recruit_tpyeRoom,recruit_date')
+									->where('recruit_category','ปกติ')
+							->get('tb_recruitstudent')
+							->result();
+							
+						
+			//echo '<pre>';print_r($data['sum_date']); exit();
 
 			$chart_re1_cota = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
