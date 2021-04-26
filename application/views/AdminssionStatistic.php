@@ -17,7 +17,56 @@
             <p class="lead">ประจำปีการศึกษา <?=$checkYear[0]->openyear_year;?></p>
             <p class="lead">Update Time <?php echo date('d-m-Y H:i:s'); ?></p>
         </div>
+        <section class="dashboard-counts no-padding-bottom">
+            <div class="container-fluid">
+                <div class="row bg-white has-shadow justify-content-center">
+
+                
+                    <!-- Item -->
+                    <div class="col-xl-3 col-sm-6 ">
+                        <div class="item d-flex align-items-center ">
+                            <div class="icon bg-violet"><i class="icon-user"></i></div>
+                            <div class="title"><span>ผู้สมัคร<br>ทั้งหมด</span>
+                                <div class="progress">
+                                    <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="<?=array_sum($sum_all);?>"
+                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                                </div>
+                            </div>
+                            <div class="number"><strong><?=array_sum($sum_all);?></strong></div>
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="item d-flex align-items-center ">
+                            <div class="icon bg-green"><i class="icon-padnote"></i></div>
+                            <div class="title"><span>ผู้สมัคร<br>ผ่านการตรวจสอบ</span>
+                                <div class="progress">
+                                    <div role="progressbar" style="width: 70%; height: 4px;" aria-valuenow="<?=$sum_pass[0]->sumall?>"
+                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                                </div>
+                            </div>
+                            <div class="number"><strong><?=$sum_pass[0]->sumall?></strong></div>
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="item d-flex align-items-center ">
+                            <div class="icon bg-red"><i class="icon-bill"></i></div>
+                            <div class="title"><span>ผู้สมัคร<br>ไม่ผ่านการตรวจสอบ (รอแก้ไข)</span>
+                                <div class="progress">
+                                    <div role="progressbar" style="width: 40%; height: 4px;" aria-valuenow="<?=$sum_NoPass[0]->sumall?>"
+                                        aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                                </div>
+                            </div>
+                            <div class="number"><strong><?=$sum_NoPass[0]->sumall?></strong></div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </section>
         <section class="">
+
             <div class="container-fluid">
                 <h3 class="text-center">ประเภท ทั่วไป</h3>
                 <div class="row ">

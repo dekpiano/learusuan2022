@@ -457,9 +457,23 @@ class Control_admission extends CI_Controller {
 									->where('recruit_category','ปกติ')
 							->get('tb_recruitstudent')
 							->result();
-							
-						
-			//echo '<pre>';print_r($data['sum_date']); exit();
+			// ผ่านการตรวจสอบ	
+			$data['sum_pass'] = $this->db->select('COUNT(recruit_status) AS sumall,
+									recruit_regLevel,recruit_year, 
+									recruit_tpyeRoom,recruit_date,recruit_status')
+									->where('recruit_category','ปกติ')
+									->where('recruit_status','ผ่านการตรวจสอบ')
+							->get('tb_recruitstudent')
+							->result();
+			$data['sum_NoPass'] = $this->db->select('COUNT(recruit_status) AS sumall,
+					recruit_regLevel,recruit_year, 
+					recruit_tpyeRoom,recruit_date,recruit_status')
+					->where('recruit_category','ปกติ')
+					->where('recruit_status !=','ผ่านการตรวจสอบ')
+			->get('tb_recruitstudent')
+			->result();
+
+			//echo '<pre>';print_r($data['sum_NoPass']); exit();
 
 			$chart_re1_cota = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
@@ -496,6 +510,7 @@ class Control_admission extends CI_Controller {
 			$data['chart_1_cota'] = json_encode(array_column($chart_re1_cota,'C_count'));	
 			$data['chart_4_cota'] = json_encode(array_column($chart_re4_cota,'C_count'));
 			$data['chart_All_cota'] = json_encode(array_column($chart_All_cota,'C_count'));
+
 
 
 			$chart_re1_all = $this->db->select('COUNT(recruit_regLevel) AS C_count,
