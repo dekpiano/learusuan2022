@@ -410,8 +410,7 @@ class Control_admission extends CI_Controller {
 	  }
 
 	  public function report_student($year)
-	{		
-	
+	{
 		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
 		tb_recruitstudent.recruit_tpyeRoom')
@@ -422,7 +421,6 @@ class Control_admission extends CI_Controller {
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
-
 			
 			$chart_re4 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 					tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
