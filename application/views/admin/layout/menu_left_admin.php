@@ -14,5 +14,6 @@
     <ul class="list-unstyled">
         <li> <a href="<?=base_url('admin/admission/'.$this->session->userdata('year'));?>"> <i class="far fa-edit"></i> หน้าแรก </a></li>
         <li> <a href="<?=base_url('admin/system/'.$this->session->userdata('year'));?>"> <i class="fas fa-stream"></i> สถานะระบบ </a></li>
+        <li> <a href="<?=base_url('admin/Print/'.$this->session->userdata('year'));?>"> <i class="fas fa-print"></i> พิมพ์ใบสมัคร </a></li>
     </ul>
 </nav>

@@ -76,6 +76,8 @@ $route['Students/Print'] = 'Control_students/PDFForStudent';
 $route['AdminHome'] = 'admin/Control_admin_admission';
 $route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';
 $route['admin/checkData/(:any)'] = 'admin/Control_admin_admission/edit_recruitstudent/$1';
+$route['admin/Print/(:any)'] = 'admin/Control_admin_admission/PagePrint';
+$route['admin/Print/(:any)/(:any)/(:num)'] = 'admin/Control_admin_admission/pdf_type_all/$1/$2/$3';
 
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
