@@ -57,7 +57,7 @@ $route['login'] = 'control_login/login_main';
 
 
 // Main
-$route['Statistic'] = 'control_admission/AllStatistic';
+$route['Statistic'] = 'welcome/AllStatistic';
 
 $route['RegStudent/(:num)'] = 'control_admission/reg_student/$1';
 
@@ -81,6 +81,8 @@ $route['admin/Print/(:any)/(:any)/(:num)'] = 'admin/Control_admin_admission/pdf_
 
 $route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
 $route['admin/admission/add'] = 'admin/control_admin_admission/add';
+
+$route['admin/Statistic/(:any)'] = 'admin/control_admin_admission/statistic_student/$1';
 
 $route['admin/news'] = 'admin/control_admin_news';
 $route['admin/news/add'] = 'admin/control_admin_news/add';

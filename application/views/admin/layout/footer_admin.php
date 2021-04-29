@@ -54,10 +54,9 @@ $('#TB_stu').DataTable({
     dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+        ],
+        "order": [[ 1, "asc" ]]
 });
-//  Google Check
-
 
 function StatusWait(){
     Swal.fire("แจ้งเตือน", "รอการตรวจสอบเอกสาร", "warning")
@@ -175,4 +174,28 @@ $("#recruit_oldSchool").autocomplete({
         return false;
     }
 });
+
+$('.T_m1 thead th').each(function(i) {
+    var total = 0;
+            $('.T_m1 tr').each(function() {
+                var value = parseInt($('td', this).eq(i+1).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            $('.T_m1 tfoot td').eq(i+1).text(total);
+});
+
+$('.T_m4 thead th').each(function(i) {
+    var total = 0;
+            $('.T_m4 tr').each(function() {
+                var value = parseInt($('td', this).eq(i+1).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            $('.T_m4 tfoot td').eq(i+1).text(total);
+});
+     
+     
          </script>

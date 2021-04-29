@@ -122,9 +122,9 @@
                                                 <th>วันที่</th>
                                                 <th>ด้านวิชาการ</th>
                                                 <th>ด้านภาษา</th>
-                                                <th>ด้านการงานอาชีพ</th>
-                                                <th>ด้านกีฬา</th>
                                                 <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                                <th>ด้านกีฬา</th>
+                                                <th>ด้านการงานอาชีพ</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -176,7 +176,7 @@
 
                                         </tbody>
                                         <tfoot class="bg-light">
-                                            <tr>
+                                            <tr class="font-weight-bold">
                                                 <td>รวม</td>
                                                 <td></td>
                                                 <td></td>
@@ -203,9 +203,9 @@
                                                 <th>วันที่</th>
                                                 <th>ด้านวิชาการ</th>
                                                 <th>ด้านภาษา</th>
-                                                <th>ด้านการงานอาชีพ</th>
-                                                <th>ด้านกีฬา</th>
                                                 <th>ด้านดนตรี ศิลปะ การแสดง</th>
+                                                <th>ด้านกีฬา</th>
+                                                <th>ด้านการงานอาชีพ</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -244,7 +244,6 @@
                                                     $sub15 = $sub15 + 1;
                                                 }
                                         } 
-
                                         ?>
                                                 <td><?=$sub11;?></td>
                                                 <td><?=$sub12;?></td>
@@ -257,8 +256,8 @@
 
                                         </tbody>
                                         <tfoot class="bg-light">
-                                            <tr>
-                                                <td>รวม</td>
+                                            <tr class="font-weight-bold">
+                                                <td >รวม</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

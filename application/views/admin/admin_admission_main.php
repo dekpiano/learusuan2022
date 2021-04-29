@@ -12,45 +12,7 @@
         </header>
         <!-- Dashboard Counts Section-->
         <section class="">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-4">
-                        <div class="card shadow mb-4">
-                            <div class="card-header">
-                                <h6 class="m-0 font-weight-bold text-primary ">นักเรียนชั้น ม.1</h6>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="barChart1"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted"></div>
-                        </div>
-
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-4">
-                        <div class="card shadow mb-4">
-                            <div class="card-header">
-                                <h6 class="m-0 font-weight-bold text-primary ">นักเรียนชั้น ม.4</h6>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="barChart4"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted"></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-4">
-                        <div class="card shadow mb-4">
-                            <div class="card-header">
-                                <h6 class="m-0 font-weight-bold text-primary ">นักเรียนทั้งหมด</h6>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="barChartAll"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+           
             <div class="container-fluid">
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 ">
@@ -81,7 +43,8 @@
 
                             <table class="table table-bordered dt-responsive nowrap" id="TB_stu" width="100%" cellspacing="0">
                                 <thead>
-                                    <tr>
+                                    <tr>                                        
+                                        <th>สถานะ</th>
                                         <th>ประเภท</th>
                                         <th>วันที่สมัคร</th>
                                         <th>ลำดับ</th>
@@ -93,12 +56,24 @@
                                         <th>วันเกิด</th>
                                         <th>เบอร์โทรศัพท์</th>
                                         <th>หลักสูตร</th>
-                                        <th>สถานะ</th>
+                                        
                                         <th>คำสั่ง</th>
                                     </tr>
                                 </thead>
                                 <?php foreach ($recruit as $key => $v_recruit) : ?>
                                 <tr>
+                                    <td>
+                                    <?php 
+                                        if($v_recruit->recruit_status == "รอการตรวจสอบ"){
+                                            echo '<h4><span class=" badge badge-pill badge-warning">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }elseif($v_recruit->recruit_status == "ผ่านการตรวจสอบ"){
+                                            echo '<h4><span class="badge badge-pill badge-success">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }else{
+                                            echo '<h4><span class="badge badge-pill badge-danger">'.$v_recruit->recruit_status.'</span></h4>';
+                                        }
+                                        
+                                    ?>
+                                    </td>
                                     <td><?=$v_recruit->recruit_category;?></td>
                                     <td><?=date('d-m-Y',strtotime($v_recruit->recruit_date));?></td>
                                     <td><?=sprintf("%04d",$v_recruit->recruit_id);?></td>
@@ -114,7 +89,7 @@
                                     </td>
                                     <td><?=$v_recruit->recruit_phone;?></td>
                                     <td><?=$v_recruit->recruit_tpyeRoom;?></td>
-                                    <td><?=$v_recruit->recruit_status;?></td>
+                                   
                                     <td>
                                         <a target="_blank"
                                             href="<?=base_url('admin/Control_admin_admission/pdf/'.$v_recruit->recruit_id);?>"
