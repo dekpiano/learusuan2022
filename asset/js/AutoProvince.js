@@ -135,28 +135,28 @@ Company : codebee company limited
     };
 })(jQuery);
 
- // Initialize 
-     $( "#recruit_oldSchool" ).autocomplete({
-        minLength: 3,
-        source: function( request, response ) {
-          // Fetch data
-          $.ajax({
+// Initialize 
+$("#recruit_oldSchool").autocomplete({
+    minLength: 5,
+    source: function(request, response) {
+        // Fetch data
+        $.ajax({
             url: "../control_admission/SchoolList",
             type: 'post',
             dataType: "json",
             data: {
-              search: request.term
+                search: request.term
             },
-            success: function( data ) {
-              response( data );
+            success: function(data) {
+                response(data);
             }
-          });
-        },
-        select: function (event, ui) {
-          // Set selection
-          $('#recruit_oldSchool').val(ui.item.label); // display the selected text
-          $('#recruit_province').val(ui.item.province); // save selected id to input
-          $('#recruit_district').val(ui.item.amphur);
-          return false;
-        }
-      });
+        });
+    },
+    select: function(event, ui) {
+        // Set selection
+        $('#recruit_oldSchool').val(ui.item.label); // display the selected text
+        $('#recruit_province').val(ui.item.province); // save selected id to input
+        $('#recruit_district').val(ui.item.amphur);
+        return false;
+    }
+});

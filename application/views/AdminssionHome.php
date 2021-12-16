@@ -2,8 +2,9 @@
 
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-
-<img src="<?=base_url('uploads/banner64.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+<div class="container-fluid">
+<img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+</div>
 
     <div class="w-100">
         <!-- Page Header-->
@@ -94,7 +95,7 @@
             <div class="container-fluid">
                 <!-- Project-->
                 <div class="project">
-                <?php $this->load->view('AdminssionAdvertise.php'); ?>
+                <?php //$this->load->view('AdminssionAdvertise.php'); ?>
                    
                 </div>
             </div>

@@ -57,8 +57,6 @@ class Control_login extends CI_Controller {
 		$dm = date('m-d',strtotime($this->input->post('recruit_birthday')));
 		$Y = date('Y',strtotime($this->input->post('recruit_birthday')))-543;
 		$brith = $Y.'-'.$dm;
-	
-		
 		// $status = $this->recaptcha_google($this->input->post('captcha')); 
         // if ($status['success']) {
 			$result = $this->Model_login->Student_Login($this->input->post('recruit_idCard'),$brith);
@@ -72,8 +70,6 @@ class Control_login extends CI_Controller {
 						redirect('StudentHome');
 						
 					}	
-        
-
 	}
 
 }
