@@ -69,18 +69,97 @@ $(document).on('change', '#switch_year', function() {
     });
 });
 
-$(document).on('change', '#category', function() {
+//------------- เปิดปิดประเภทโควตา ----------------------
+
+$(document).on('change', '#quotaM1', function() {
     var category = $(this).is(":checked");
+    console.log(category);
     $.ajax({
         type: 'POST',
-        url: '../../admin/control_admin_admission/category_system',
+        url: '../../admin/control_admin_admission/quotaType',
         data: {
-            mode: category
+            mode: category,
+            ID: 1
         },
         success: function(data) {
             Swal.fire({
                     title: "แจ้งเตือน",
-                    text: "คุณได้ทำการเปลี่ยนประเภทการรับสมัครเป็นรอบ" + data,
+                    text: "คุณได้ทำการ " + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+$(document).on('change', '#quotaM4', function() {
+    var category = $(this).is(":checked");
+    console.log(category);
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/quotaType',
+        data: {
+            mode: category,
+            ID: 2
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการ " + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+$(document).on('change', '#normal', function() {
+    var category = $(this).is(":checked");
+    console.log(category);
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/quotaType',
+        data: {
+            mode: category,
+            ID: 3
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการ " + data,
+                    icon: "warning"
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location = "../admin/system";
+                    }
+                });
+        }
+    });
+});
+
+$(document).on('change', '#quotasport', function() {
+    var category = $(this).is(":checked");
+    console.log(category);
+    $.ajax({
+        type: 'POST',
+        url: '../../admin/control_admin_admission/quotaType',
+        data: {
+            mode: category,
+            ID: 4
+        },
+        success: function(data) {
+            Swal.fire({
+                    title: "แจ้งเตือน",
+                    text: "คุณได้ทำการ " + data,
                     icon: "warning"
                 })
                 .then((willDelete) => {
