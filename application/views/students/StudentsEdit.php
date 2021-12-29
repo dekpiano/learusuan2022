@@ -92,7 +92,7 @@ label {
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-3 mb-3">
                                             <label for="recruit_oldSchool">จบการศึกษาจากโรงเรียน</label>
                                             <input type="text" class="form-control" id="recruit_oldSchool"
                                                 name="recruit_oldSchool" value="<?=$stu->recruit_oldSchool?>" required>
@@ -114,6 +114,14 @@ label {
                                                 name="recruit_province" value="<?=$stu->recruit_province?>" required>
                                             <div class="invalid-feedback">
                                                 ระบุจังหวัดของโรงเรียน
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_grade">เกรดเฉลี่ย</label>
+                                            <input type="text" class="form-control" id="recruit_grade"
+                                                name="recruit_grade" value="<?=$stu->recruit_grade?>" required>
+                                            <div class="invalid-feedback">
+                                                ระบุเกรดเฉลี่ย
                                             </div>
                                         </div>
                                     </div>
@@ -380,7 +388,7 @@ label {
                                                     src="<?php echo  @$stu->recruit_copyidCard == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/copyidCard/'.$stu->recruit_copyidCard; ?>"
                                                     alt="" />
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <!-- <div class="col-md-4 mb-3">
                                                 <label for="recruit_copyAddress">สำเนาทะเบียนบ้าน <a href="#"
                                             data-toggle="tooltip" data-placement="top" data-html="true"
                                             title="<img class='img-fluid' src=&quot;<?=base_url('asset/img/thome.png')?>&quot;>">ตัวอย่างรูปที่ถูกต้อง</a></label>
@@ -392,7 +400,7 @@ label {
                                                 <img id="show_copyAddress" class="img-fluid"
                                                     src="<?php echo  @$stu->recruit_copyAddress == '' ? '#' : base_url().'uploads/recruitstudent/m'.$stu->recruit_regLevel.'/copyAddress/'.$stu->recruit_copyAddress; ?>"
                                                     alt="" />
-                                            </div>
+                                            </div> -->
                                         </div>
 
 

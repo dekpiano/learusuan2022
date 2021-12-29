@@ -64,7 +64,7 @@ class Control_admission extends CI_Controller {
 
 
 
-	public function reg_student($id)
+	public function reg_student($id,$quota = null)
 	{
 		//redirect('CloseStudent'); 
 		$data = $this->dataAll();
@@ -72,6 +72,7 @@ class Control_admission extends CI_Controller {
 		$data['description'] = "แบบฟอร์กรอกข้อมูลสำหรับนักเรียน";
 		$data['banner'] = base_url()."asset/img/banner-admission64.png";
 		$data['url'] = "welcome";
+		$data['TypeQuota'] = $this->db->where('quota_key',$quota)->get("tb_quota")->result();
 
 		
 		//
@@ -104,6 +105,7 @@ class Control_admission extends CI_Controller {
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
 		//print_r($status); exit();
         if ($status['success']) {
+			$openyear = $this->db->get('tb_openyear')->result();
 		//print_r($this->input->post('recruit_idCard'));
 		$data['chk_stu'] = $this->db->where('recruit_idCard',$this->input->post('recruit_idCard'))->get('tb_recruitstudent')->result();
 		if (count($data['chk_stu']) > 0) {
@@ -140,7 +142,8 @@ class Control_admission extends CI_Controller {
 			'recruit_date'	=> date('Y-m-d'), 						
 			'recruit_year' => $data['checkYear'][0]->openyear_year,
 			'recruit_status' => "รอการตรวจสอบ",
-			'recruit_category' => $this->input->post('recruit_category')
+			'recruit_category' => $this->input->post('recruit_category'),
+			'recruit_grade' => $this->input->post('recruit_grade')
 			);
 
 
@@ -149,7 +152,7 @@ class Control_admission extends CI_Controller {
 				$file_check = $_FILES['recruit_img']['error'];
 				$foder = 'img';
 				$do_upload = 'recruit_img';
-				$rand_name = $this->input->post('recruit_idCard').rand();				
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
 					$data_insert += array('recruit_img' => $rand_name.'.'.$imageFileType);	
 					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 				
@@ -159,7 +162,7 @@ class Control_admission extends CI_Controller {
 				$file_check = $_FILES['recruit_certificateEdu']['error'];
 				$foder = 'certificate';
 				$do_upload = 'recruit_certificateEdu';
-				$rand_name = $this->input->post('recruit_idCard').rand();				
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
 					$data_insert += array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);
 					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 
@@ -168,7 +171,7 @@ class Control_admission extends CI_Controller {
 				$file_check = $_FILES['recruit_certificateEduB']['error'];
 				$foder = 'certificateB';
 				$do_upload = 'recruit_certificateEduB';
-				$rand_name = $this->input->post('recruit_idCard').rand();				
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
 					$data_insert += array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);
 					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 				
@@ -177,19 +180,20 @@ class Control_admission extends CI_Controller {
 				$file_check = $_FILES['recruit_copyidCard']['error'];
 				$foder = 'copyidCard';
 				$do_upload = 'recruit_copyidCard';
-				$rand_name = $this->input->post('recruit_idCard').rand();				
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();				
 					$data_insert += array('recruit_copyidCard' => $rand_name.'.'.$imageFileType);
 					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 				
-			}if($_FILES['recruit_copyAddress']['error'] == 0){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_copyAddress']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_copyAddress']['error'];
-				$foder = 'copyAddress';
-				$do_upload = 'recruit_copyAddress';
-				$rand_name = $this->input->post('recruit_idCard').rand();
-				$data_insert += array('recruit_copyAddress' => $rand_name.'.'.$imageFileType);
-					$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
 			}
+			// if($_FILES['recruit_copyAddress']['error'] == 0){
+			// 	$imageFileType = strtolower(pathinfo($_FILES['recruit_copyAddress']['name'],PATHINFO_EXTENSION));						
+			// 	$file_check = $_FILES['recruit_copyAddress']['error'];
+			// 	$foder = 'copyAddress';
+			// 	$do_upload = 'recruit_copyAddress';
+			// 	$rand_name = $this->input->post('recruit_idCard').rand();
+			// 	$data_insert += array('recruit_copyAddress' => $rand_name.'.'.$imageFileType);
+			// 		$this->reg_img($foder,$do_upload,$imageFileType,$rand_name,$data_insert);
+			// }
 
 			//print_r($data_insert);
 

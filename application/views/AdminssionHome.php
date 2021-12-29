@@ -1,10 +1,9 @@
-
-
 <div class="page-content align-items-stretch">
     <!-- Side Navbar -->
-<div class="container-fluid">
-<img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
-</div>
+    <div class="container-fluid">
+        <img src="<?=base_url('uploads/banner65.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+        <img src="<?=base_url('uploads/banner65-1.png')?>" class="img-fluid" alt="รูปภาพแบนเนอร์การรับสมัครนักเรียน">
+    </div>
 
     <div class="w-100">
         <!-- Page Header-->
@@ -95,39 +94,64 @@
             <div class="container-fluid">
                 <!-- Project-->
                 <div class="project">
-                <?php //$this->load->view('AdminssionAdvertise.php'); ?>
-                   
+                    <?php //$this->load->view('AdminssionAdvertise.php'); ?>
+
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal-->
         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
             class="modal fade text-left">
-            <div role="document" class="modal-dialog modal-dialog-centered">
+            <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 id="exampleModalLabel" class="modal-title">เลือกระดับชั้น</h4>
+                        <h4 id="exampleModalLabel" class="modal-title">เลือกการสมัคร</h4>
                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                                 aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
-
                         <?php if($switch[0]->onoff_regis == "off") :?>
-                        <div class="text-success">
-                            <?php echo $switch[0]->onoff_comment; ?>
-                        </div>
+                        <?php echo $switch[0]->onoff_comment; ?>
                         <?php else : ?>
-                            <a href="<?=base_url('RegStudent/1');?>" class="bb btn btn-lg btn-block btn-primary">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 1
-                        </a>
-                        <a href="<?=base_url('RegStudent/4');?>" class="bb btn btn-lg btn-block btn-primary">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
-                        </a>
+
+                        <div class="row">
+                            <?php foreach ($quota as $key => $v_quota) :?>
+                                <?php if($v_quota->quota_status == "on"): ?>
+                            <div class="col-md-6">
+                                <div class="card" style="border: 2px solid #2b90d9;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?=$v_quota->quota_explain?></h5>
+                                        <?php  $q = explode("|",$v_quota->quota_level);
+                                        foreach ($q as $key => $v_q) : ?>
+                                        <a href="<?=base_url('RegStudent/'.$v_q.'/'.$v_quota->quota_key);?>"
+                                            class="btn btn-primary">สมัครเรียน ม.<?=$v_q;?></a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                        </div>
                         <?php endif; ?>
+
 
                     </div>
 
                 </div>
             </div>
         </div>
+
+        <!-- <?php if($switch[0]->onoff_regis == "off") :?>
+        <div class="text-success">
+            <?php echo $switch[0]->onoff_comment; ?>
+        </div>
+        <?php else : ?>
+        <a href="<?=base_url('RegStudent/1');?>" class="bb btn btn-lg btn-block btn-primary">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 1
+        </a>
+        <a href="<?=base_url('RegStudent/4');?>" class="bb btn btn-lg btn-block btn-primary">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> สมัครเรียน ชั้นมัธยมศึกษาปีที่ 4
+        </a>
+        <?php endif; ?> -->

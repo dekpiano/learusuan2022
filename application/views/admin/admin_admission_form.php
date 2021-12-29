@@ -52,6 +52,11 @@ label {
                                             <input class="form-control" type="text" name="recruit_regLevel"
                                                 id="recruit_regLevel" value="<?=$recruit[0]->recruit_regLevel;?>">
                                         </div>
+                                        <div class="col-md-6 col-lg-2 mb-3">
+                                            <label for="recruit_idCard">ระดับชั้นที่สมัคร</label>
+                                            <input class="form-control" type="text" name="recruit_year"
+                                                id="recruit_year" value="<?=$recruit[0]->recruit_year;?>">
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -92,7 +97,7 @@ label {
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-5 mb-3">
+                                        <div class="col-md-3 mb-3">
                                             <label for="recruit_oldSchool">ศึกษาอยู่โรงเรียน</label>
                                             <input type="text" class="form-control" id="recruit_oldSchool"
                                                 name="recruit_oldSchool" value="<?=$recruit[0]->recruit_oldSchool?>"
@@ -101,7 +106,7 @@ label {
                                                 ระบุโรงเรียนที่ศึกษาอยู่
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mb-3">
+                                        <div class="col-md-3 mb-3">
                                             <label for="recruit_district">อำเภอ</label>
                                             <input type="text" class="form-control" id="recruit_district"
                                                 name="recruit_district" value="<?=$recruit[0]->recruit_district?>"
@@ -114,6 +119,15 @@ label {
                                             <label for="recruit_province">จังหวัด</label>
                                             <input type="text" class="form-control" id="recruit_province"
                                                 name="recruit_province" value="<?=$recruit[0]->recruit_province?>"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                ระบุจังหวัดของโรงเรียน
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="recruit_grade">เกรดเฉลี่ย</label>
+                                            <input type="text" class="form-control" id="recruit_grade"
+                                                name="recruit_grade" value="<?=$recruit[0]->recruit_grade?>"
                                                 required>
                                             <div class="invalid-feedback">
                                                 ระบุจังหวัดของโรงเรียน

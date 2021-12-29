@@ -114,7 +114,7 @@ class Control_students extends CI_Controller {
 	{	
 		$status = $this->recaptcha_google($this->input->post('captcha')); 
         if ($status['success']) {
-
+			$openyear = $this->db->get('tb_openyear')->result();
 			$data_R = $this->db->where('recruit_id',$id)->get('tb_recruitstudent')->result();
 		
 		$file = array($_FILES['recruit_img']['error'],
@@ -146,7 +146,7 @@ class Control_students extends CI_Controller {
 			'recruit_homeProvince' => $this->input->post('recruit_homeProvince'),
 			'recruit_homePostcode' => $this->input->post('recruit_homePostcode'),
 			'recruit_tpyeRoom' => $this->input->post('recruit_tpyeRoom'),
-			'recruit_year' => (date('Y')+543)
+			'recruit_grade' => $this->input->post('recruit_grade')
 		);
 	
 			if(in_array($_FILES['recruit_img']['error'],$file)){
@@ -154,7 +154,7 @@ class Control_students extends CI_Controller {
 				$file_check = $_FILES['recruit_img']['error'];
 				$foder = 'img';
 				$do_upload = 'recruit_img';
-				$rand_name = $this->input->post('recruit_idCard').rand();
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
 				if($file_check == 0 ){
 					$data_update = array('recruit_img' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_img,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
@@ -168,7 +168,7 @@ class Control_students extends CI_Controller {
 				$file_check = $_FILES['recruit_certificateEdu']['error'];
 				$foder = 'certificate';
 				$do_upload = 'recruit_certificateEdu';
-				$rand_name = $this->input->post('recruit_idCard').rand();
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
 				if($file_check == 0 ){
 					$data_update = array('recruit_certificateEdu' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_certificateEdu,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
@@ -181,7 +181,7 @@ class Control_students extends CI_Controller {
 				$file_check = $_FILES['recruit_certificateEduB']['error'];
 				$foder = 'certificateB';
 				$do_upload = 'recruit_certificateEduB';
-				$rand_name = $this->input->post('recruit_idCard').rand();
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
 				if($file_check == 0 ){
 					$data_update = array('recruit_certificateEduB' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_certificateEduB,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
@@ -194,7 +194,7 @@ class Control_students extends CI_Controller {
 				$file_check = $_FILES['recruit_copyidCard']['error'];
 				$foder = 'copyidCard';
 				$do_upload = 'recruit_copyidCard';
-				$rand_name = $this->input->post('recruit_idCard').rand();
+				$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
 				if($file_check == 0 ){
 					$data_update = array('recruit_copyidCard' => $rand_name.'.'.$imageFileType);	
 					$this->update_img($id,$data_R[0]->recruit_copyidCard,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
@@ -202,21 +202,22 @@ class Control_students extends CI_Controller {
 					$imageFileType = 0;
 					$this->update_img($id,$data_R[0]->recruit_copyidCard,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
 				}
-			}if(in_array($_FILES['recruit_copyAddress']['error'],$file)){
-				$imageFileType = strtolower(pathinfo($_FILES['recruit_copyAddress']['name'],PATHINFO_EXTENSION));						
-				$file_check = $_FILES['recruit_copyAddress']['error'];
-				$foder = 'copyAddress';
-				$do_upload = 'recruit_copyAddress';
-				$rand_name = $this->input->post('recruit_idCard').rand();
-				if($file_check == 0 ){
-					$data_update = array('recruit_copyAddress' => $rand_name.'.'.$imageFileType);	
-					$this->update_img($id,$data_R[0]->recruit_copyAddress,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
-				}else{
-					$imageFileType = 0;
-					$this->update_img($id,$data_R[0]->recruit_copyAddress,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
-				}
-				
 			}
+			// if(in_array($_FILES['recruit_copyAddress']['error'],$file)){
+			// 	$imageFileType = strtolower(pathinfo($_FILES['recruit_copyAddress']['name'],PATHINFO_EXTENSION));						
+			// 	$file_check = $_FILES['recruit_copyAddress']['error'];
+			// 	$foder = 'copyAddress';
+			// 	$do_upload = 'recruit_copyAddress';
+			// 	$rand_name = $openyear[0]->openyear_year.'-'.$this->input->post('recruit_idCard').rand();
+			// 	if($file_check == 0 ){
+			// 		$data_update = array('recruit_copyAddress' => $rand_name.'.'.$imageFileType);	
+			// 		$this->update_img($id,$data_R[0]->recruit_copyAddress,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
+			// 	}else{
+			// 		$imageFileType = 0;
+			// 		$this->update_img($id,$data_R[0]->recruit_copyAddress,$file_check,$foder,$do_upload,$data_update,$imageFileType,$rand_name);
+			// 	}
+				
+			// }
 
 				
 			redirect('StudentsEdit');			 	
@@ -384,15 +385,15 @@ class Control_students extends CI_Controller {
 					'format' => [210, 90]
 				]);
         $mpdf->SetTitle($datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.' '.$datapdf[0]->recruit_lastName);
-       
+		$mpdf->showImageErrors = true;
 		// ส่วนที่ 2recruit_date
-		$html = '<div style="position:absolute;top:100px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img).'></div>'; 
+		$html = '<div style="position:absolute;top:100px;left:75px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'uploads/recruitstudent/m'.$datapdf[0]->recruit_regLevel.'/img/'.$datapdf[0]->recruit_img.'></div>'; 
 		$html .= '<div style="position:absolute;top:57px;left:150px; width:100%">'.sprintf("%04d",$datapdf[0]->recruit_id).'</div>'; //เลขที่สมัคร
 		$html .= '<div style="position:absolute;top:100px;left:250px; width:100%">'.$datapdf[0]->recruit_prefix.$datapdf[0]->recruit_firstName.'</div>'; //ชื่อผู้สมัคร
 		$html .= '<div style="position:absolute;top:100px;left:480px; width:100%">'.$datapdf[0]->recruit_lastName.'</div>'; //นามสกุลผู้สมัคร
 		$html .= '<div style="position:absolute;top:127;left:400px; width:100%">'.$datapdf[0]->recruit_idCard.'</div>';	
 		$html .= '<div style="position:absolute;top:155;left:270px; width:100%">'.$datapdf[0]->recruit_tpyeRoom.'</div>';	
-		$html .= '<div style="position:absolute;top:200px;left:340px; width:100%"><img style="width:120px;hight:100px;" src='.base_url('asset/img/license.png').'></div>';
+		$html .= '<div style="position:absolute;top:200px;left:340px; width:100%"><img style="width:120px;hight:100px;" src='.FCPATH.'asset/img/license.png'.'></div>';
 		$html .= '<div style="position:absolute;top:255x;left:360px; width:100%">'.$date_D_regis.' '.$TH_Month[$date_M_regis-1].' '.$date_Y_regis.'</div>'; // วันที่สมัครตอนที่ 2
 
 		$mpdf->SetDocTemplate('uploads/recruitstudent/pdf_registudentForStudent'.'.pdf',true);

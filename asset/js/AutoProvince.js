@@ -18,7 +18,7 @@ Company : codebee company limited
 
         return this.each(function() {
             var xml;
-            var dataUrl = "../asset/js/demo/thailand.xml";
+            var dataUrl = "../../asset/js/demo/thailand.xml";
 
 
             $(function() {
@@ -141,7 +141,7 @@ $("#recruit_oldSchool").autocomplete({
     source: function(request, response) {
         // Fetch data
         $.ajax({
-            url: "../control_admission/SchoolList",
+            url: "../../control_admission/SchoolList",
             type: 'post',
             dataType: "json",
             data: {

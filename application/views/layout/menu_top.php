@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav mx-auto text-center">
                 <li class="nav-item">
-                     <a class=" btn btn-outline-light" href="<?=base_url('uploads/recruitstudent/คู่มือการเข้าใช้งานระบบรับสมัครนักเรียน64.pdf');?>" target="_blabk" >คู่มือการสมัคร</a>
+                     <a class=" btn btn-outline-light" href="<?=base_url('uploads/recruitstudent/คู่มือการเข้าใช้งานระบบรับสมัครนักเรียน.pdf');?>" target="_blabk" >คู่มือการสมัคร</a>
                 </li>
             </ul>
                 <ul class="navbar-nav ml-auto">

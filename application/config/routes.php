@@ -59,7 +59,7 @@ $route['login'] = 'control_login/login_main';
 // Main
 $route['Statistic'] = 'welcome/AllStatistic';
 
-$route['RegStudent/(:num)'] = 'control_admission/reg_student/$1';
+$route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 
 //นักเรียน
 $route['StudentLogin'] = 'Control_students/StudentLogin';
