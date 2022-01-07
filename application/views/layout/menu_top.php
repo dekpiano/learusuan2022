@@ -31,11 +31,11 @@
                         <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"><i class="icon-search"></i> ตรวจสอบการสมัคร
                         </a>
                     </li>
-                    <li  class="nav-item">
+                    <!-- <li  class="nav-item">
                         <a style="color: white;" class="nav-link" href="<?=base_url('login');?>"> <i class="fas fa-bullhorn"></i> ประกาศรายชื่อ</a>
-                    </li>
+                    </li> -->
                     <li  class="nav-item">
-                        <a style="color: white;" class="nav-link" href="<?=base_url('Statistic');?>"> <i class="far fa-chart-bar"></i> สถิติรับสมัคร</a>
+                        <a style="color: white;" class="nav-link" href="<?=base_url('Statistic/'.$checkYear[0]->openyear_year);?>"> <i class="far fa-chart-bar"></i> สถิติรับสมัคร</a>
                     </li>
                 </ul>
             </div>

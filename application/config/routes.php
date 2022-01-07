@@ -57,7 +57,7 @@ $route['login'] = 'control_login/login_main';
 
 
 // Main
-$route['Statistic'] = 'welcome/AllStatistic';
+$route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
 
 $route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
 

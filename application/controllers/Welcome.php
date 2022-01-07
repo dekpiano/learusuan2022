@@ -28,10 +28,9 @@ class Welcome extends CI_Controller {
 
 		$db2 = $this->load->database('skjmain', TRUE);	
 		$data['title'] = "ระบบรับสมัครนักเรียนปีการศึกษา ".$data['checkYear'][0]->openyear_year;
-		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ตั้งวันนี้ จนถึง 28 เมษายน 2564";
-		$data['banner'] = base_url()."asset/img/banner-admission64.png";
+		$data['description'] = "รับสมัครนักเรียน ม.1 และ ม.4 ใหม่ ปีการศึกษา ".$data['checkYear'][0]->openyear_year;
+		$data['banner'] = base_url()."uploads/banner65-1.png";
 		$data['url'] = "welcome";
-		
 
 		$this->load->view('layout/header.php',$data);
 		$this->load->view('layout/menu_top.php');
@@ -44,8 +43,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('errors/404.php');
 	}
 
-	public function AllStatistic(){
-		$data = $this->report_student('2564');
+	public function AllStatistic($year){
+		$data = $this->report_student($year);
 
 		$data['year'] = $this->db->select('recruit_year')->from('tb_recruitstudent')->group_by('recruit_year')->order_by('recruit_year','DESC')->get()->result();
 		$data['checkYear'] = $this->db->select('*')->from('tb_openyear')->get()->result();
@@ -67,13 +66,16 @@ class Welcome extends CI_Controller {
 
 	  public function report_student($year)
 	{
+		$type_quota = $this->db->get('tb_quota')->result();
+
+		//echo '<pre>'; print_r($type_quota); exit();
+
 		$chart_re1 = $this->db->select('COUNT(recruit_regLevel) AS C_count,
 		tb_recruitstudent.recruit_regLevel,tb_recruitstudent.recruit_year, 
 		tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->where('recruit_regLevel',1)
-				->where('recruit_category','ปกติ')
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -84,7 +86,6 @@ class Welcome extends CI_Controller {
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->where('recruit_regLevel',4)
-				->where('recruit_category','ปกติ')
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -93,7 +94,6 @@ class Welcome extends CI_Controller {
 					tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
-				->where('recruit_category','ปกติ')
 				->group_by('recruit_tpyeRoom')					
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -104,25 +104,31 @@ class Welcome extends CI_Controller {
 			$data['chart_4'] = json_encode(array_column($chart_re4,'C_count'));
 			$data['chart_All'] = json_encode(array_column($chart_All,'C_count'));
 
+			$data['sel_date'] = $this->db->select('recruit_year,recruit_date')
+										->where('recruit_year',$year)
+										->group_by('recruit_date')
+										->get('tb_recruitstudent')
+										->result();
 
 			$data['sum_date'] = $this->db->select('
 									recruit_regLevel,recruit_year, 
 									recruit_tpyeRoom,recruit_date')
-									->where('recruit_category','ปกติ')
+									->where('recruit_year',$year)
 							->get('tb_recruitstudent')
 							->result();
 			// ผ่านการตรวจสอบ	
 			$data['sum_pass'] = $this->db->select('COUNT(recruit_status) AS sumall,
 									recruit_regLevel,recruit_year, 
 									recruit_tpyeRoom,recruit_date,recruit_status')
-									->where('recruit_category','ปกติ')
 									->where('recruit_status','ผ่านการตรวจสอบ')
+									->where('recruit_year',$year)
 							->get('tb_recruitstudent')
 							->result();
+			//ไม่ผ่านการตรวจสอบ				
 			$data['sum_NoPass'] = $this->db->select('COUNT(recruit_status) AS sumall,
 					recruit_regLevel,recruit_year, 
 					recruit_tpyeRoom,recruit_date,recruit_status')
-					->where('recruit_category','ปกติ')
+					->where('recruit_year',$year)
 					->where('recruit_status !=','ผ่านการตรวจสอบ')
 			->get('tb_recruitstudent')
 			->result();
@@ -135,7 +141,6 @@ class Welcome extends CI_Controller {
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->where('recruit_regLevel',1)
-				->where('recruit_category','โควตา')
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -145,7 +150,6 @@ class Welcome extends CI_Controller {
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
 				->where('recruit_regLevel',4)
-				->where('recruit_category','โควตา')
 				->group_by('recruit_tpyeRoom')
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
@@ -154,7 +158,6 @@ class Welcome extends CI_Controller {
 					tb_recruitstudent.recruit_tpyeRoom')
 				->from('tb_recruitstudent')
 				->where('recruit_year',$year)
-				->where('recruit_category','โควตา')
 				->group_by('recruit_tpyeRoom')					
 				->order_by('recruit_tpyeRoom','DESC')
 				->get()->result();
