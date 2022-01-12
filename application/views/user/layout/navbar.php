@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <?php else: ?>
-                <li class="sidebar-title">Menu</li>
+                <!-- <li class="sidebar-title">Menu</li> -->
                 <li class="sidebar-item active ">
                     <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#ModelLogin">
                         <i class="bi bi-grid-fill"></i>
