@@ -53,38 +53,8 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['login'] = 'control_login/login_main';
+$route['login'] = 'ControlLogin/login_main';
 
+$route['dashboard'] = 'student/ControlStudent/PageDashboard';
 
-// Main
-$route['Statistic/(:any)'] = 'welcome/AllStatistic/$1';
-
-$route['RegStudent/(:num)/(:any)'] = 'control_admission/reg_student/$1/$2';
-
-//นักเรียน
-$route['StudentLogin'] = 'Control_students/StudentLogin';
-$route['StudentCheckLogin'] = 'Control_login/CheckLogin';
-$route['StudentHome'] = 'Control_students/StudentsHome';
-$route['StudentsEdit'] = 'Control_students/StudentsEdit';
-$route['StudentsStatus'] = 'Control_students/StudentsStatus';
-
-$route['Students/Logout'] = 'Control_students/logoutStudent';
-$route['Students/Print'] = 'Control_students/PDFForStudent';
-
-
-//admin
-$route['AdminHome'] = 'admin/Control_admin_admission';
-$route['admin/system/(:any)'] = 'admin/Control_admin_admission/AdminSystem';
-$route['admin/checkData/(:any)'] = 'admin/Control_admin_admission/edit_recruitstudent/$1';
-$route['admin/Print/(:any)'] = 'admin/Control_admin_admission/PagePrint';
-$route['admin/Print/(:any)/(:any)/(:num)'] = 'admin/Control_admin_admission/pdf_type_all/$1/$2/$3';
-
-$route['admin/admission/(:num)'] = 'admin/control_admin_admission/index/$1';
-$route['admin/admission/add'] = 'admin/control_admin_admission/add';
-
-$route['admin/Statistic/(:any)'] = 'admin/control_admin_admission/statistic_student/$1';
-
-$route['admin/news'] = 'admin/control_admin_news';
-$route['admin/news/add'] = 'admin/control_admin_news/add';
-
-$route['admin/logout'] = 'admin/Control_admin_admission/logout';
+$route['lesson/(:any)/(:any)'] = 'user/ControlLesson/PageLesson/$1/$2';
