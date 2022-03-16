@@ -15,7 +15,12 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-
+<li class="sidebar-item ">
+                    <a target="_blank" href="https://youtu.be/WCO0EH0JnPg" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>วีดีโอนำเสนอ</span>
+                    </a>
+                </li>
                 <?php if(!empty($this->session->userdata('fullname'))):?>
                 <div class="recent-message d-flex">
                     <div class="avatar avatar-lg">
@@ -39,6 +44,7 @@
                     </a>
                 </li>
                 <?php else: ?>
+                 
                 <!-- <li class="sidebar-title">Menu</li> -->
                 <li class="sidebar-item active ">
                     <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#ModelLogin">
@@ -121,14 +127,17 @@
                         <span>สาระที่ 3 จากสวนกุหลาบหลวง สู่สวนกุหลาบเรา</span>
                     </a>
                     <ul class="submenu ">
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
+                            <a target="_blank" href="https://drive.google.com/file/d/1-lsrrPxdnHLl2udYrquBa8HaPnKFtJWK/view?usp=sharing"> -->การจัดการเรียนรู้<--</a>
+                        </li>
+                        <li class="submenu-item">
                             <a href="<?=base_url('lesson/3/ความเป็นมา');?>"> ความเป็นมา</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="<?=base_url('lesson/3/ผลความสำเร็จ เกียรติยศ เกียรติภูมิ');?>">ผลความสำเร็จ
                                 เกียรติยศ เกียรติภูมิ</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item">
                             <a href="<?=base_url('lesson/3/จุดเด่นของสวนฯ เรา');?>">จุดเด่นของสวนฯ เรา</a>
                         </li>
                     </ul>
