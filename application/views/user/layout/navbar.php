@@ -1,10 +1,15 @@
+<style>
+    .sidebar-wrapper .sidebar-header img {
+    height: 14rem;
+}
+</style>
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
                     <a href="<?=base_url();?>">
-                        สวนกุหลาบศึกษาออนไลน์ สไตล์สวนฯ จิ
+                    <img src="<?=base_url('uploads/logo/logo.png')?>" class="img-fluid" alt="" srcset="">
                     </a>
 
                 </div>

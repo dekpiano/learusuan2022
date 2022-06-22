@@ -58,3 +58,6 @@ $route['login'] = 'ControlLogin/login_main';
 $route['dashboard'] = 'student/ControlStudent/PageDashboard';
 
 $route['lesson/(:any)/(:any)'] = 'user/ControlLesson/PageLesson/$1/$2';
+
+$route['admin/login'] = 'admin/ControlAdmin/AdminLogin';
+$route['admin/dashboard'] = 'admin/ControlAdmin/PageAdminDashboard';

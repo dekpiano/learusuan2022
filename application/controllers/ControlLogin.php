@@ -55,14 +55,29 @@ class ControlLogin extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		if($username == "test" && $password == "1234"){
-			$this->session->set_userdata(array('loginStudentID' => "19111",'fullname'=> "เด็กชายทดสอบ ขอให้ผ่าน"));
-			//print_r($this->session->userdata()); exit();		
-			redirect('dashboard');
+		if($username == "admin"){
+
+			if($username == "admin" && $password == "admin"){
+				$this->session->set_userdata(array('loginAdminID' => "1",'fullname'=> "ผู้ดูแลระบบ"));
+				//print_r($this->session->userdata()); exit();		
+				redirect('admin/dashboard');
+			}else{
+				$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'เลขบัตรประชาชนหรือวันเกิดไม่ถูกต้อง หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
+						redirect('welcome');
+			}
+
 		}else{
-			$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'เลขบัตรประชาชนหรือวันเกิดไม่ถูกต้อง หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
-					redirect('welcome');
-		}		
+			if($username == "test" && $password == "1234"){
+				$this->session->set_userdata(array('loginStudentID' => "19111",'fullname'=> "เด็กชายทดสอบ ขอให้ผ่าน"));
+				//print_r($this->session->userdata()); exit();		
+				redirect('dashboard');
+			}else{
+				$this->session->set_flashdata(array('status' => 'error','msg'=> 'NO','messge' => 'เลขบัตรประชาชนหรือวันเกิดไม่ถูกต้อง หรือ ยังไม่ได้ลงทะเบียนเรียน'));	
+						redirect('welcome');
+			}
+		}
+
+				
 				
 	}
 

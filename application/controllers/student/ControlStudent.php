@@ -10,10 +10,10 @@ class ControlStudent extends CI_Controller {
 	}
 
 	public function PageDashboard(){
-		$this->load->view('user/layout/header.php');
-		$this->load->view('user/layout/navbar.php');
-		$this->load->view('user/PageDashBoard.php');
-		$this->load->view('user/layout/footer.php');
+		// $this->load->view('user/layout/header.php');
+		// $this->load->view('user/layout/navbar.php');
+		$this->load->view('admin/PageAdminLogin.php');
+		// $this->load->view('user/layout/footer.php');
 	}
 
 
