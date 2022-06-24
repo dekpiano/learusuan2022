@@ -17,12 +17,13 @@
                     ยินดีต้อนรับ <?=$this->session->userdata('fullname')?>
                 </li>
                 <hr>
-                <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item <?=$this->uri->segment(2)=="dashboard"?"active":""?>">
+                    <a href="<?=base_url('admin/dashboard')?>" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-title">ข้อมูลแบบทดสอบ</li>
                 <li class="sidebar-item  ">
                     <a href="table.html" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
@@ -30,27 +31,20 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-title">ข้อมูลพื้นฐาน</li>
+
+                <li class="sidebar-item <?=$this->uri->segment(2)=="SubstanceMain"?"active":""?>  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
-                        <span>Extra Components</span>
+                        <span>จัดการหน่วยการเรียน</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="extra-component-avatar.html">Avatar</a>
+                    <ul class="submenu <?=$this->uri->segment(2)=="SubstanceMain"?"active":""?>">
+                        <li class="submenu-item <?=$this->uri->segment(2)=="SubstanceMain"?"active":""?>">
+                            <a href="<?=base_url('admin/SubstanceMain')?>">สาระหน่วยการเรียนรู้</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="extra-component-sweetalert.html">Sweet Alert</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-toastify.html">Toastify</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-rating.html">Rating</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="extra-component-divider.html">Divider</a>
-                        </li>
+                            <a href="extra-component-sweetalert.html">บทเรียนแต่ละหน่วย</a>
+                        </li>                        
                     </ul>
                 </li>
 

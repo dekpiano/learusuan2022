@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ControlAdmin extends CI_Controller {
+class ControlAdminDashboard extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();	
-
+		if (empty($this->session->userdata('fullname')) && !$this->session->userdata('status') == 'admin') {      
+			redirect(base_url(),'refresh');
+		}
 	}
 
 	public function PageAdminLogin(){

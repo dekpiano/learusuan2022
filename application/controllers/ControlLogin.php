@@ -58,7 +58,7 @@ class ControlLogin extends CI_Controller {
 		if($username == "admin"){
 
 			if($username == "admin" && $password == "admin"){
-				$this->session->set_userdata(array('loginAdminID' => "1",'fullname'=> "ผู้ดูแลระบบ"));
+				$this->session->set_userdata(array('loginAdminID' => "1",'fullname'=> "ผู้ดูแลระบบ","status"=>"admin"));
 				//print_r($this->session->userdata()); exit();		
 				redirect('admin/dashboard');
 			}else{

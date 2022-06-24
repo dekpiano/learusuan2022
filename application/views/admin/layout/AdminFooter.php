@@ -1,4 +1,5 @@
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?=base_url();?>assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="<?=base_url();?>assets/js/bootstrap.bundle.min.js"></script>
 
@@ -6,11 +7,13 @@
 <script src="<?=base_url();?>assets/js/pages/dashboard.js"></script>
 
 <script src="<?=base_url();?>assets/js/main.js?v=1"></script>
+<script src="<?=base_url();?>assets/js/admin/admin-substance.js?v=1"></script>
 
 <script>
     document.querySelector('.burger-btn1').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('active');
 })
+
 </script>
 </body>
 
