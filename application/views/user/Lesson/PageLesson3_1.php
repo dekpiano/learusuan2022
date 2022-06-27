@@ -11,7 +11,7 @@
     <details>
         <summary>แผนการเรียนรู้</summary>
         <div class="faq-content">
-            <p><a href="https://docs.google.com/document/d/1ZhYz4UozpMrJeFCNof-Y8GnnOzhzXm5c/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
+            <p><a href="https://docs.google.com/document/d/1bhQ2gFQrwCmDekvhIN5r4-9xCGbKTJIg/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
                     target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> แผนการเรียนรู้</a></p>
         </div>
     </details>

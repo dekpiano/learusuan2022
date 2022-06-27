@@ -11,11 +11,11 @@
     <details>
         <summary>แผนการเรียนรู้</summary>
         <div class="faq-content">
-            <p><a href="https://docs.google.com/document/d/1Ddt_JxS4eNjd6OdQKCPiNcQyBItkqa-9/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
+            <p><a href="https://docs.google.com/document/d/1e5LPhh6OfuCIO9wgFjHiav-FIBv-gJ16/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
                     target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> แผนที่ 1
                     จุดเด่นของสวนสกจ.ด้านกีฬา</a>
             </p>
-            <p><a href="https://docs.google.com/document/d/1ilrqaYSd1i24V6tjFL0WkCvsWzSGuMNa/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
+            <p><a href="https://docs.google.com/document/d/1drHiXNVDLvY4I09N1kaixNvsjg5IOlcx/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
                     target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> แผนที่ 2
                     จุดเด่นของสวนสกจ.ด้านนวัตกรรมหุ่นยนต์และเทคโนโลยี</a></p>
         </div>

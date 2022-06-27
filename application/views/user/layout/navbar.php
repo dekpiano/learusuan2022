@@ -1,15 +1,15 @@
 <style>
-    .sidebar-wrapper .sidebar-header img {
+.sidebar-wrapper .sidebar-header img {
     height: 14rem;
 }
 </style>
 <div id="sidebar" class="active">
-    <div class="sidebar-wrapper active">
+    <div class="sidebar-wrapper ">
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
                     <a href="<?=base_url();?>">
-                    <img src="<?=base_url('uploads/logo/logo.png')?>" class="img-fluid" alt="" srcset="">
+                        <img src="<?=base_url('uploads/logo/logo.png')?>" class="img-fluid" alt="" srcset="">
                     </a>
 
                 </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-<li class="sidebar-item ">
+                <li class="sidebar-item ">
                     <a target="_blank" href="https://youtu.be/WCO0EH0JnPg" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>วีดีโอนำเสนอ</span>
@@ -49,9 +49,9 @@
                     </a>
                 </li>
                 <?php else: ?>
-                 
+
                 <!-- <li class="sidebar-title">Menu</li> -->
-                <li class="sidebar-item active ">
+                <li class="sidebar-item <?=$this->uri->segment(2)==''?"active":""?>">
                     <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#ModelLogin">
                         <i class="bi bi-grid-fill"></i>
                         <span>เข้าสู่ระบบ</span>
@@ -63,12 +63,12 @@
 
                 <li class="sidebar-title">บทเรียน</li>
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item  has-sub <?=$this->uri->segment(2)=='1'?"active":""?>">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
                         <span>สาระที่ 1 กำเนิดสวนกุหลาบ</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu <?=$this->uri->segment(2)=='1'?"active":""?>">
                         <li class="submenu-item ">
                             <a
                                 href="<?=base_url('lesson/1/ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน');?>">ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน</a>
@@ -81,11 +81,11 @@
                             <a
                                 href="<?=base_url('lesson/1/สมเด็จกรมพระยาดำรงกับการไล่หนังสือ');?>#">สมเด็จกรมพระยาดำรงกับการไล่หนังสือ</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item <?=$this->uri->segment(3)=='หลักสูตรการศึกษาครั้งแรกในประเทศไทย'?"active":""?>">
                             <a
                                 href="<?=base_url('lesson/1/หลักสูตรการศึกษาครั้งแรกในประเทศไทย');?>">หลักสูตรการศึกษาครั้งแรกในประเทศไทย</a>
                         </li>
-                        <li class="submenu-item ">
+                        <li class="submenu-item <?=$this->uri->segment(3)=='เส้นทางเดินจากวังสู่วัด'?"active":""?>">
                             <a href="<?=base_url('lesson/1/เส้นทางเดินจากวังสู่วัด');?>">เส้นทางเดินจากวังสู่วัด</a>
                         </li>
                     </ul>
@@ -126,24 +126,25 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item  has-sub <?=$this->uri->segment(2)=='3'?"active":""?>">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
                         <span>สาระที่ 3 จากสวนกุหลาบหลวง สู่สวนกุหลาบเรา</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu <?=$this->uri->segment(2)=='3'?"active":""?>">
                         <li class="submenu-item">
-                            <a target="_blank" href="https://drive.google.com/file/d/1-lsrrPxdnHLl2udYrquBa8HaPnKFtJWK/view?usp=sharing"> -->การจัดการเรียนรู้<--</a>
+                            <a target="_blank"
+                                href="https://drive.google.com/file/d/1-lsrrPxdnHLl2udYrquBa8HaPnKFtJWK/view?usp=sharing">
+                                -->การจัดการเรียนรู้<--< /a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item <?=$this->uri->segment(3)=='ความเป็นมา'?"active":""?>">
                             <a href="<?=base_url('lesson/3/ความเป็นมา');?>"> ความเป็นมา</a>
                         </li>
-                        <li class="submenu-item">
-                            <a href="<?=base_url('lesson/3/ผลความสำเร็จ เกียรติยศ เกียรติภูมิ');?>">ผลความสำเร็จ
-                                เกียรติยศ เกียรติภูมิ</a>
+                        <li class="submenu-item" <?=$this->uri->segment(3)=='ผลความสำเร็จ_เกียรติยศ_เกียรติภูมิ'?"active":""?>>
+                            <a href="<?=base_url('lesson/3/ผลความสำเร็จ_เกียรติยศ_เกียรติภูมิ');?>">ผลความสำเร็จ เกียรติยศ เกียรติภูมิ</a>
                         </li>
-                        <li class="submenu-item">
-                            <a href="<?=base_url('lesson/3/จุดเด่นของสวนฯ เรา');?>">จุดเด่นของสวนฯ เรา</a>
+                        <li class="submenu-item" <?=$this->uri->segment(3)=='จุดเด่นของสวนฯ_เรา'?"active":""?>>
+                            <a href="<?=base_url('lesson/3/จุดเด่นของสวนฯ_เรา');?>">จุดเด่นของสวนฯ เรา</a>
                         </li>
                     </ul>
                 </li>

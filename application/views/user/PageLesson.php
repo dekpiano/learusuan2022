@@ -82,11 +82,15 @@ if($lesson == '1'){
         <h3>เรื่อง <?php echo @$name; ?></h3>
     </div>
     <div class="page-content">
-        <?php if($lesson == '3' && $name == "ความเป็นมา"):?>
+        <?php if($lesson == '1' && $name == "หลักสูตรการศึกษาครั้งแรกในประเทศไทย"):?>
+            <?php $this->load->view('user/Lesson/PageLesson1_4.php'); ?>
+        <?php elseif($lesson == '1' && $name == "เส้นทางเดินจากวังสู่วัด"):?>
+            <?php $this->load->view('user/Lesson/PageLesson1_5.php'); ?>
+        <?php elseif($lesson == '3' && $name == "ความเป็นมา"):?>
             <?php $this->load->view('user/Lesson/PageLesson3_1.php'); ?>
-        <?php elseif($lesson == '3' && $name == "ผลความสำเร็จ เกียรติยศ เกียรติภูมิ"): ?>
+        <?php elseif($lesson == '3' && $name == "ผลความสำเร็จ_เกียรติยศ_เกียรติภูมิ"): ?>
             <?php $this->load->view('user/Lesson/PageLesson3_2.php'); ?>
-        <?php elseif($lesson == '3' && $name == "จุดเด่นของสวนฯ เรา") :?>
+        <?php elseif($lesson == '3' && $name == "จุดเด่นของสวนฯ_เรา") :?>
             <?php $this->load->view('user/Lesson/PageLesson3_3.php'); ?>
         <?php else: ?>
         <div class="alert alert-danger" role="alert">
