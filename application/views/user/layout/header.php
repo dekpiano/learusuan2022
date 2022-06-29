@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="<?=base_url();?>assets/css/app.css">
     <link rel="shortcut icon" href="<?=base_url();?>assets/images/favicon.svg" type="image/x-icon">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet">

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "skj-learnsuan",
+  "private_key_id": "7219d3050b48eefcbc27e1695e93036a63a99ba3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBT0Wguo5dfl3m\n7D5J+t7wYwvLUGa9MWcO1pUFWS/x7KYsX+ofI08OcuwRh/lOShL6WE1EzB+IdoM2\nmEm+8nnYFKTxgIVk+5IsJYUbQIeTGdxrhyVSUjsT3rUlxMalzwbwkeo8FBS8btpE\nhQ8FVvYnx0CUtn5neCMIKnZxUUYBQTpWU9KGCyI0WPiItr/lnQ0FQi9eUqD2teGk\ntepillPiRZkDsp+QNyo3wry9E8+8DorI4hJeX1G+8z2Y7iE6rzJJxERwhFYPPbKH\nVyiewAIyLZUOJUFVLs2fkwnpaNlgBzZked/BkIbvwOeZWb7eiiappaDZqdARf02B\nC5L1HJSDAgMBAAECggEAGUvmiILRPYKGBuw0YdmpUfDMKtDR2QE9g29o3zh4HI2u\nLea79v4tCsQsM0ZwGqLOj/cn3rsNh1M8QX6KlqkZcRbmgiSiOtWW9R2l06v38d6I\n/diYyt3a6vM9EP0KonO7Qeuo/jAB31TBowTR3eOENoQNu0g/C2A+dAOb2KFc6q3k\nZJfV/bSy7ZxYc9EAnHK1Ola6FyBluKltjKwRA55SzJpRfAnxjnzc8yfbRQtsjeOt\njgsZesqWjpjP1OcMt+oeSFT8BuGU9oHNJFTKS1Ri7ztyuN55kX1bBPPmACHu3Vo1\nn77/O15ICO4UglK+R3g4DFACFMCqUeyc3Jf4Ccq/1QKBgQDnuaKHFZ3b81WupqJW\npfrP6udK1AmLjM7LYsIkafm5hC6Naptuxi6+bMiKJPSS8oSsea/XQq76d+aTSiFF\ndl9XoLuvrdproz2YYD8cnPJoaILFxnSqliusGAEoCD2zfuuN/ol9ueEng3vT9bn8\n+TQSJJGzF8GmfCId9jFdMdwk9QKBgQDVj2rV+PiEN/hTpO7aEZmpVVIHg5bnEIbe\nWvA3MTjyGXDqpIkJSNgBhpYgjscyR9UoO05xjuDr75ADWrqZ+mfCHCmhIyaxrdT/\nwZhvBsNHlPNKz3owVM6/ptDDW1osCO0K4VS8IHcbqqxTRcwlgmr2/LSnuJ8AouSj\nIYk+ErqolwKBgQCljmx/RMN3DQBveqBLdeSfPf4n6Rw0ttJcX1/Dsm93yueTo9IP\nL8rfxEr23/ZZMqn1rC8khYEMdDOpkfH5ddwieDUADB8cfhGY11Lf94X9cIXWFbbu\n1cG3/6J73n9uycQzu+Kxj+c8WuVSh6JtCgLY34W1RcjWUKPzchzMr73QLQKBgBNw\nC0xQbeYy5fJPB8JnabIE5wNyEbEUSwJACq8rVsCKWkGxGhvzOl3hLxblh/HmodsY\nkso5M/Wlh1kWz/cl2H3NbGiTN3lilgl1SHeKiQmh4AcGHVv6zBqbh1LQpMNvSIv9\n+GVrGww0m5y0tKERXsT+OT8uyaIYMXE7oy84Ky8fAoGANb9Zy1FJjOQqQfQiaOX9\nb+X5TVhspieBlHSCinuS1CPLA+AXdjOPliROQon2ti9eZ9RCafM4tCaExI4o0U/X\nRKOXoyfRmaccavq8TxgpzMhOyg80tocjS5ex6jnm3ViFT/rE6J+wpq18vTYUHwz9\nx1k+bgX6qfriZ1K9zjpyMwk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-learnsuan@skj-learnsuan.iam.gserviceaccount.com",
+  "client_id": "101835061565468962185",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-learnsuan%40skj-learnsuan.iam.gserviceaccount.com"
+}

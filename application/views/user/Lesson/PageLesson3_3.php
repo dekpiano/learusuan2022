@@ -57,3 +57,11 @@
             กำลังพัฒนา...
         </div>
     </details>
+    <details>
+        <summary>
+            <a href="<?=base_url('lesson/'.$lesson.'/'.$name.'/Certificate');?>" class="text-white">
+            ตรวจสอบการทดสอบ / ดาวน์โหลดเกียรติบัตร
+            </a>            
+        </summary>
+       
+    </details>
