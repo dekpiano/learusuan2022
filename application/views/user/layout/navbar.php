@@ -20,10 +20,16 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-item ">
+                <!-- <li class="sidebar-item ">
                     <a target="_blank" href="https://youtu.be/WCO0EH0JnPg" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>วีดีโอนำเสนอ</span>
+                    </a>
+                </li> -->
+                <li class="sidebar-item ">
+                    <a target="_blank" href="https://classroom.google.com/c/NDk2ODgwODYyMDcx?cjc=njdx7dv" class='sidebar-link'>
+                    <img src="https://img.icons8.com/color/32/000000/google-classroom.png"/>
+                        <span> สวนกุหลาบศึกษา</span>
                     </a>
                 </li>
                 <?php if(!empty($this->session->userdata('fullname'))):?>
@@ -53,7 +59,7 @@
                 <!-- <li class="sidebar-title">Menu</li> -->
                 <li class="sidebar-item <?=$this->uri->segment(2)==''?"active":""?>">
                     <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#ModelLogin">
-                        <i class="bi bi-grid-fill"></i>
+                    <img src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/32/000000/external-login-freelancer-xnimrodx-lineal-color-xnimrodx.png" />
                         <span>เข้าสู่ระบบ</span>
                     </a>
                 </li>
@@ -71,22 +77,22 @@
                     <ul class="submenu <?=$this->uri->segment(2)=='1'?"active":""?>">
                         <li class="submenu-item ">
                             <a
-                                href="<?=base_url('lesson/1/ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน');?>">ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน</a>
+                                href="<?=base_url('lesson/1/ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน');?>">แผนที่ 1 ความเป็นมาเหตุการณ์สำคัญที่ทำให้เกิดโรงเรียน</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="<?=base_url('lesson/1/สถาบันพระมหากษัตริย์กับโรงเรียสวนกุหลาบ (ผู้ก่อตั้ง)');?>">สถาบันพระมหากษัตริย์กับโรงเรียสวนกุหลาบ
+                            <a href="<?=base_url('lesson/1/สถาบันพระมหากษัตริย์กับโรงเรียสวนกุหลาบ (ผู้ก่อตั้ง)');?>">แผนที่ 2 สถาบันพระมหากษัตริย์กับโรงเรียสวนกุหลาบ
                                 (ผู้ก่อตั้ง)</a>
                         </li>
                         <li class="submenu-item ">
                             <a
-                                href="<?=base_url('lesson/1/สมเด็จกรมพระยาดำรงกับการไล่หนังสือ');?>#">สมเด็จกรมพระยาดำรงกับการไล่หนังสือ</a>
+                                href="<?=base_url('lesson/1/สมเด็จกรมพระยาดำรงกับการไล่หนังสือ');?>#">แผนที่ 3 สมเด็จกรมพระยาดำรงกับการไล่หนังสือ</a>
                         </li>
                         <li class="submenu-item <?=$this->uri->segment(3)=='หลักสูตรการศึกษาครั้งแรกในประเทศไทย'?"active":""?>">
                             <a
-                                href="<?=base_url('lesson/1/หลักสูตรการศึกษาครั้งแรกในประเทศไทย');?>">หลักสูตรการศึกษาครั้งแรกในประเทศไทย</a>
+                                href="<?=base_url('lesson/1/หลักสูตรการศึกษาครั้งแรกในประเทศไทย');?>">แผนที่ 4 หลักสูตรการศึกษาครั้งแรกในประเทศไทย</a>
                         </li>
                         <li class="submenu-item <?=$this->uri->segment(3)=='เส้นทางเดินจากวังสู่วัด'?"active":""?>">
-                            <a href="<?=base_url('lesson/1/เส้นทางเดินจากวังสู่วัด');?>">เส้นทางเดินจากวังสู่วัด</a>
+                            <a href="<?=base_url('lesson/1/เส้นทางเดินจากวังสู่วัด');?>">แผนที่ 5 เส้นทางเดินจากวังสู่วัด</a>
                         </li>
                     </ul>
                 </li>

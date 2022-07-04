@@ -56,7 +56,12 @@ class ControlLesson extends CI_Controller {
 			$spreadsheetId = '1E82u8VfsAtmGxqFM0eh4O5QQaFIAnIE47dfW1xwxMH0';
 			$data['response'] = $service->spreadsheets_values->get($spreadsheetId, $range);
 			$data['numRows'] = $data['response']->getValues() != null ? count($data['response']->getValues()) : 0;
-		}else{
+		}elseif($name ==="เส้นทางเดินจากวังสู่วัด" && $lesson == 1){			
+				$spreadsheetId = '1N_xo8JeUdjdluh4u2novr1Rv96-XT0aYJMpl_mgs1g4';
+				$data['response'] = $service->spreadsheets_values->get($spreadsheetId, $range);
+				$data['numRows'] = $data['response']->getValues() != null ? count($data['response']->getValues()) : 0;			
+		}
+		else{
 			$data['response'] = "";
 			$data['numRows'] = "";
 		}

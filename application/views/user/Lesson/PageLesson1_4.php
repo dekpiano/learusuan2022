@@ -13,7 +13,8 @@
         <summary>แผนการเรียนรู้</summary>
         <div class="faq-content">
             <p><a href="https://docs.google.com/document/d/1pVqXU2xSywkLPQfyePARw93ukr32Mfqo/edit?usp=sharing&ouid=108470401055852821871&rtpof=true&sd=true"
-                    target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> แผนการเรียนรู้ สาระที่ 1 แผนที่ 4
+                    target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> แผนการเรียนรู้ สาระที่ 1 แผนที่
+                    4
                     4</a></p>
         </div>
     </details>
@@ -42,37 +43,49 @@
 
         </div>
     </details>
-    <details>
-        <summary>ใบงาน</summary>
-        <div class="faq-content">
-            <p>
-                <a href="https://drive.google.com/file/d/12YAmPZ_LOu2gh5ODRLxfhoipP0AgeZB5/view?usp=sharing"
-                    target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> ใบงานที่ 1</a>
-            </p>
-            <a href="https://drive.google.com/file/d/12b8ZBIpyxIwY7Uo-uK1wERzjpfAEQIuV/view?usp=sharing" target="_blank"
-                rel="noopener noreferrer"><i class="bi bi-book"></i> ใบงานที่ 2</a>
-            </p>
 
-        </div>
-    </details>
     <details>
         <summary>สื่อวีดีโอ</summary>
         <div class="faq-content">
             กำลังพัฒนา...
         </div>
     </details>
+    <div class="row">
+        <div class="col-6">
+            <details>
+                <summary>ใบงาน</summary>
+                <div class="faq-content">
+                    <p>
+                        <a href="https://drive.google.com/file/d/12YAmPZ_LOu2gh5ODRLxfhoipP0AgeZB5/view?usp=sharing"
+                            target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> ใบงานที่ 1</a>
+                    </p>
+                    <a href="https://drive.google.com/file/d/12b8ZBIpyxIwY7Uo-uK1wERzjpfAEQIuV/view?usp=sharing"
+                        target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> ใบงานที่ 2</a>
+                    </p>
+
+                </div>
+            </details>
+        </div>
+        <div class="col-6">
+            <details>
+                <summary>
+                    <a href="https://forms.gle/NhZ6TCbBCEaxaMqT7" class="text-white" target="_blank">ส่งใบงาน</a>
+                </summary>
+
+            </details>
+        </div>
+    </div>
+
     <details>
-        <summary> <a href="https://forms.gle/AYsThKcTGTJ7eCFU6" class="text-white" target="_blank" >แบบทดสอบ</a></summary>
-       
-       
-      
+        <summary> <a href="https://forms.gle/AYsThKcTGTJ7eCFU6" class="text-white" target="_blank">แบบทดสอบ</a>
+        </summary>
     </details>
     <details>
         <summary>
             <a href="<?=base_url('lesson/'.$lesson.'/'.$name.'/Certificate');?>" class="text-white">
-            ตรวจสอบการทดสอบ / ดาวน์โหลดเกียรติบัตร
-            </a>            
+                ตรวจสอบการทดสอบ / ดาวน์โหลดเกียรติบัตร
+            </a>
         </summary>
-       
+
     </details>
 </div>
