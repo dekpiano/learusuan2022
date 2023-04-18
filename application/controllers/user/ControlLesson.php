@@ -12,13 +12,8 @@ class ControlLesson extends CI_Controller {
 
 	function getClient()
 	{
-		 // Get absolute path
-		 $path = getcwd(); // /home/user/public_html/test/test.php.
-		 $path = substr($path, 0, strpos($path, "public_html"));	 
-		 $root = $path . "public_html/";	 
-		// echo $root; // This will output /home/user/public_html/
-
-		require_once $root.'librarie_skj/google_sheet/vendor/autoload.php';
+		echo $path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));	
+		require_once $path.'/librarie_skj/google_sheet/vendor/autoload.php';
 		// require_once APPPATH. 'libraries/vendor/autoload.php';
 	
 		 // Our service account access key
