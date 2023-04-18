@@ -12,7 +12,7 @@ class ControlLesson extends CI_Controller {
 
 	function getClient()
 	{
-		echo $path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));	
+		$path = dirname(dirname(dirname(dirname(dirname(__FILE__)))));	
 		require_once $path.'/librarie_skj/google_sheet/vendor/autoload.php';
 		// require_once APPPATH. 'libraries/vendor/autoload.php';
 	
